@@ -16,7 +16,7 @@ public class Ejercicio1 {
         int elegirMostrar=0;
         System.out.println("Escriba cuantos caractéres desea que posea el arreglo: ");
         char[] arrayDeCarac = new char [TecladoIn.readLineInt()];
-        cargarArrCarac(arrayDeCarac);
+        llenarArrChar(arrayDeCarac);
         System.out.println("Si desea ver el arreglo en el orden ingresado, escriba 1, de lo contrario, se mostrará invertido: ");
         elegirMostrar=TecladoIn.readLineInt();
         if (elegirMostrar==1){
@@ -26,7 +26,7 @@ public class Ejercicio1 {
         }
     }
     //Este módulo nos permite llenar un arreglo de caractéres
-    public static void cargarArrCarac(char[] arrayDeCarac){
+    public static void llenarArrChar(char[] arrayDeCarac){
         int i;
         for (i=0;i<arrayDeCarac.length;i++){
             System.out.println("Cargue el caractér nro. "+(i+1)+" del arreglo");

@@ -1,4 +1,4 @@
-package juanipadsch.tp1arreglos;
+package desarrolloDeAlgoritmos.tp1Arreglos;
 /**
  *
  * @author JuanPadSch

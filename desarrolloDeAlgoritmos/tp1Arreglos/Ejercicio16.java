@@ -1,3 +1,4 @@
+package desarrolloDeAlgoritmos.tp1Arreglos;
 import java.util.*;
 /**
  *

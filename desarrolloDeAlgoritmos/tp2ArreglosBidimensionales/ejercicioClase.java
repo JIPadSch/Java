@@ -1,3 +1,4 @@
+package desarrolloDeAlgoritmos.tp2ArreglosBidimensionales;
 public class ejercicioClase {
     public static boolean arrBidIntEquals (int[][] arr1, int[][] arr2){
         int i=0,j;

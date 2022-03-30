@@ -1,4 +1,3 @@
-package juanipadsch.tp1arreglos;
 /**
  *
  * @author JuanPadSch

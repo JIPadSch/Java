@@ -1,5 +1,3 @@
-package juanipadsch.tp1arreglos;
-
 	import java.io.*;
 	import java.util.*;
 

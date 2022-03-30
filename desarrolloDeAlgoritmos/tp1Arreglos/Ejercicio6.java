@@ -10,7 +10,6 @@ public class Ejercicio6 {
     letras guardadas en el arreglo*/
     public static void main(String[] args){
         char[] arrayLetras = new char[100];
-        char letra;
         System.out.println("Ahora cargará el arreglo hasta que usted desee parar");
         System.out.println("ATENCIÓN: Solo puede cargar un máximo de cien letras");
         cargarArrayLetrasCien(arrayLetras);

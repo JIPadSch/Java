@@ -14,6 +14,7 @@ public class Ejercicio12 {
         llenarArrChar(arrayChar);
         copiaArrChar = new char [arrayChar.length];
         copiaArrChar = copiarArrChar(arrayChar);
+        libJuanIPadSch.imprimirArrChar(copiaArrChar);
     }
     //Este módulo nos permite llenar un arreglo de caractéres
     public static void llenarArrChar(char[] arrayDeCarac){

@@ -1,4 +1,5 @@
 package desarrolloDeAlgoritmos.tp1Arreglos;
+import java.util.*;
 /**
  *
  * @author JuanPadSch
@@ -35,16 +36,18 @@ public class Ejercicio6 {
     }
     /*Este módulo comprueba de que el caracter ingresado sea una letra*/
     public static char charEsLetra(char charEle){
+        Scanner scan = new Scanner (System.in);
         boolean esLetra=false;
         char letra=charEle;
         while (esLetra==false){
             /*Hacemos una verificación de ASCII. De la A hasta la Z,
-            los valores númericos van del 33 al 126 (incluidos)*/
-            if (letra>=33 && letra<=126){
+            los valores númericos van del 65 al 122 (incluidos)*/
+            if (letra>=65 && letra<=122){
                 esLetra=true;                
             } else{
                 System.out.println("Eso no es una letra. Ingrese nuevamente: ");
-                letra=TecladoIn.readChar();
+                letra = scan.next().charAt(0);
+                scan.nextLine();
             }
         }
         return letra;

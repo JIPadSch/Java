@@ -4,6 +4,16 @@ import java.util.*;
  * @author JuanPadSch
  */
 public class libJuanIPadSch {
+    //Módulo que verifica si un caractér es letra
+    public static boolean charEsLetra(char caracter){
+        boolean esLetra=false;
+        /*Hacemos una verificación de ASCII. De la A hasta la Z,
+        los valores númericos van del 65 al 122 (incluidos)*/
+        if (caracter>=65 && caracter<=122){
+            esLetra=true;                
+        }
+        return esLetra;
+    }
     //Módulo que permite llenar un arreglo de ints
     public static void llenarArrInt (int[] arrInt){
         Scanner scan = new Scanner (System.in);

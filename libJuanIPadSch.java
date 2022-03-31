@@ -158,13 +158,13 @@ public class libJuanIPadSch {
         }
     }
     /*Módulo que permite verificar si dos arreglos bidimensionales de ints son iguales*/
-    public static boolean arrBidIntIguales (int[][] arr1, int[][] arr2){
+    public static boolean arrBidIntIguales (int[][] arrInt1, int[][] arrInt2){
         int i=0,j;
-        boolean esIgual = (arr1.length==arr2.length && arr2[0].length==arr2[0].length);
-        while (esIgual && i<arr1.length){
+        boolean esIgual = (arrInt1.length==arrInt2.length && arrInt2[0].length==arrInt2[0].length);
+        while (esIgual && i<arrInt1.length){
             j=0;
-            while (esIgual && j<arr1[0].length){
-                if (arr1[i][j] == arr2[i][j]){
+            while (esIgual && j<arrInt1[0].length){
+                if (arrInt1[i][j] == arrInt2[i][j]){
                     j++;
                 } else{
                     esIgual = false;

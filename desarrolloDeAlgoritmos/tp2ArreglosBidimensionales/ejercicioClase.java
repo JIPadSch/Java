@@ -1,19 +1,20 @@
 package desarrolloDeAlgoritmos.tp2ArreglosBidimensionales;
 public class ejercicioClase {
-    public static boolean arrBidIntEquals (int[][] arr1, int[][] arr2){
+    //Módulo que permite verificar si dos arreglos bidimensionales de ints son iguales
+    public static boolean arrBidIntIguales (int[][] arr1, int[][] arr2){
         int i=0,j;
-        boolean isEquals = (arr1.length==arr2.length && arr2[0].length==arr2[0].length);
-        while (isEquals && i<arr1.length){
+        boolean esIgual = (arr1.length==arr2.length && arr2[0].length==arr2[0].length);
+        while (esIgual && i<arr1.length){
             j=0;
-            while (isEquals && j<arr1[0].length){
+            while (esIgual && j<arr1[0].length){
                 if (arr1[i][j] == arr2[i][j]){
                     j++;
                 } else{
-                    isEquals = false;
+                    esIgual = false;
                 }
             }
             i++;
         }
-        return isEquals;
+        return esIgual;
     }
 }

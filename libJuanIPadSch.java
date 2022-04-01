@@ -14,6 +14,19 @@ public class libJuanIPadSch {
         }
         return esLetra;
     }
+    /*Módulo que verifica que un String tiene solo letras*/
+    public static boolean stringSoloLetras (String str){
+        boolean tieneSoloLetras=true;
+        int i=0;
+        while (tieneSoloLetras && i<str.length()){
+            if (libJuanIPadSch.charEsLetra(str.charAt(i))){
+                i++;
+            } else{
+                tieneSoloLetras=false;
+            }
+        }
+        return tieneSoloLetras;
+    }
     /*Módulo que permite llenar un arreglo de ints*/
     public static void llenarArrInt (int[] arrInt){
         Scanner scan = new Scanner (System.in);
@@ -51,8 +64,8 @@ public class libJuanIPadSch {
         }
         return numMenor;
     }
-    /*Módulo que devuelve el número mayor y el menor de un arreglo dentro
-    de un nuevo arreglo, donde el mayor se ubica en el espacio [0]
+    /*Módulo que devuelve el número mayor y el menor de un arreglo (int) dentro
+    de un nuevo arreglo (int), donde el mayor se ubica en el espacio [0]
     y el menor se ubica en el espacio [1]*/
     public static int[] numMayorMenorArrInt (int[] arrInt){
         int i;
@@ -102,6 +115,16 @@ public class libJuanIPadSch {
             System.out.println(" "+arrString[i]+" ");
         }
     }
+    /*Módulo que verifica si un arreglo de String tiene solo letras*/
+    public static boolean arrStringSoloLetras (String[] arrString){
+        boolean tieneSoloLetras=true;
+        int i=0;
+        while (tieneSoloLetras && i<arrString[i].length()){
+            tieneSoloLetras=libJuanIPadSch.stringSoloLetras(arrString[i]);
+            i++;
+        }
+        return tieneSoloLetras;
+    }
     /*Módulo que permite llenar un arreglo de doubles*/
     public static void llenarArrDouble (double[] arrDouble){
         Scanner scan = new Scanner (System.in);
@@ -118,6 +141,45 @@ public class libJuanIPadSch {
         for (i=0;i<arrDouble.length;i++){
             System.out.println(" "+arrDouble[i]+" ");
         }
+    }
+    /*Módulo que devuelve el número mayor de un arreglo de doubles*/
+    public static double numMayorArrDouble (double[] arrDouble){
+        double numMayor=arrDouble[0];
+        int i;
+        for (i=0;i<arrDouble.length;i++){
+            if (arrDouble[i]>numMayor){
+                numMayor=arrDouble[i];
+            }
+        }
+        return numMayor;
+    }
+    /*Módulo que devuelve el número menor de un arreglo de doubles*/
+    public static double numMenorArrDouble (double[] arrDouble){
+        double numMenor=arrDouble[0];
+        int i;
+        for (i=0;i<arrDouble.length;i++){
+            if (arrDouble[i]<numMenor){
+                numMenor=arrDouble[i];
+            }
+        }
+        return numMenor;
+    }
+    /*Módulo que devuelve el número mayor y el menor de un arreglo (double) dentro
+    de un nuevo arreglo (double), donde el mayor se ubica en el espacio [0]
+    y el menor se ubica en el espacio [1]*/
+    public static double[] numMayorMenorArrDouble (double[] arrDouble){
+        double[] numMayorMenor = new double [2];
+        numMayorMenor[0]=arrDouble[0]; //numMayor
+        numMayorMenor[1]=arrDouble[0]; //numMenor
+        int i;
+        for (i=0;i<arrDouble.length;i++){
+            if (numMayorMenor[0]>arrDouble[i]){
+                numMayorMenor[0]=arrDouble[i];
+            } else if (numMayorMenor[1]<arrDouble[i]){
+                numMayorMenor[1]=arrDouble[i];
+            }
+        }
+        return numMayorMenor;
     }
     /*Módulo que permite llenar un arreglo de booleans*/
     public static void llenarArrBoolean (boolean[] arrBoolean){

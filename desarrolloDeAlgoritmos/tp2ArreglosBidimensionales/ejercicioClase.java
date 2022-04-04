@@ -1,4 +1,8 @@
 package desarrolloDeAlgoritmos.tp2ArreglosBidimensionales;
+/**
+ *
+ * @author JuanPadSch
+ */
 public class ejercicioClase {
     //Módulo que permite verificar si dos arreglos bidimensionales de ints son iguales
     public static boolean arrBidIntIguales (int[][] arr1, int[][] arr2){

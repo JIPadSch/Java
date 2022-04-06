@@ -40,8 +40,10 @@ public class Ejercicio7 {
                 recorrerArribaAbajo(matrizCuadrada);
                 break;
             case 'c':
+                recorrerEspiral(matrizCuadrada);
                 break;
             case 'd':
+                recorrerZigZag(matrizCuadrada);
                 break;
             case 'e':
                 System.out.println("ADIÓS");
@@ -54,7 +56,7 @@ public class Ejercicio7 {
     public static void cargarAutoMatrizCuadrada(int[][] matrizCuadrada){
         int i,j;
         for (i=0;i<matrizCuadrada.length;i++){
-            for (j=0;j<matrizCuadrada[0].length;i++){
+            for (j=0;j<matrizCuadrada[0].length;j++){
                 matrizCuadrada[i][j]=i+j;
             }
         }

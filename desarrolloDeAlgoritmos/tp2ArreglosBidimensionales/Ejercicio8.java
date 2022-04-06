@@ -1,8 +1,27 @@
 package desarrolloDeAlgoritmos.tp2ArreglosBidimensionales;
 import java.util.*;
 public class Ejercicio8 {
+    /*Dada una matriz de números enteros de dimensión NxN, se desea verificar si la matriz es simétrica o
+    antisimétrica con respecto a la diagonal principal. Implemente un algoritmo que luego de cargar una
+    matriz realice la verificación solicitada y muestre por pantalla un cartel adecuado*/
+    public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
+        int [][] matriz;
+        int longitudFila,longitudColumna;
+        System.out.println("Ingrese el numero de filas de su matriz");
+        longitudFila= sc.nextInt();
+        System.out.println("Ingrese el numero de columnas de su matriz");
+        longitudColumna= sc.nextInt();
+        matriz = new int [longitudFila][longitudColumna];
+        cargarMatriz(matriz);
+        if(esSimetrica(matriz)){
+            System.out.println("Su matriz es simetrica");
+        }else{
+            System.out.println("Su matriz NO es simetrica");
+        }
+    }
+    /*Este modulo permite cargar los elementos de la matriz*/
     public static void cargarMatriz(int[][]matriz){
-        //Este modulo permite cargar los elementos de la matriz
         Scanner sc= new Scanner(System.in);
         int i=0,j=0;
         for(i=0;i<matriz.length; i++){
@@ -12,10 +31,11 @@ public class Ejercicio8 {
             }
         }
     }
+    /*Este modulo verifica que la matriz sea cuadrada*/
     public static boolean esCuadrada(int [][] matriz ){
     return matriz.length==matriz[0].length;
     }
-    
+    /*Modulo que verificia si la matriz es simetrica*/
     public static boolean esSimetrica(int [][] matriz ){
     int  fila, col;
     boolean simetrica;
@@ -34,25 +54,5 @@ public class Ejercicio8 {
        fila++; 
       }
       return simetrica;
-    }
-    public static void main(String[] args) {
-        // TODO code application logic here
-        Scanner sc= new Scanner(System.in);
-        int [][] matriz;
-        int longitudFila,longitudColumna;
-        System.out.println("Ingrese el numero de filas de su matriz");
-        longitudFila= sc.nextInt();
-        System.out.println("Ingrese el numero de columnas de su matriz");
-        longitudColumna= sc.nextInt();
-        matriz = new int [longitudFila][longitudColumna];
-        cargarMatriz(matriz);
-        if(esSimetrica(matriz)){
-            System.out.println("Su matriz es simetrica");
-        }else{
-            System.out.println("Su matriz NO es simetrica");
-        }
-    }
-    
-}
-    
+    }    
 }

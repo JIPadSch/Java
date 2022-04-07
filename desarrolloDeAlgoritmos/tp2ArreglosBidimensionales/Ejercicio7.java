@@ -1,5 +1,6 @@
 package desarrolloDeAlgoritmos.tp2ArreglosBidimensionales;
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 /**
  *
  * @author JuanPadSch
@@ -11,7 +12,8 @@ public class Ejercicio7 {
     public static void main(String[] args) {
         Scanner scan = new Scanner (System.in);
         char opcion;
-        int[][] matrizCuadrada = new int [3][3];
+        int random = ThreadLocalRandom.current().nextInt(2,9);
+        int[][] matrizCuadrada = new int [random][random];
         cargarAutoMatrizCuadrada(matrizCuadrada);
         System.out.println("Trabajaremos con la siguiente matriz:");
         libJuanIPadSch.imprimirArrBidInt(matrizCuadrada);

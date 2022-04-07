@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 /**
  *
  * @author JuanPadSch
@@ -44,5 +45,23 @@ public class arreglosBidi {
             i++;
         }
         return esIgual;
+    }
+    /*Módulo que carga (simétricamente) automaticamente una matriz cuadrada*/
+    public static void cargarAutoSimetriMatrizCuadrada(int[][] matrizCuadrada){
+        int i,j;
+        for (i=0;i<matrizCuadrada.length;i++){
+            for (j=0;j<matrizCuadrada[0].length;j++){
+                matrizCuadrada[i][j]=i+j;
+            }
+        }
+    }
+    /*Módulo que carga automaticamente una matriz con números aleatorios*/
+    public static void cargarAutoMatrizCuadrada(int[][] matrizCuadrada){
+        int i,j;
+        for (i=0;i<matrizCuadrada.length;i++){
+            for (j=0;j<matrizCuadrada[i].length;j++){
+                matrizCuadrada[i][j]=ThreadLocalRandom.current().nextInt(-32,32);
+            }
+        }
     }
 }

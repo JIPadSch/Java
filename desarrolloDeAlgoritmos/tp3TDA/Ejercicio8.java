@@ -32,6 +32,7 @@ public class Ejercicio8 {
             menu(opcion,arrAvion);
         }while(opcion!=5);        
     }
+    /* Menu */
     public static void menu(int opcion, Avion[] arrAvion){
         Scanner scan = new Scanner(System.in);
         switch (opcion) {

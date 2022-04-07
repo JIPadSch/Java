@@ -1,6 +1,22 @@
 package desarrolloDeAlgoritmos.tp2ArreglosBidimensionales;
 import java.util.*;
 public class Ejercicio8 {
+    public static void main(String[] args) {
+        Scanner sc= new Scanner(System.in);
+        int [][] matriz;
+        int longitudFila,longitudColumna;
+        System.out.println("Ingrese el numero de filas de su matriz");
+        longitudFila= sc.nextInt();
+        System.out.println("Ingrese el numero de columnas de su matriz");
+        longitudColumna= sc.nextInt();
+        matriz = new int [longitudFila][longitudColumna];
+        cargarMatriz(matriz);
+        if(esSimetrica(matriz)){
+            System.out.println("Su matriz es simetrica");
+        }else{
+            System.out.println("Su matriz NO es simetrica");
+        }
+    }
     public static void cargarMatriz(int[][]matriz){
         //Este modulo permite cargar los elementos de la matriz
         Scanner sc= new Scanner(System.in);
@@ -35,24 +51,4 @@ public class Ejercicio8 {
       }
       return simetrica;
     }
-    public static void main(String[] args) {
-        // TODO code application logic here
-        Scanner sc= new Scanner(System.in);
-        int [][] matriz;
-        int longitudFila,longitudColumna;
-        System.out.println("Ingrese el numero de filas de su matriz");
-        longitudFila= sc.nextInt();
-        System.out.println("Ingrese el numero de columnas de su matriz");
-        longitudColumna= sc.nextInt();
-        matriz = new int [longitudFila][longitudColumna];
-        cargarMatriz(matriz);
-        if(esSimetrica(matriz)){
-            System.out.println("Su matriz es simetrica");
-        }else{
-            System.out.println("Su matriz NO es simetrica");
-        }
-    }
-    
-}
-    
 }

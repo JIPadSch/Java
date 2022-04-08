@@ -18,6 +18,7 @@ public class Ejercicio8 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         Avion arrAvion[] = new Avion [verificarLongitud()];
+        cargarArrAvion(arrAvion);
         int opcion;
         do{
             System.out.println("----------------------------------------------------------------------------------------------------");

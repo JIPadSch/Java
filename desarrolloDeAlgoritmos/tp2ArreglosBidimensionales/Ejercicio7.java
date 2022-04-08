@@ -16,7 +16,7 @@ public class Ejercicio7 {
         int[][] matrizCuadrada = new int [random][random];
         cargarAutoMatrizCuadrada(matrizCuadrada);
         System.out.println("Trabajaremos con la siguiente matriz:");
-        libJuanIPadSch.imprimirArrBidInt(matrizCuadrada);
+        imprimirArrBidInt(matrizCuadrada);
         System.out.println("\n");
         do{
             System.out.println("Elija una opción del menú: ");
@@ -29,7 +29,7 @@ public class Ejercicio7 {
             System.out.println("------------------------------------------------------------------");
             opcion=scan.next().charAt(0);
             scan.nextLine();
-            menu(opcion,matrizCuadrada); 
+            menu(Character.toLowerCase(opcion),matrizCuadrada); 
         }while (opcion!='e');
     }
     /*Menú*/
@@ -51,7 +51,18 @@ public class Ejercicio7 {
                 System.out.println("ADIÓS");
                 break;        
             default:
+            System.out.println("ERROR: Elija una opción válida");
                 break;
+        }
+    }
+    /*Módulo que muestra por pantalla un arreglo bidimensional de enteros*/
+    public static void imprimirArrBidInt (int[][] arrBidInt){
+        int i,j;
+        for (i=0;i<arrBidInt.length;i++){
+            for(j=0;j<arrBidInt[i].length;j++){
+                System.out.print(" |"+arrBidInt[i][j]+"| ");
+            }
+            System.out.println("\n");
         }
     }
     /*Módulo que carga automaticamente una matriz cuadrada*/
@@ -66,8 +77,8 @@ public class Ejercicio7 {
     /*Módulo que recorre (y muestra) la matriz por filas de atrás hacia adelante*/
     public static void recorrerAtrasAdelante(int[][] matrizCuadrada){
         int i,j;
-        for(i=matrizCuadrada.length;i>0;i--){
-            for(j=0;j<matrizCuadrada[0].length;j++){
+        for(i=0;i<matrizCuadrada.length;i++){
+            for(j=matrizCuadrada[0].length-1;j>0;j--){
                 System.out.print(" |"+matrizCuadrada[i][j]+"| ");
             }
             System.out.println("\n");
@@ -85,52 +96,70 @@ public class Ejercicio7 {
     }
     /*Módulo que recorre (y muestra) la matriz en espiral*/
     public static void recorrerEspiral(int[][] matrizCuadrada){
-        int i=0,j=0,finIda=matrizCuadrada[0].length, finBajada=matrizCuadrada.length, finVuelta=0,finSubida=0,limite=(matrizCuadrada.length+matrizCuadrada[0].length)-1,aux=0;
+        int i=0,j=0,finIda=matrizCuadrada[0].length, finBajada=matrizCuadrada.length, finVuelta=0,finSubida=1,limite=(matrizCuadrada.length+matrizCuadrada[0].length)-1,aux=0;
         boolean yendo=true,bajando=false,volviendo=false,subiendo=false;
         while(yendo){
-            System.out.print(" |"+matrizCuadrada[i][j]+"| ");
-            j++;
             if (j==finIda && aux<limite){
                 bajando=true;
                 finIda--;
                 aux++;
+                i++; //Corrijo imprimir
+                j--; //Corrijo el hecho de llegar a lenght
                 System.out.println("\n");
+            } else if (aux==limite){
+                yendo=false;
+            } else{
+                System.out.print(" |"+matrizCuadrada[i][j]+"| ");
+                j++;
             }
             while(bajando){
-                System.out.print(" |"+matrizCuadrada[i][j]+"| ");
-                i++;
                 if (i==finBajada && aux<limite){
                     bajando=false;
                     volviendo=true;
                     finBajada--;
                     aux++;
+                    j--; //Corrijo imprimir
+                    i--; //Corrijo el hecho de llegar a lenght
                     System.out.println("\n");
+                } else if (aux==limite){
+                    bajando=false;
+                } else{
+                    System.out.print(" |"+matrizCuadrada[i][j]+"| ");
+                    i++;
                 }
                 while(volviendo){
-                    System.out.print(" |"+matrizCuadrada[i][j]+"| ");
-                    j--;
-                    if (j==finVuelta && aux<limite){
+                    if (j<finVuelta && aux<limite){
                         volviendo=false;
                         subiendo=true;
                         finVuelta++;
                         aux++;
+                        i--; //Corrijo el imprimir
+                        j++; //Corrijo el hecho de llegar a -1
                         System.out.println("\n");
+                    } else if (aux==limite){
+                        volviendo=false;
+                    } else{
+                        System.out.print(" |"+matrizCuadrada[i][j]+"| ");
+                        j--;
                     }
                     while (subiendo){
-                        System.out.print(" |"+matrizCuadrada[i][j]+"| ");
-                        i--;
-                        if (i==finSubida && aux<limite){
+                        if (i<finSubida && aux<limite){
                             subiendo=false;
                             finSubida++;
                             aux++;
+                            j++; //Corrijo el imprimir
+                            i++; //Corrijo el hecho de llegar a -1
                             System.out.println("\n");
+                        } else if (aux==limite){
+                            subiendo=false;
+                        } else{
+                            System.out.print(" |"+matrizCuadrada[i][j]+"| ");
+                            i--;
                         }
                     }
                 }
             }
-            if (aux==limite){
-                yendo=false;
-            }
+
         }
     }
     /*Módulo que recorre (y muestra) la matriz en zig-zag*/
@@ -138,23 +167,30 @@ public class Ejercicio7 {
         int i=0,j=0;
         boolean yendo=true, volviendo=false;
         while(yendo){
-            System.out.print(" |"+matrizCuadrada[i][j]+"| ");
-            j++;
-            if (j==matrizCuadrada.length && i<matrizCuadrada.length){
-                volviendo=true;
-                i++;
-            }
-            while (volviendo){
-                System.out.print(" |"+matrizCuadrada[i][j]+"| ");
-                j--;
-                if(j==0){
-                    volviendo=false;
-                    i++;
-                }
-            }
             if(i==matrizCuadrada.length){
                 yendo=false;
+            }else if (j==matrizCuadrada[0].length && i<matrizCuadrada.length){
+                volviendo=true;
+                i++;
+                j--; //Corrijo el hecho de llegar a length
+                System.out.println("\n");
+            } else{
+                System.out.print(" |"+matrizCuadrada[i][j]+"| ");
+                j++;
+            }            
+            while (volviendo){
+                if(i==matrizCuadrada.length){
+                    yendo=false;
+                } else if(j<0){
+                    volviendo=false;
+                    i++;
+                    j++; //Corrijo el hecho de llegar a -1
+                    System.out.println("\n");
+                } else{
+                    System.out.print(" |"+matrizCuadrada[i][j]+"| ");
+                    j--;
+                }                
             }
         }
-    }
+    }   
 }

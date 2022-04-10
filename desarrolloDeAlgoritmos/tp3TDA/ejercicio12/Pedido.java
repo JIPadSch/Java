@@ -5,6 +5,7 @@ package desarrolloDeAlgoritmos.tp3TDA.ejercicio12;
  */
 public class Pedido {
     /* Ejercicio 12 */
+    /* ATRIBUTOS */
     private int codigo;
     private String descripcion;
     private int costos[] = new int[10];

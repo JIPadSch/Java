@@ -5,6 +5,7 @@ package desarrolloDeAlgoritmos.tp3TDA.ejercicio1;
  */
 public class Terreno {
     /* Ejercicio 1 */
+    /* ATRIBUTOS */
     int codigo;
     double base;
     double altura;

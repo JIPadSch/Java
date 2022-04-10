@@ -5,6 +5,7 @@ package desarrolloDeAlgoritmos.tp3TDA.ejercicio2;
  */
 public class Mascota {
     /* Ejercicio 2 */
+    /* ATRIBUTOS */
     private int codigo;
     private String nombre;
     private double peso;

@@ -22,5 +22,29 @@ public class Mascota {
         edad=ed;
     }
     /* OBSERVADORES */
+    /* Getter de codigo */
+    public int getCodigo(){
+        return codigo;
+    }
+    /* Getter de nombre */
+    public String getNombre(){
+        return nombre;
+    }
+    /* Getter de peso */
+    public double getPeso(){
+        return peso;
+    }
+    /* Getter de edad */
+    public int getEdad(){
+        return edad;
+    }
+    /* Método toString */
+    public String toString(){
+        String mascotaToString;
+        mascotaToString=codigo+" "+nombre+" "+peso+" "+edad;
+        return mascotaToString;
+    }
+    /* MODIFICADORES */
+    /* Setter de codigo */
     
 }

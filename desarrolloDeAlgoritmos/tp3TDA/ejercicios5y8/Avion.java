@@ -1,4 +1,4 @@
-package desarrolloDeAlgoritmos.tp3TDA.ejercicio5;
+package desarrolloDeAlgoritmos.tp3TDA.ejercicios5y8;
 /**
  *
  * @author JuanPadSch

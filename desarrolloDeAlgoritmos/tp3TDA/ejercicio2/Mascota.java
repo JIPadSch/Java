@@ -46,5 +46,24 @@ public class Mascota {
     }
     /* MODIFICADORES */
     /* Setter de codigo */
-    
+    public void setCodigo(int cod){
+        codigo=cod;
+    }
+    /* Setter de nombre */
+    public void setNombre(String nn){
+        nombre=nn;
+    }
+    /* Setter de peso */
+    public void setPeso(double pe){
+        peso=pe;
+    }
+    /* Setter de edad */
+    public void setEdad(int ed){
+        edad=ed;
+    }
+    /* PROPIAS DEL TIPO */
+    /* Metodo equals */
+    public boolean equals(Mascota otra){
+        return (codigo==otra.getCodigo() && nombre==otra.getNombre() && peso==otra.getPeso() && edad==otra.getEdad());
+    }
 }

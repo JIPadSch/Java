@@ -41,12 +41,8 @@ public class Avion {
         return velocidadPromedio;
     }
     /* MODIFICADORES */
-     /* Setter identificador, en privado ya que la ID no debería poder modificarse */
-     private void setIdentificador(int iD){
-        identificador=iD;
-    }
-    /* Setter modelo, en privado ya que el modelo no cambia */
-    private void setModelo(String model){
+    /* Setter modelo */
+    public void setModelo(String model){
         modelo=model;
     }
     /* Setter cantidadAsientos, este si en publico ya que podrian modificar los asientos */
@@ -65,5 +61,9 @@ public class Avion {
     /* Método equals */
     public boolean equals(Avion otro){
         return identificador==otro.getIdentificador();
+    }
+    /* Método toString */
+    public String toString(){
+        return "La ID del avión es: "+identificador+"\nEl modelo del avión es: "+modelo+"\nEl avión tiene "+cantidadAsientos+" asientos\nEl avión recorrió "+kmRecorridos+" Kms\nEl avión viaja a una velocidad promedio de "+velocidadPromedio+"\n";
     }
 }

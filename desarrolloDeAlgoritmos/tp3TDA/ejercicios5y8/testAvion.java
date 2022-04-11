@@ -29,7 +29,7 @@ public class testAvion {
                 cambiarInfoAvion(unAvion);
                 break;
             case 2:
-                imprimirAvion(unAvion);
+                System.out.println(""+unAvion.toString());
                 break;
             case 3:
                 System.out.println("Adiós!");
@@ -97,7 +97,7 @@ public class testAvion {
         Scanner scan = new Scanner(System.in);
         int cantAsi;
         do{
-            System.out.println("Ingrese la nueva cantidad de asientos: ");
+            System.out.println("Ingrese la cantidad de asientos: ");
             cantAsi = scan.nextInt();
             scan.nextLine();
             if (cantAsi<=0){
@@ -133,13 +133,5 @@ public class testAvion {
             }
         }while(velProm<=0);
         return velProm;
-    }
-    /* Modulo que imprime la información de un Avion */
-    public static void imprimirAvion(Avion unAvion){
-        System.out.println("La ID del avión es: "+unAvion.getIdentificador());
-        System.out.println("El modelo del avión es: "+unAvion.getModelo());
-        System.out.println("El avión tiene "+unAvion.getCantAsientos()+" asientos");
-        System.out.println("El avión recorrió "+unAvion.getKmRecorridos()+" Kms");
-        System.out.println("El avión viaja a una velocidad promedio de "+unAvion.getVelPromedio());
     }
 }

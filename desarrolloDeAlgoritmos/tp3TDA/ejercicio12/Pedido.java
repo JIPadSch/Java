@@ -89,4 +89,8 @@ public class Pedido {
         }
         return calculoCosto;
     }
+    /* Método equals */
+    public boolean equals(Pedido otro){
+        return codigo==otro.getCodigo();
+    }
 }

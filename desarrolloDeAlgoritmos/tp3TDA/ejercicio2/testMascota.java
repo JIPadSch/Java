@@ -35,7 +35,7 @@ public class testMascota {
                 System.out.println("El nombre de la mascota es "+mascota.getNombre());
                 break;
             case 2:
-                mascota.setCodigo(mascota.getCodigo()+1);
+                mascota.cumpleaños();
                 System.out.println("FELIZ CUMPLEAÑOS "+mascota.getNombre());
                 break;
             case 3:

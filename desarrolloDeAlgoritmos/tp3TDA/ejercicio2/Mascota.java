@@ -11,16 +11,16 @@ public class Mascota {
     private double peso;
     private int edad;
     /* CONSTRUCTORES */
-    /* Constructor de mascota con solo código */
-    public Mascota(int cod){
-        codigo=cod;
-    }
     /* Constructor de mascota */
     public Mascota(int cod,String nn,double pe,int ed){
         codigo=cod;
         nombre=nn;
         peso=pe;
         edad=ed;
+    }
+    /* Constructor de mascota con solo código */
+    public Mascota(int cod){
+        codigo=cod;
     }
     /* OBSERVADORES */
     /* Getter de codigo */
@@ -46,8 +46,8 @@ public class Mascota {
         return mascotaToString;
     }
     /* MODIFICADORES */
-    /* Setter de codigo */
-    public void setCodigo(int cod){
+    /* Setter de codigo, es privado porque es la llave */
+    private void setCodigo(int cod){
         codigo=cod;
     }
     /* Setter de nombre */
@@ -65,6 +65,10 @@ public class Mascota {
     /* PROPIAS DEL TIPO */
     /* Metodo equals */
     public boolean equals(Mascota otra){
-        return (codigo==otra.getCodigo() && nombre==otra.getNombre() && peso==otra.getPeso() && edad==otra.getEdad());
+        return (codigo==otra.getCodigo());
+    }
+    /* Aumento de edad */
+    public void cumpleaños(){
+        edad++;
     }
 }

@@ -57,10 +57,36 @@ public class testIngrediente {
     }
     /* Modulo que permite elegir que desea cambiar del ingrediente */
     public static void cambiarInfoIngrediente(Ingrediente ingrediente){
+        Scanner scan = new Scanner (System.in);
         int opcionCambio=menuCambio();
+        switch (opcionCambio) {
+            case 1:
+                int cant;
+                do{
+                    cant=scan.nextInt();
+                    if (cant<=0){
+                        System.out.println("ERROR: La cantidad no puede ser menor o igual a 0");
+                        scan.nextLine(); //Si puso mal la opcion, limpiamos el Scanner
+                    }
+                } while(cant<=0);
+                ingrediente.setCantidad(cant);
+                break;
+            case 2:
+                ingrediente.setUnidadDeMedida(scan.nextLine());
+                break;        
+            default:
+                System.out.println("ERROR: Opción inválida");
+                break;
+        }
     }
     /* Menu para elegir la opcion de cambiarInfoIngrediente */
     public static int menuCambio(){
-        
+        Scanner scan = new Scanner (System.in);
+        int opcion;
+        System.out.println("Elija que cambiar:");
+        System.out.println("--------------------");
+        System.out.println("1. Cantidad");
+        System.out.println("2. Unidad de medida");
+        return opcion=scan.nextInt();
     }
 }

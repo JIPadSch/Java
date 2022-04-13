@@ -40,11 +40,13 @@ public class Ejercicio8 {
                 System.out.println("El avión con mayor velocidad es el avión: "+buscarArrAvionMayorVelocidad(arrAvion));
                 break;
             case 2:
-                int idAux;
+                int idAux, posicionExiste;
+                mostrarIdentificadores(arrAvion);
                 System.out.println("Escriba el Identificador del avión: ");
-                idAux=scan.nextInt();                
-                if(identificadorExiste(arrAvion,idAux)){
-                    System.out.println("El avión "+idAux+" tiene "+cantAsientosPorIdentificador(arrAvion, idAux)+" asientos");
+                idAux=scan.nextInt();
+                posicionExiste=identificadorExiste(arrAvion,idAux);
+                if(posicionExiste!=-1){
+                    System.out.println(arrAvion[posicionExiste].toStringCantAsient());
                 } else{
                     System.out.println("Ese Identificador no está registrado o es inválido");
                 }
@@ -102,17 +104,18 @@ public class Ejercicio8 {
         return mayorVel;
     }
     /* Modulo que verifica que el Identificador existe */
-    public static boolean identificadorExiste(Avion[] arrAvion, int idAux){
+    public static int identificadorExiste(Avion[] arrAvion, int idAux){
         boolean idExiste=false;
-        int i=0;
+        int i=0, posicion=-1;
         while(!idExiste && i<arrAvion.length){
             if(arrAvion[i].getIdentificador()==idAux){
                 idExiste=true;
+                posicion=i;
             } else{
                 i++;
             }
         }
-        return idExiste;
+        return posicion;
     }
     /* Modulo que devuelve la cantidad de asientos que tiene un avion según su identificador*/
     public static int cantAsientosPorIdentificador(Avion[] arrAvion, int idAux){
@@ -158,5 +161,13 @@ public class Ejercicio8 {
             promedioKmsRecorridos+=arrAvion[i].getKmRecorridos();
         }
         return promedioKmsRecorridos/arrAvion.length;
+    }
+    /* Modulo que muestra los identificadores de el arreglo de Aviones */
+    public static void mostrarIdentificadores(Avion[] arrAvion){
+        int i;
+        System.out.println("Identificadores de los aviones guardados:");
+        for(i=0;i<arrAvion.length;i++){
+            System.out.println(arrAvion[i].getIdentificador());
+        }
     }
 }

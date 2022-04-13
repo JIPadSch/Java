@@ -66,4 +66,8 @@ public class Avion {
     public String toString(){
         return "La ID del avión es: "+identificador+"\nEl modelo del avión es: "+modelo+"\nEl avión tiene "+cantidadAsientos+" asientos\nEl avión recorrió "+kmRecorridos+" Kms\nEl avión viaja a una velocidad promedio de "+velocidadPromedio+"\n";
     }
+    /* Metodo toString de cantidadAsientos */
+    public String toStringCantAsient(){
+        return "La cantidad de asientos es: "+cantidadAsientos;
+    }
 }

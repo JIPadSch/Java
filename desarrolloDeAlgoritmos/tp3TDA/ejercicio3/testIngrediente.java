@@ -17,7 +17,8 @@ public class testIngrediente {
             System.out.println("2. Cambiar información del ingredente");
             System.out.println("3. Salir del programa");
             opcion=scan.nextInt();
-            scan.nextLine();
+            scan.nextLine(); //Limpiamos el Scanner
+            menu(opcion, ingrediente);
         }while(opcion!=3);
     }
     /* Menu */
@@ -45,15 +46,21 @@ public class testIngrediente {
         int cant;
         System.out.println("Ingrese el nombre de ingrediente: ");
         nom=scan.nextLine();
-        scan.nextLine();
+        scan.nextLine(); //Limpiamos el Scanner
         System.out.println("Ingrese la cantidad que se desea del producto: ");
         cant=scan.nextInt();
-        scan.nextLine();
+        scan.nextLine(); //Limpiamos el Scanner
         System.out.println("Ingrese la unidad de medida: ");
         unDeMed=scan.nextLine();
-        scan.nextLine();
+        scan.nextLine(); //Limpiamos el Scanner
         return ingredienteAux = new Ingrediente(nom, cant, unDeMed);
     }
-    /* Modulo que permite elegir que ingrediente desea cambiar */
-    
+    /* Modulo que permite elegir que desea cambiar del ingrediente */
+    public static void cambiarInfoIngrediente(Ingrediente ingrediente){
+        int opcionCambio=menuCambio();
+    }
+    /* Menu para elegir la opcion de cambiarInfoIngrediente */
+    public static int menuCambio(){
+        
+    }
 }

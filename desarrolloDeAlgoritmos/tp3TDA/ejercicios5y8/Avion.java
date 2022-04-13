@@ -57,7 +57,7 @@ public class Avion {
     public void setVelPromedio(double velProm){
         velocidadPromedio=velProm;
     }
-    /* PROPIO DEL TIPO */
+    /* OTROS METODOS */
     /* Método equals */
     public boolean equals(Avion otro){
         return identificador==otro.getIdentificador();
@@ -66,6 +66,7 @@ public class Avion {
     public String toString(){
         return "La ID del avión es: "+identificador+"\nEl modelo del avión es: "+modelo+"\nEl avión tiene "+cantidadAsientos+" asientos\nEl avión recorrió "+kmRecorridos+" Kms\nEl avión viaja a una velocidad promedio de "+velocidadPromedio+"\n";
     }
+    /* PROPIO DEL TIPO */
     /* Metodo toString de cantidadAsientos */
     public String toStringCantAsient(){
         return "La cantidad de asientos es: "+cantidadAsientos;

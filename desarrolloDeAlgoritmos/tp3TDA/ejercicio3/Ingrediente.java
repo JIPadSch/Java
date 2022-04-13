@@ -6,7 +6,7 @@ package desarrolloDeAlgoritmos.tp3TDA.ejercicio3;
 public class Ingrediente {
     /* Ejercicio 3 */
     /* ATRIBUTOS */
-    private String nombre;
+    private String nombre; //Atributo clave
     private int cantidad;
     private String unidadDeMedida;
     /* CONSTRUCTORES */
@@ -30,10 +30,6 @@ public class Ingrediente {
         return unidadDeMedida;
     }
     /* MODIFICADORES */
-    /* Setter de nombre */
-    public void setNombre(String nom){
-        nombre=nom;
-    }
     /* Setter de cantidad */
     public void setCantidad(int cant){
         cantidad=cant;
@@ -41,5 +37,10 @@ public class Ingrediente {
     /* Setter de unidadDeMedida */
     public void setUnidadDeMedida(String unDeMed){
         unidadDeMedida=unDeMed;
+    }
+    /* PROPIOS DEL TIPO */
+    /* Metodo toString */
+    public String toString(){
+        return "Nombre del ingrediente: "+nombre+"\nCantidad del ingrediente: "+cantidad+"\nUnidad de medida: "+unidadDeMedida+"\n";
     }
 }

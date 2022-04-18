@@ -19,6 +19,14 @@ public class Avion {
         kmRecorridos=kmRec;
         velocidadPromedio=velProm;
     }
+    /* Constructor solo con llave principal */
+    public Avion(int iD){
+        identificador=iD;
+        modelo="";
+        cantidadAsientos=0;
+        kmRecorridos=0;
+        velocidadPromedio=0;
+    }
     /* OBSERVADORES */
     /* Getter identificador */
     public int getIdentificador(){

@@ -22,6 +22,15 @@ public class Pedido {
         nombreCliente=nombC;
         telefonoCliente=telC;
     }
+    /* Método constructor solo con llave principal */
+    public Pedido(int cod){
+        codigo=cod;
+        descripcion="";
+        costos=null;
+        direccionCliente="";
+        nombreCliente="";
+        telefonoCliente=0;
+    }
     /* OBSERVADORES */
     /* Getter del atributo codigo */
     public int getCodigo(){

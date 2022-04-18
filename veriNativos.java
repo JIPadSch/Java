@@ -26,6 +26,5 @@ public class veriNativos {
             }
         }
         return tieneSoloLetras;
-
-}
+    }
 }

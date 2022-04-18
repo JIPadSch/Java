@@ -60,6 +60,8 @@ public class Pedido {
     public String getNombreCliente(){
         return nombreCliente;
     }
+    /* Método toString */
+
     /* Getter del atributo telefonoCliente */
     public int getTelefonoCliente(){
         return telefonoCliente;

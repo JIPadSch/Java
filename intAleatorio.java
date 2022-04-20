@@ -7,7 +7,13 @@ import java.util.concurrent.ThreadLocalRandom;
 *  entonces me genere plantillas (o tallas ;D) de enteros aleatorios
 */
 public class intAleatorio {
-    /* Metodo que genera un intAleatorio de talla XS */
+    /* Metodo que genera un intAleatorio de tallas XXXS */
+    public static int XXXS(){
+        int aleatorioXXXS;
+        aleatorioXXXS=ThreadLocalRandom.current().nextInt(-8,8);
+        return aleatorioXXXS;
+    }
+    /* Metodo que genera un intAleatorio de talla XXS */
     public static int XXS(){
         int aleatorioXXS;
         aleatorioXXS=ThreadLocalRandom.current().nextInt(-16,16);

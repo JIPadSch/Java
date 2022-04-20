@@ -46,4 +46,16 @@ public class ejerciciosDeClase {
         }
         return resultado;
     }
+    /* Metodo para contar las iteraciones dentro de un numero */
+    public int contarT(int n, int t){
+        int contadorT=0;
+        if (n!=0){
+            if(n%10==t){
+                contadorT=contarT(n/10, t)+1;
+            } else{
+                contadorT=contarT(n/10, t);
+            }
+        }
+        return contadorT;
+    }
 }

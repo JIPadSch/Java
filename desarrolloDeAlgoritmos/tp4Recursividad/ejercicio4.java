@@ -5,7 +5,8 @@ import java.util.*;
  * @author JuanPadSch
  */
 public class ejercicio4 {
-    /* Algoritmo recursivo que verifica si todos los dígitos de un número
+    /* 
+    *  Algoritmo recursivo que verifica si todos los dígitos de un número
     *  son iguales (por ejemplo si el número es 111 debe retornar true, 
     *  si el número es 12111 debe retornar false) 
     */

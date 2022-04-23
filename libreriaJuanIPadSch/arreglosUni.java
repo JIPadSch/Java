@@ -1,3 +1,4 @@
+package libreriaJuanIPadSch;
 import java.util.*;
 /**
  *
@@ -12,6 +13,12 @@ public class arreglosUni {
             System.out.println("Llenar posición " + i + " : ");
             arrInt[i] = scan.nextInt();
             scan.nextLine();
+        }
+    }
+    /* Módulo que llena automáticamente un arreglo de ints */
+    public static void llenarArrIntAutoS(int[] arrInt){
+        for (int i = 0; i < arrInt.length; i++) {
+            arrInt[i]=Math.abs(intAleatorio.S());
         }
     }
     /* Módulo que muestra por pantalla un arreglo de ints */

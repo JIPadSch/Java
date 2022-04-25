@@ -1,6 +1,5 @@
 package desarrolloDeAlgoritmos.tp4Recursividad;
 import java.util.Random;
-
 import libreriaJuanIPadSch.*;
 /**
  *
@@ -13,14 +12,28 @@ public class ejercicio6 {
     */
     public static void main(String[] args) {
         int arrInt[] = new int [8];
-        int pos=((arrInt.length)-1), posMayor=0;
+        int pos=0;
         arreglosUni.llenarArrIntAutoS(arrInt); //Llenamos el arreglo aleatoriamente con nros del -64 al 64
         arreglosUni.imprimirArrInt(arrInt);
-        int resultado=numMayorArrIntRecursivo(arrInt,pos,posMayor);
-        System.out.println("El mayor número se encuentra en la posición "+resultado+" y es: "+arrInt[resultado]);
+        int resultado=numMayorArrIntRecursivo(arrInt,pos);
+        System.out.println("El mayor número se encuentra en la posición "+(resultado+1)+" y es: "+arrInt[resultado]);
     }
     /* Modulo recursivo */
-    public static int numMayorArrIntRecursivo(int[] arrInt, int pos, int posMayor){
+    public static int numMayorArrIntRecursivo(int[] arrInt, int pos){
+        int posMayor=0, auxPos=0;
+        if (pos<arrInt.length-1) {
+            auxPos=numMayorArrIntRecursivo(arrInt, pos+1);
+            if (arrInt[pos]>arrInt[auxPos]) {
+                posMayor=pos;
+            } else {
+                posMayor=auxPos;
+            }
+        } else {
+            posMayor=pos;
+        }
+        return posMayor;
+    }
+    /*public static int numMayorArrIntRecursivo(int[] arrInt, int pos, int posMayor){
         if (pos>=0){
             if(arrInt[pos]>arrInt[posMayor]){
                 posMayor=numMayorArrIntRecursivo(arrInt,pos-1,pos);
@@ -29,5 +42,5 @@ public class ejercicio6 {
             }
         }
         return posMayor;
-    }
+    }*/
 }

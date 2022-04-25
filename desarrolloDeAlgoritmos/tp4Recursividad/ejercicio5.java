@@ -32,4 +32,19 @@ public class ejercicio5 {
         }
         return contador;
     }
+    /*  */
+    public static int contar3(){
+        Scanner scan = new Scanner(System.in);
+        int contador=0, num;
+        System.out.println("Ingrese un valor: ");
+        num = scan.nextInt();
+        if(num!=0){
+            if(num%3==0){
+                contador=contar3()+1;
+            } 
+        } else{
+            contador = 0;
+        }
+        return contador;
+    }
 }

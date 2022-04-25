@@ -18,6 +18,16 @@ public class arreglosBidi {
             }
         }
     }
+    /* Modulo que permite llenar un arreglo bidimensional de enteros con numeros aletorios */
+    public static void llenarArrBidIntAleS(int[][] arrBidInt) {
+        Scanner scan = new Scanner(System.in);
+        int i, j;
+        for (i = 0; i < arrBidInt.length; i++) {
+            for (j = 0; j < arrBidInt[i].length; j++) {
+                arrBidInt[i][j] = intAleatorio.S();
+            }
+        }
+    }
     /* Módulo que muestra por pantalla un arreglo bidimensional de enteros */
     public static void imprimirArrBidInt(int[][] arrBidInt) {
         int i, j;

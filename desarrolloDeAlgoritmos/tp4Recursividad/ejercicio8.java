@@ -19,19 +19,15 @@ public class ejercicio8 {
     /* Metodo recursivo */
     public static boolean esPalindromoRecursivo(String str,int aux){
         int mitad=str.length()/2;
-        boolean esPali=true, cortar=false;
-        while(!cortar){
-            if(str.charAt(aux) == str.charAt(str.length()-1-aux)){ //Comparamos si es Palindromo
-                if(aux==mitad){ //Caso base
-                    cortar = true;
-                }else{ //Caso general
-                    esPali=esPalindromoRecursivo(str, aux+1);
-                    cortar=true;
-                }
-            }else{ //En caso de no ser Palindromo, cortamos
-                esPali=false;
-                cortar=true;                    
+        boolean esPali=true;
+        if(str.charAt(aux) == str.charAt(str.length()-1-aux)){ //Comparamos si es Palindromo
+            if(aux==mitad){ //Caso base
+                esPali=true;
+            }else{ //Caso general
+                esPali=esPalindromoRecursivo(str, aux+1);
             }
+        }else{ //En caso de no ser Palindromo, cortamos
+            esPali=false;               
         }
         return esPali;
     }

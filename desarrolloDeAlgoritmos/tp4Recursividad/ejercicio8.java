@@ -14,7 +14,7 @@ public class ejercicio8 {
         boolean palinn=false;
         System.out.println("Ingrese una cadena de caracteres: ");
         str = scan.nextLine();
-        System.out.println("La cadena de caracteres "+str+" ¿Es palindromo?: "+esPalindromoRecursivo(str.replaceAll(" ",""),0));
+        System.out.println("La cadena de caracteres "+str+" ¿Es palindromo?: "+esPalindromoRecursivo((str.replaceAll(" ","")).toLowerCase(),0));
     }
     /* Metodo recursivo */
     public static boolean esPalindromoRecursivo(String str,int aux){

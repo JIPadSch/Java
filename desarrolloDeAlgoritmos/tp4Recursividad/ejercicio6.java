@@ -33,14 +33,4 @@ public class ejercicio6 {
         }
         return posMayor;
     }
-    /*public static int numMayorArrIntRecursivo(int[] arrInt, int pos, int posMayor){
-        if (pos>=0){
-            if(arrInt[pos]>arrInt[posMayor]){
-                posMayor=numMayorArrIntRecursivo(arrInt,pos-1,pos);
-            } else{
-                numMayorArrIntRecursivo(arrInt,pos-1,posMayor);
-            }
-        }
-        return posMayor;
-    }*/
 }

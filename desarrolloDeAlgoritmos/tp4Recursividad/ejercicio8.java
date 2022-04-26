@@ -1,5 +1,9 @@
 package desarrolloDeAlgoritmos.tp4Recursividad;
 import java.util.*;
+/**
+ *
+ * @author JuanPadSch
+ */
 public class ejercicio8 {
     /*
     *  Diseñar e implementar un algoritmo recursivo que retorne true si una oración es un palíndromo.

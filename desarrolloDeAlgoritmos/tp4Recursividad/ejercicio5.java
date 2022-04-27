@@ -52,7 +52,9 @@ public class ejercicio5 {
         if(num!=0){
             if(num%3==0){
                 contador=contar3()+1;
-            } 
+            } else{
+                contador=contar3();
+            }
         } else{
             contador = 0;
         }

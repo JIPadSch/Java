@@ -9,32 +9,31 @@ public class arreglosBidi {
     /* Módulo que permite llenar un arreglo bidimensional de enteros */
     public static void llenarArrBidInt(int[][] arrBidInt) {
         Scanner scan = new Scanner(System.in);
-        int i, j;
-        for (i = 0; i < arrBidInt.length; i++) {
-            for (j = 0; j < arrBidInt[i].length; j++) {
-                System.out.println("Llenar posición " + i + "|" + j + " : ");
+        for (int i = 0; i < arrBidInt.length; i++) {
+            for (int j = 0; j < arrBidInt[i].length; j++) {
+                System.out.print("Llenar posición " + i + "|" + j + " : ");
                 arrBidInt[i][j] = scan.nextInt();
                 scan.nextLine();
             }
+            System.out.print("\n");
         }
     }
     /* Modulo que permite llenar un arreglo bidimensional de enteros con numeros aletorios */
     public static void llenarArrBidIntAleS(int[][] arrBidInt) {
         Scanner scan = new Scanner(System.in);
-        int i, j;
-        for (i = 0; i < arrBidInt.length; i++) {
-            for (j = 0; j < arrBidInt[i].length; j++) {
+        for (int i = 0; i < arrBidInt.length; i++) {
+            for (int j = 0; j < arrBidInt[i].length; j++) {
                 arrBidInt[i][j] = intAleatorio.S();
             }
         }
     }
     /* Módulo que muestra por pantalla un arreglo bidimensional de enteros */
     public static void imprimirArrBidInt(int[][] arrBidInt) {
-        int i, j;
-        for (i = 0; i < arrBidInt.length; i++) {
-            for (j = 0; j < arrBidInt[i].length; j++) {
-                System.out.println(" |" + arrBidInt[i][j] + "| ");
+        for (int i = 0; i < arrBidInt.length; i++) {
+            for (int j = 0; j < arrBidInt[i].length; j++) {
+                System.out.print(" |" + arrBidInt[i][j] + "| ");
             }
+            System.out.print("\n");
         }
     }
     /*
@@ -59,18 +58,16 @@ public class arreglosBidi {
     }
     /*Módulo que carga (simétricamente) automaticamente una matriz cuadrada*/
     public static void cargarAutoSimetriMatrizCuadrada(int[][] matrizCuadrada){
-        int i,j;
-        for (i=0;i<matrizCuadrada.length;i++){
-            for (j=0;j<matrizCuadrada[0].length;j++){
+        for (int i=0;i<matrizCuadrada.length;i++){
+            for (int j=0;j<matrizCuadrada[0].length;j++){
                 matrizCuadrada[i][j]=i+j;
             }
         }
     }
     /*Módulo que carga automaticamente una matriz con números aleatorios*/
     public static void cargarAutoMatrizCuadrada(int[][] matrizCuadrada){
-        int i,j;
-        for (i=0;i<matrizCuadrada.length;i++){
-            for (j=0;j<matrizCuadrada[i].length;j++){
+        for (int i=0;i<matrizCuadrada.length;i++){
+            for (int j=0;j<matrizCuadrada[i].length;j++){
                 matrizCuadrada[i][j]=ThreadLocalRandom.current().nextInt(-32,32);
             }
         }

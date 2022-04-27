@@ -62,7 +62,7 @@ public class ejerciciosDeClase {
                     if (n<=0) System.out.println("El numero no puede ser menor o igual a 0");
                     scan.nextLine();
                 } while (n<=0);
-                System.out.println("El numero "+n+" ¿Es primo? "+esPrimo(n,n));
+                System.out.println("El numero "+n+" ¿Es primo? "+esPrimo(n,n-1));
                 break;
             case 5:
                 System.out.println("Adios!");
@@ -109,14 +109,18 @@ public class ejerciciosDeClase {
     /* Hacer una funcion recursiva para saber si un numero es primo */
     public static boolean esPrimo(int aVerificar, int num){
         boolean primoBoolean=false;
-        if (aVerificar==1 || aVerificar==2){
-            primoBoolean=false;
-        }else if (num==1){
-            primoBoolean=true;
-        }else if (aVerificar==num){
-            primoBoolean=esPrimo(aVerificar,num-1);
-        }else if ((aVerificar%num)!=0){
-            primoBoolean=esPrimo(aVerificar,num-1);
+        if(aVerificar!=1 || (aVerificar%2)==0){ //Verificamos las excepciones
+            if (num==1){ //Caso base, si llegas al final, es primo
+                primoBoolean=true;
+            } else{ //Caso general
+                if ((aVerificar%num) != 0){ //Si no es divisible por el numero, entramos en recursividad
+                    primoBoolean=esPrimo(aVerificar,num-1);
+                } else{ //Si es divisible por un numero que no sea si mismo, entonces no es primo
+                    primoBoolean=false;
+                }
+            }
+        } else{
+            primoBoolean=false; //Excepciones, si aVerificar es 1 o es par, no es primo
         }
         return primoBoolean;
     }

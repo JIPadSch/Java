@@ -18,7 +18,7 @@ public class arreglosUni {
     /* Módulo que llena automáticamente un arreglo de ints */
     public static void llenarArrIntAutoS(int[] arrInt){
         for (int i = 0; i < arrInt.length; i++) {
-            arrInt[i]=Math.abs(intAleatorio.S());
+            arrInt[i]=intAleatorio.S();
         }
     }
     /* Módulo que muestra por pantalla un arreglo de ints */

@@ -5,7 +5,7 @@ import java.util.*;
  * @author JuanPadSch
  */
 import desarrolloDeAlgoritmos.tp1Arreglos.libJuanIPadSch;
-public class Ejercicio1 {
+private class Ejercicio1 {
     /*Este algoritmo permite cargar una matriz de eneteros y luego mostrarla por pantalla,
     mostrando a los elementos de una misma fila juntos y cuando se cambia de fila, se muestra
     los números en el siguiente renglón. El usuario elige cantidad de filas y columnas*/

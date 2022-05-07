@@ -5,7 +5,7 @@ import libreriaJuanIPadSch.*;
  *
  * @author JuanPadSch
  */
-public class ejercicio13 {
+private class ejercicio13 {
     /*
     *  Diseñar e implementar un algoritmo recursivo que obtenga el número mayor de una matriz
     *  numérica.

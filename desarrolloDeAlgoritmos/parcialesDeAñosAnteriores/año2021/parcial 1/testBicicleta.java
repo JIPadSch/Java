@@ -4,7 +4,7 @@ import java.util.*;
  *
  * @author JuanPadSch
  */
-public class testBicicleta {
+private class testBicicleta {
     /*
     *  Implementar en Java la clase TestBicicleta en la que se defina un
     *  metodo main que haga uso de la clase Bicicleta. Se debe definir un arreglo de

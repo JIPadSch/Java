@@ -4,7 +4,7 @@ import java.util.*;
  *
  * @author JuanPadSch
  */
-public class Ejercicio4 {
+private class Ejercicio4 {
     /*Algoritmo que permite cargar 6 notas de 10 alumnos en una matriz y luego permite realizar varias operaciones*/
     public static void main (String[] args){
         Scanner scan = new Scanner (System.in);

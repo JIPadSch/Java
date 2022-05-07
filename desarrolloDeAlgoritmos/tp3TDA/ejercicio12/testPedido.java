@@ -1,10 +1,11 @@
 package desarrolloDeAlgoritmos.tp3TDA.ejercicio12;
 import java.util.concurrent.ThreadLocalRandom;
+import libreriaJuanIPadSch.intAleatorio;
 /**
  *
  * @author JuanPadSch
  */
-public class testPedido {
+private class testPedido {
     /* 
     *  Este algoritmo carga un Pedido y luego muestra por pantalla
     *  -El codigo del pedido; -La direccion donde debe ser entregado

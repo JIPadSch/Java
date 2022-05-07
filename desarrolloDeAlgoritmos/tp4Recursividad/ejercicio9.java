@@ -4,7 +4,7 @@ import java.util.*;
  *
  * @author JuanPadSch
  */
-public class ejercicio9 {
+private class ejercicio9 {
     /*
     *  Diseñar e implementar un algoritmo recursivo que dados dos números (divisor y dividendo)
     *  realice la división por restas sucesivas.

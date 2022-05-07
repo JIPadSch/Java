@@ -4,7 +4,7 @@ import java.util.*;
  *
  * @author JuanPadSch
  */
-public class testAvion {
+private class testAvion {
     /* Test de la Clase Avion */
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);

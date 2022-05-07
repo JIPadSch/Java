@@ -3,9 +3,9 @@ import java.util.*;
  *
  * @author JuanPadSch
  */
-public class holaMundo {
+private class holaMundo {
 
-    static final boolean amor = true; //Declaramos una constante de amor que jamás cambia
+    private static final boolean AMOR = true; //Declaramos una constante de amor que jamás cambia
 
     public static void main(String[] args) {
         Scanner scan = new Scanner (System.in);
@@ -97,7 +97,7 @@ public class holaMundo {
     /* Modulo que muestra el mensaje del amor hasta que la constante amor cambie (lo cual es nunca y rompera el programa) */
     public static void mensajeDelAmorRompePrograma(){
         System.out.println("Usted decidió la muerte del programa, disfrute");
-        while(amor){
+        while(AMOR){
             mensajeDelAmor();
         }
     }

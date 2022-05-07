@@ -4,7 +4,7 @@ import desarrolloDeAlgoritmos.tp3TDA.ejercicio12.intAleatorio;
  *
  * @author JuanPadSch
  */
-public class ejercicio7 {
+private class ejercicio7 {
     /* 
     *  Diseñar e implementar un algoritmo recursivo para calcular y mostrar la suma de cada una de
     *  las filas de una matriz de enteros.

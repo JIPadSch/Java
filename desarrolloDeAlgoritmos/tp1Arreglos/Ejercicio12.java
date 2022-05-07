@@ -3,7 +3,7 @@ package desarrolloDeAlgoritmos.tp1Arreglos;
  *
  * @author JuanPadSch
  */
-public class Ejercicio12 {
+private class Ejercicio12 {
     /*Este algoritmo nos permite cargar un arreglo de caractéres y luego realiza
     una copia de un arreglo de igual tamaño*/
     public static void main(String[] args){

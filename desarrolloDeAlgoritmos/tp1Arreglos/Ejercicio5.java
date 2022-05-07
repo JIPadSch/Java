@@ -3,7 +3,7 @@ package desarrolloDeAlgoritmos.tp1Arreglos;
  *
  * @author JuanPadSch
  */
-public class Ejercicio5 {
+private class Ejercicio5 {
    //Este programa calcula el promedio de los valores almacenados en un arreglo 
    public static void main(String[] args){
        int[] arrayInt = {3,5,7,1,19,6};              

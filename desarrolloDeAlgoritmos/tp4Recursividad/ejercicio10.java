@@ -4,7 +4,7 @@ import java.util.*;
  *
  * @author JuanPadSch
  */
-public class ejercicio10 {
+private class ejercicio10 {
     /*
     *  Diseñar e implementar un algoritmo recursivo que lea una secuencia de caracteres hasta que
     *  se ingrese el punto y retorne una frase formada por los caracteres en el orden leído.

@@ -4,7 +4,7 @@ import java.util.*;
  *
  * @author JuanPadSch
  */
-public class ejercicio5 {
+private class ejercicio5 {
     /*
     *  Diseñar e implementar un algoritmo recursivo que lea una secuencia de dígitos (en cada llamada
     *  recursiva debe leer un número) y cuente cuántos son múltiplos de 3 hasta que se ingrese el 

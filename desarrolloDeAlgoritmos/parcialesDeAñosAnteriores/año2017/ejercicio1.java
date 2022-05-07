@@ -4,7 +4,7 @@ import java.util.*;
  *
  * @author JuanPadSch
  */
-public class ejercicio1 {
+private class ejercicio1 {
     /*
     *  Implementar en Java un programa que permita ingresar un arreglo de N cadenas de caracteres,
     *  (donde cada una contiene una sola palabra) y obtenga la palabra con mayor cantidad de vocales.

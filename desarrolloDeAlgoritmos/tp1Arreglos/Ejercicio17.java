@@ -1,6 +1,6 @@
 package desarrolloDeAlgoritmos.tp1Arreglos;
 import java.util.*;
-public class Ejercicio17 {
+private class Ejercicio17 {
     /*Este algoritmo, según las notas ingresadas de un alumno, verificara si este aprobo*/
     public static void main(String[] args){
         String[] apellidoAlumno;

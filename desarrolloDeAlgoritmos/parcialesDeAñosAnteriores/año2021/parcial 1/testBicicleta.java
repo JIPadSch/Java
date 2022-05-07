@@ -1,13 +1,17 @@
 package desarrolloDeAlgoritmos.parcialesDeAñosAnteriores.año2021;
 import java.util.*;
+/**
+ *
+ * @author JuanPadSch
+ */
 public class testBicicleta {
     /*
-    Implementar en Java la clase TestBicicleta en la que se defina un
-    metodo main que haga uso de la clase Bicicleta. Se debe definir un arreglo de
-    bicletas, el método que realiza la carga del arreglo y métodos para:
-    a) Un método que permita recuperar la bicicleta con mayor precio de venta.
-    b) Un método que muestre por pantalla los datos de las bicicleta de montaña
-    cuyas marcas tengan más de dos vocales.
+    *  Implementar en Java la clase TestBicicleta en la que se defina un
+    *  metodo main que haga uso de la clase Bicicleta. Se debe definir un arreglo de
+    *  bicletas, el método que realiza la carga del arreglo y métodos para:
+    *  a) Un método que permita recuperar la bicicleta con mayor precio de venta.
+    *  b) Un método que muestre por pantalla los datos de las bicicleta de montaña
+    *  cuyas marcas tengan más de dos vocales.
     */
     public static void main(String[] args) {
         int longitud=verificarLongitud();

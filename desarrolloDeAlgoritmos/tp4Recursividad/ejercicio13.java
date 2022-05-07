@@ -20,14 +20,15 @@ public class ejercicio13 {
     /* Metodo recursivo */
     public static int numMayorMatrizRecursivo(int[][] matriz, int fil, int col, int numMayor){
         int numAux=0;
-        if (col<matriz[0].length) {
+        //Recorremos las columnas
+        if (col < matriz[0].length) { //Si no estamos al final
             numAux=numMayorMatrizRecursivo(matriz, fil, col+1,numMayor); //Caso general
-            if(col-1 > -1) { //Si no nos vamos de rango
-                numMayor=matriz[fil][col-1];
+            if ((col-1)>=0){ //Si no nos vamos del rango
+                numMayor=matriz[fil][col-1]; //Asignamos a numMayor el anterior al valor que tiene numAux
                 if(numAux>numMayor){ //Si numAux es mayor que numMayor, cambiamos a numMayor
                     numMayor=numAux;
                 }
-            }
+            } 
         } else { //Si llegamos al final de las columnas, asignamos el ultimo valor a numMayor
             numMayor=matriz[fil][col-1];
         }

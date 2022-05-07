@@ -1,22 +1,19 @@
 package desarrolloDeAlgoritmos.parcialesDeAñosAnteriores.año2021;
-
+/**
+ *
+ * @author JuanPadSch
+ */
 public class Bicicleta {
     /*
-    Una bicicletería almacena la información sobre las bicicletas que vende. Estos
-    se identifican por un número de serie, su marca, la cantidad de cambios que
-    tiene, el tipo de bicleta(‘M’ bici de montaña, ‘C’ Bicicleta de Carrera, ‘U’
-    urbana, y ‘O’ otros), el precio de venta, y si cuenta con seguro de fábrica o no
-    (un valor booleano).
-    1) Especificar el diagrama UML para la clase Bicicleta.
-    2) Implementar en Java la clase Bicicleta, su definición de atributos, dos
-    constructores de la clase, y los métodos equals, toString y métodos
-    observadores (get) y modificadores (set)
-    3) Implementar en Java la clase TestBicicleta en la que se defina un
-    metodo main que haga uso de la clase Bicicleta. Se debe definir un arreglo de
-    bicletas, el método que realiza la carga del arreglo y métodos para:
-    a) Un método que permita recuperar la bicicleta con mayor precio de venta.
-    b) Un método que muestre por pantalla los datos de las bicicleta de montaña
-    cuyas marcas tengan más de dos vocales.
+    *  Una bicicletería almacena la información sobre las bicicletas que vende. Estos
+    *  se identifican por un número de serie, su marca, la cantidad de cambios que
+    *  tiene, el tipo de bicleta(‘M’ bici de montaña, ‘C’ Bicicleta de Carrera, ‘U’
+    *  urbana, y ‘O’ otros), el precio de venta, y si cuenta con seguro de fábrica o no
+    *  (un valor booleano).
+    *  1) Especificar el diagrama UML para la clase Bicicleta.
+    *  2) Implementar en Java la clase Bicicleta, su definición de atributos, dos
+    *  constructores de la clase, y los métodos equals, toString y métodos
+    *  observadores (get) y modificadores (set)
     */
 
     /* ATRIBUTOS */

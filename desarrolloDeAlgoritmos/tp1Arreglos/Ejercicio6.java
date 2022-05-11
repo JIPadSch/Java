@@ -4,7 +4,7 @@ import java.util.*;
  *
  * @author JuanPadSch
  */
-private class Ejercicio6 {
+public class Ejercicio6 {
     /*Este programa permite almacenar letras en un arreglo, cuya dimensión máxima
     es 100. El algoritmo verifica que el caracter leído sea una letra antes de
     ser guardado. Al finalizar la carga, el algoritmo muestra la cantidad de

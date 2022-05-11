@@ -1,4 +1,4 @@
-package desarrolloDeAlgoritmos.parcialesDeAñosAnteriores.año2021;
+package desarrolloDeAlgoritmos.parcialesDeAñosAnteriores.año2021.parcial1;
 /**
  *
  * @author JuanPadSch

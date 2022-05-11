@@ -1,9 +1,10 @@
 package desarrolloDeAlgoritmos.tp1Arreglos;
+import libreriaJuanIPadSch.*;
 /**
  *
  * @author JuanPadSch
  */
-private class Ejercicio12 {
+public class Ejercicio12 {
     /*Este algoritmo nos permite cargar un arreglo de caractéres y luego realiza
     una copia de un arreglo de igual tamaño*/
     public static void main(String[] args){
@@ -14,7 +15,7 @@ private class Ejercicio12 {
         llenarArrChar(arrayChar);
         copiaArrChar = new char [arrayChar.length];
         copiaArrChar = copiarArrChar(arrayChar);
-        libJuanIPadSch.imprimirArrChar(copiaArrChar);
+        libreriaJuanIPadSch.arreglosUni.imprimirArrChar(copiaArrChar);
     }
     //Este módulo nos permite llenar un arreglo de caractéres
     public static void llenarArrChar(char[] arrayDeCarac){

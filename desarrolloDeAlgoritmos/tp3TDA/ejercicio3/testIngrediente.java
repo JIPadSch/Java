@@ -4,7 +4,7 @@ import java.util.*;
  *
  * @author JuanPadSch
  */
-private class testIngrediente {
+public class testIngrediente {
     /* Test simple, permite ver y cambiar la información de un Ingrediente creado */
     public static void main(String[] args) {
         Scanner scan = new Scanner (System.in);

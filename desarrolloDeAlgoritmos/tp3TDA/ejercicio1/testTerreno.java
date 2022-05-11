@@ -4,7 +4,7 @@ import java.util.*;
  *
  * @author JuanPadSch
  */
-private class testTerreno {
+public class testTerreno {
     /* 
     *  ALgoritmo que permite cargar los datos de un terreno y luego permite:
     *  -Mostrar el perímetro del terreno y la cantidad de alambre si se desea

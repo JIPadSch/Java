@@ -1,6 +1,10 @@
 package desarrolloDeAlgoritmos.tp2ArreglosBidimensionales;
 import java.util.*;
-private class Ejercicio8 {
+/**
+ *
+ * @author JuanPadSch
+ */
+public class Ejercicio8 {
     public static void main(String[] args) {
         Scanner sc= new Scanner(System.in);
         int [][] matriz;

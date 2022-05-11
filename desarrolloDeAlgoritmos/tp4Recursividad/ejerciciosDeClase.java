@@ -4,7 +4,7 @@ import java.util.*;
  *
  * @author JuanPadSch
  */
-private class ejerciciosDeClase {
+public class ejerciciosDeClase {
     /* Main para invocar los módulos */
     public static void main(String[] args) {
         Scanner scan = new Scanner (System.in);

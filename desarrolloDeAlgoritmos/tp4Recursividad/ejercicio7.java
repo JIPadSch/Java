@@ -1,10 +1,10 @@
 package desarrolloDeAlgoritmos.tp4Recursividad;
-import desarrolloDeAlgoritmos.tp3TDA.ejercicio12.intAleatorio;
+import libreriaJuanIPadSch.*;
 /**
  *
  * @author JuanPadSch
  */
-private class ejercicio7 {
+public class ejercicio7 {
     /* 
     *  Diseñar e implementar un algoritmo recursivo para calcular y mostrar la suma de cada una de
     *  las filas de una matriz de enteros.

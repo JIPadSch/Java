@@ -1,10 +1,10 @@
-package desarrolloDeAlgoritmos.parcialesDeAñosAnteriores.año2021;
+package desarrolloDeAlgoritmos.parcialesDeAñosAnteriores.año2021.parcial1;
 import java.util.*;
 /**
  *
  * @author JuanPadSch
  */
-private class testBicicleta {
+public class testBicicleta {
     /*
     *  Implementar en Java la clase TestBicicleta en la que se defina un
     *  metodo main que haga uso de la clase Bicicleta. Se debe definir un arreglo de

@@ -3,7 +3,7 @@ package desarrolloDeAlgoritmos.tp1Arreglos;
  *
  * @author JuanPadSch
  */
-private class Ejercicio2 {
+public class Ejercicio2 {
     /*Este algoritmo lee un valor entero y genera un arreglo con los
     10 primeros múltiplos del mismo*/
     public static void main(String[] args){

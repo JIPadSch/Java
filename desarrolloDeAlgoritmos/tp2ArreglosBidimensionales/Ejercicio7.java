@@ -5,7 +5,7 @@ import java.util.concurrent.ThreadLocalRandom;
  *
  * @author JuanPadSch
  */
-private class Ejercicio7 {
+public class Ejercicio7 {
     /*Dada una matriz numérica, se hacen 4 tipos de recorridos
     1- Por filas de atrás hacia adelante; 2- Por columnas de arriba hacia abajo;
     3- En espiral; 4- En zig-zag*/

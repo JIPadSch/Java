@@ -5,7 +5,7 @@ import libreriaJuanIPadSch.intAleatorio;
  *
  * @author JuanPadSch
  */
-private class testPedido {
+public class testPedido {
     /* 
     *  Este algoritmo carga un Pedido y luego muestra por pantalla
     *  -El codigo del pedido; -La direccion donde debe ser entregado

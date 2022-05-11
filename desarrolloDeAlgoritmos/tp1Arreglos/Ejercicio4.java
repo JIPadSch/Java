@@ -3,7 +3,7 @@ package desarrolloDeAlgoritmos.tp1Arreglos;
  *
  * @author JuanPadSch
  */
-private class Ejercicio4 {
+public class Ejercicio4 {
     /*Este programa nos permite encontrar el valor más grande y el más
     pequeño dentro de un arreglo dado*/
     public static void main (String[] args){

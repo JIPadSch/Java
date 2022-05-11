@@ -4,7 +4,7 @@ import java.util.*;
  *
  * @author JuanPadSch
  */
-private class ejercicio12 {
+public class ejercicio12 {
     /*
     *  Diseñar e implementar un algoritmo recursivo que dado un arreglo de caracteres y un caracter
     *  indique si se encuentra el caracter en el arreglo.

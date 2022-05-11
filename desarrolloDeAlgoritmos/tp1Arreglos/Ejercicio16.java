@@ -4,7 +4,7 @@ import java.util.*;
  *
  * @author JuanPadSch
  */
-private class Ejercicio16 {
+public class Ejercicio16 {
     /*El programa verifica que dado un arreglo de String, tenga almenos una
     longitud de 5, y que cada String posea solo letras, caso contrario, dicho String
     queda eliminado del arreglo y es reemplazado por el de la siguiente posición.

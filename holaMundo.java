@@ -3,7 +3,7 @@ import java.util.*;
  *
  * @author JuanPadSch
  */
-private class holaMundo {
+public class holaMundo {
 
     private static final boolean AMOR = true; //Declaramos una constante de amor que jamás cambia
 

@@ -1,11 +1,10 @@
 package desarrolloDeAlgoritmos.tp4Recursividad;
-import desarrolloDeAlgoritmos.tp1Arreglos.libJuanIPadSch;
 import libreriaJuanIPadSch.*;
 /**
  *
  * @author JuanPadSch
  */
-private class ejercicio13 {
+public class ejercicio13 {
     /*
     *  Diseñar e implementar un algoritmo recursivo que obtenga el número mayor de una matriz
     *  numérica.

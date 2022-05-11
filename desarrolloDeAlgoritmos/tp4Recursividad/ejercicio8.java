@@ -4,7 +4,7 @@ import java.util.*;
  *
  * @author JuanPadSch
  */
-private class ejercicio8 {
+public class ejercicio8 {
     /*
     *  Diseñar e implementar un algoritmo recursivo que retorne true si una oración es un palíndromo.
     *  Un palíndromo es una oración capicúa (no se contabiliza las mayúsculas y minúsculas ni los

@@ -4,7 +4,7 @@ import java.util.*;
  *
  * @author JuanPadSch
  */
-private class testMascota {
+public class testMascota {
     /* 
     *  Algoritmo que carga una mascota y luego permite:
     *  -Mostrar el nombre de la mascota

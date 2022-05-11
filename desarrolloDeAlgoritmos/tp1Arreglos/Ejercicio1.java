@@ -3,7 +3,7 @@ package desarrolloDeAlgoritmos.tp1Arreglos;
  *
  * @author JuanPadSch
  */
-private class Ejercicio1 {
+public class Ejercicio1 {
     /*Este algoritmo nos permite cargar un arreglo de caractéres y luego mostrarlo de manera
     ordenada o invertida, según lo que elija el usuario*/
     public static void main(String[] args) {

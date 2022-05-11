@@ -3,7 +3,7 @@ package desarrolloDeAlgoritmos.tp1Arreglos;
  *
  * @author JuanPadSch
  */
-private class Ejercicio3 {
+public class Ejercicio3 {
     /*El algoritmo, dado un entero y un arreglo, reemplaza los valores en las
     posiciones pares del arreglo por el valor dado y luego muestra el arreglo*/
     public static void main(String[] args){

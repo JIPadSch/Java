@@ -5,7 +5,7 @@ import libreriaJuanIPadSch.*;
  *
  * @author JuanPadSch
  */
-private class ejercicio6 {
+public class ejercicio6 {
     /*
     *  Diseñar e implementar un algoritmo recursivo para obtener el número
     *  mayor de un arreglo numérico.

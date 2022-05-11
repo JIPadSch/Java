@@ -3,7 +3,7 @@ package desarrolloDeAlgoritmos.tp4Recursividad;
  *
  * @author JuanPadSch
  */
-private class ejercicio14 {
+public class ejercicio14 {
     /* 
     *  Dada una matriz de enteros implementar un algoritmo recursivo que calcule la suma de los
     *  elementos de cada columna. 

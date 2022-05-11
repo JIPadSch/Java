@@ -4,7 +4,7 @@ import java.util.*;
  *
  * @author JuanPadSch
  */
-private class Ejercicio15 {
+public class Ejercicio15 {
     /*El programa solicita un número de 8 cifras y devuelve el número
     de DNI correspondiente (el DNI consta de 8 cifras y una letra)*/
     public static void main(String[] args){

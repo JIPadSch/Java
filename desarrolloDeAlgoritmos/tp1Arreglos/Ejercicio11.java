@@ -3,7 +3,7 @@ package desarrolloDeAlgoritmos.tp1Arreglos;
  *
  * @author JuanPadSch
  */
-private class Ejercicio11 {
+public class Ejercicio11 {
     //Este algoritmo nos permite cargar dos arreglos de números y luego verifica si son iguales o no
     public static void main(String[] args){
         int[] array1, array2;

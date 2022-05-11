@@ -1,4 +1,4 @@
-package desarrolloDeAlgoritmos.parcialesDeAñosAnteriores.año2017;
+package desarrolloDeAlgoritmos.simulacrosDeParciales.año2017;
 import java.util.*;
 /**
  *
@@ -21,6 +21,7 @@ public class ejercicio1 {
         String arrStr[] = new String [cant];
         cargarArreglo(arrStr);
         System.out.println("La palabra con más vocales es: "+arrStr[palabraMasVocales(arrStr)]);
+        scan.close();
     }
     /* Modulo que permite cargar el arreglo de String */
     public static void cargarArreglo(String arrString[]){
@@ -29,6 +30,7 @@ public class ejercicio1 {
             System.out.println("Ingrese la palabra de la posicion "+(i+1));
             arrString[i] = scan.nextLine();
         }
+        scan.close();
     }
     /* Modulo que permite contar la cantidad de vocales */
     public static int palabraMasVocales(String[] arrStr){

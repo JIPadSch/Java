@@ -1,4 +1,4 @@
-package desarrolloDeAlgoritmos.parcialesDeAñosAnteriores.año2021.parcial1;
+package desarrolloDeAlgoritmos.simulacrosDeParciales.año2021.parcial1;
 import java.util.*;
 /**
  *
@@ -35,6 +35,7 @@ public class testBicicleta {
                 System.out.println("ERROR: La longitud no puede ser menor o igual a 0");
             }
         }while(longitud<=0);
+        scan.close();
         return longitud;
     }
     /* Metodo de carga de Bicicleta */
@@ -98,6 +99,7 @@ public class testBicicleta {
         if(Character.toUpperCase(charSeguro)=='S'){
             seguroFabrica=true;
         }
+        scan.close();
         Bicicleta nuevaBici = new Bicicleta(numeroSerie,marca,cantCambios,tipoBici,precio,seguroFabrica);
         return nuevaBici;
     }

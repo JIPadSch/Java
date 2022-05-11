@@ -1,5 +1,4 @@
-package libreriaJuanIPadSch;
-import java.util.*;
+//package libreriaJuanIPadSch;
 /**
  *
  * @author JuanPadSch

@@ -1,4 +1,4 @@
-package libreriaJuanIPadSch;
+//package libreriaJuanIPadSch;
 import java.util.concurrent.ThreadLocalRandom;
 /**
  *

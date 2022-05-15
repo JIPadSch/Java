@@ -83,4 +83,7 @@ public class Competidor {
     public boolean equals(Competidor otroCompetidor){
         return dni==otroCompetidor.getDni();
     }
+    public static double IMC(double peso, double altura){
+        return (peso/(altura*altura));
+    }
 }

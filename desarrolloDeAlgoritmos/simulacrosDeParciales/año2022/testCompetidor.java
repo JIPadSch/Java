@@ -62,9 +62,20 @@ public class testCompetidor {
     /* Módulo que permite cargar un arreglo de Competidores */
     public static void cargarArrCompetidores(Competidor[] arrCompetidores){
         Scanner scan = new Scanner (System.in);
-        int unDni=0;
+        int unDni=0, unaEdad=0;
+        String nom="", ape="", ciudadO="";
+        double pes, alt;
         for (int i = 0; i < arrCompetidores.length; i++) {
+            System.out.println("Ahora ingresará los datos del Competidor "+(i+1)+": ");
             unDni= cargarDNI(arrCompetidores);
+            nom = scan.nextLine();
+            scan.nextLine(); //Limpiamos el Scanner
+            ape = scan.nextLine();
+            scan.nextLine(); //Limpiamos el Scanner
+            unaEdad = verificarEdad();
+            ciudadO = scan.nextLine();
+            pes = verificarPeso();
+            alt = verificarAltura();
             Competidor competidorAux = new Competidor(unDni, nom, ape, unaEdad, ciudadO, pes, alt);
             arrCompetidores[i] = competidorAux;
         }
@@ -100,6 +111,45 @@ public class testCompetidor {
             }            
         }
         return existe;
+    }
+    /* Modulo que verifica y retorna una edad para Competidor */
+    public static int verificarEdad(){
+        Scanner scan = new Scanner (System.in);
+        int edad=0;
+        do{
+            System.out.println("Ingrese la edad: ");
+            edad = scan.nextInt();
+            if (edad<=0) System.out.println("ERROR: La edad no puede ser menor o igual a 0");
+            scan.nextLine(); //Limpiamos el Scanner
+        }while(edad<=0);
+        scan.close();
+        return edad;
+    }
+    /* Modulo que verifica y retorna un peso para Competidor */
+    public static double verificarPeso(){
+        Scanner scan = new Scanner (System.in);
+        double peso=0;
+        do{
+            System.out.println("Ingrese el peso: ");
+            peso = scan.nextDouble();
+            if (peso<=0) System.out.println("ERROR: El peso no puede ser menor o igual a 0");
+            scan.nextLine(); //Limpiamos el Scanner
+        }while(peso<=0);
+        scan.close();
+        return peso;
+    }
+    /* Modulo que verifica y retorna un peso para Competidor */
+    public static double verificarAltura(){
+        Scanner scan = new Scanner (System.in);
+        double altura=0;
+        do{
+            System.out.println("Ingrese la altura: ");
+            altura = scan.nextDouble();
+            if (altura<=0) System.out.println("ERROR: La altura no puede ser menor o igual a 0");
+            scan.nextLine(); //Limpiamos el Scanner
+        }while(altura<=0);
+        scan.close();
+        return altura;
     }
     /* 
     *  Realice un método que recorra el arreglo de competidores retorne otro arreglo con los

@@ -1,4 +1,4 @@
-//package libreriaJuanIPadSch;
+package libreriaJuanIPadSch;
 /**
  *
  * @author JuanPadSch

@@ -1,4 +1,5 @@
 package desarrolloDeAlgoritmos.tp4Recursividad;
+import java.util.*;
 /**
  *
  * @author JuanPadSch
@@ -9,8 +10,44 @@ public class ejerciciosObligatorios {
     *  1)a) - 2)a) - 3)b) - 6)a)
     */
     public static void main(String[] args) {
-        
+        Scanner scan = new Scanner (System.in);
+        int opcion;
+        do{
+            System.out.println("MENU");
+            System.out.println("Retornar verdadero si dentro del número existen dos dígitos seguido consecutivos");
+
+        }while (opcion!=7);
+        scan.close();
     } 
+    /* MENU */
+    public static void menu(int opcion){
+        Scanner scan = new Scanner (System.in);
+        int numero;
+        switch (key) {
+            case 1:
+                System.out.println("Escriba el numero: ");
+                numero = scan.nextInt();
+                System.out.println("Dentro de su número ¿Existen dos dígitos seguidos?: "+exitenDosDigitosSeguidosRecursivo(numero));
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                System.out.println("Adiós!");
+                break;
+            default:
+                System.out.println("Esa no es una opción válida. Volviendo al menú");
+                break;
+        }
+        scan.close();
+    }
 
     /* INICIO EJERCICIOS OBLIGATORIOS */
     /*
@@ -100,7 +137,7 @@ public class ejerciciosObligatorios {
     *  * * * 
     *  * * * *
     */
-    public static char[][] piramideCharRecursivo(int num, char caracter, int numAux){
+    public static char[][] piramideCharRecursivo(int num, char caracter, int fil, int col, int numAux){
         char[][] piramide = new char[num][num];
         if(){
             
@@ -119,10 +156,14 @@ public class ejerciciosObligatorios {
     */
     public static int cantElemMayorPromRecrusivo (int[] arrInt, int pos, int prom){
         int cantMayoresPromedio = 0;
-        if (){
-
-        } else{
-
+        if(pos<arrInt.length){ //Caso general, recorro el arreglo
+            if (arrInt[pos]>prom){ //Si el numero en la posicion es mayor al promedio
+                cantMayoresPromedio = cantElemMayorPromRecrusivo(arrInt, (pos+1), prom)+1;
+            } else{ //Si no es mayor al promedio
+                cantMayoresPromedio = cantElemMayorPromRecrusivo(arrInt, (pos+1), prom);
+            }
+        } else{ //Caso base, llegue al final del arreglo
+            cantMayoresPromedio=0;
         }
         return cantMayoresPromedio;
     }

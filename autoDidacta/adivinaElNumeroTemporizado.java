@@ -4,8 +4,23 @@ import java.util.*;
  *
  * @author JuanPadSch
  */
-public class adivinaElNumeroTemporizado{
-    /* El juego es una excusa para probar multi-threads y try-catchs */
+public class adivinaElNumeroTemporizado extends Thread{
+    /* Este programa tiene de excusa al juego, el sentido es probar multi-threads y try-catchs */
+    /* PRIMERO DECLARAMOS DOS CONSTANTES */
+    public static boolean juegoTerminado=false;
+    public static int tiempoSegundos = 0;
+        /* Reemplazamos el metodo run() de Thread para crear nuestro temporizador */
+        @Override
+        public void run(){
+            while(!juegoTerminado){ //Mientras no se haya terminado el juego
+                tiempoSegundos++; //Suma 1 cada 1 segundo
+                try {
+                    Thread.sleep(1000); //Aca es donde esperamos 1 segundo para seguir sumando
+                } catch (Exception e) {
+                    //Excepcion vacia, sirve para que no nos tire error el Thread.sleep()
+                }
+            }
+        }
     public static void main(String[] args) {
         try{
             juegoAdivinaElNumero();
@@ -22,6 +37,8 @@ public class adivinaElNumeroTemporizado{
         Scanner scan = new Scanner (System.in);
         Random randomNum = new Random();
         int numAle = randomNum.nextInt(100) + 1, adivinanzaJugador=0, cantIntentos=0;
+        adivinaElNumeroTemporizado temporizador = new adivinaElNumeroTemporizado();
+        temporizador.start();
         do{
             try{
                 System.out.println("Escriba un numero del 1 al 100: ");
@@ -34,7 +51,8 @@ public class adivinaElNumeroTemporizado{
                 System.out.println("ERROR: Ingrese un número");
             }            
         }while (adivinanzaJugador != numAle);
-        System.out.println("FELICIDADES! ADIVINASTE CORRECTAMENTE! Tu cantidad de intentos fueron: "+cantIntentos);
+        juegoTerminado=true;
+        System.out.println("FELICIDADES! ADIVINASTE CORRECTAMENTE! Tu cantidad de intentos fueron: "+cantIntentos+"\nTardaste "+tiempoSegundos+" segundos");
         scan.close();
     }
 }

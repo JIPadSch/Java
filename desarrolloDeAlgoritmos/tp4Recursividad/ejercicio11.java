@@ -10,7 +10,7 @@ public class ejercicio11 {
     *  impares.
     */
     public static void main(String[] args) {
-        int[] sumaParImpar = new int[2]; //arr[0] = Par ; Pos 1 = Impar
+        //int[] sumaParImpar = new int[2]; //arr[0] = Par ; Pos 1 = Impar
     }
     /* Modulo recursivo */
     public static int sumaArreglosParImpar(int[] arrInt, int pos, int[] sumaParImpar){

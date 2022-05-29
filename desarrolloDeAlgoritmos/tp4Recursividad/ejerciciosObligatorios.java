@@ -24,6 +24,7 @@ public class ejerciciosObligatorios {
             System.out.println("6) Salir del programa");
             System.out.println("-----------------------------------------------------------------------------------------------");
             opcion=scan.nextInt();
+            menu(opcion);
             scan.nextLine(); //Limpiamos el Scanner
         }while (opcion!=6);
         scan.close();
@@ -70,7 +71,7 @@ public class ejerciciosObligatorios {
                 for (int i = 0; i < arrInt.length; i++) {
                     promedio += arrInt[i]; 
                 }
-                System.out.println("Cantidad de elementos mayores al promedio: "+cantElemMayorPromRecrusivo(arrInt, 0, promedio));
+                System.out.println("Promedio: "+promedio+"\nCantidad de elementos mayores al promedio: "+cantElemMayorPromRecrusivo(arrInt, 0, promedio));
                 break;
             case 6:
                 System.out.println("Adiós!");
@@ -95,7 +96,7 @@ public class ejerciciosObligatorios {
     public static boolean exitenDosDigitosSeguidosRecursivo (int num){
         boolean existenDosSeguidos = false;
         if (num>=10){ //Si no tenemos un solo digito  
-            if((num%10)+1 == (num%100)){ //Caso base 1
+            if((num%10) == (num%100)+1){ //Caso base 1
                 existenDosSeguidos = true;
             } else if ((num%10)==9 && (num%100)==0){ //Caso base 2 (cuando es 9 y sigue 0)
                 existenDosSeguidos = true;

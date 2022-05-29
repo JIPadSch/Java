@@ -12,7 +12,7 @@ public class ejercicio7 {
     public static void main(String[] args) {
         int fil=0, col=0;
         int[][] matriz = new int[12][4];
-        libreriaJuanIPadSch.arreglosBidi.cargarAutoMatrizCuadrada(matriz);
+        libreriaJuanIPadSch.arreglosBidi.cargarAutoMatrizCuadradaInts(matriz);
         libreriaJuanIPadSch.arreglosBidi.imprimirArrBidInt(matriz);
         System.out.println("-------------------------------");
         sumaFilasMuestraRecursivo(matriz, fil, col);

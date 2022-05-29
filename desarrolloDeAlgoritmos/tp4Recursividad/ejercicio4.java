@@ -20,6 +20,7 @@ public class ejercicio4 {
             scan.nextLine();
         }while(numero<1);
         System.out.println("En el numero "+numero+" los números ¿Son todos iguales?: "+todosNumIguales((numero)));
+        scan.close();
     }
     /* Metodo que verifica (dado un entero) que todos los numeros son iguales */
     public static boolean todosNumIguales(int num){

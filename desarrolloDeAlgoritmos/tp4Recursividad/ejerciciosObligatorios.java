@@ -32,7 +32,7 @@ public class ejerciciosObligatorios {
     public static void menu(int opcion){
         Scanner scan = new Scanner (System.in);
         int numero;
-        switch (key) {
+        switch (opcion) {
             case 1:
                 System.out.println("Escriba el numero: ");
                 numero = scan.nextInt();
@@ -100,7 +100,7 @@ public class ejerciciosObligatorios {
             } else if ((num%10)==9 && (num%100)==0){ //Caso base 2 (cuando es 9 y sigue 0)
                 existenDosSeguidos = true;
             } else{ //Caso general
-                existenDosSeguidos = existenDosDigitosSeguidosRecursivo(num/10);
+                existenDosSeguidos = exitenDosDigitosSeguidosRecursivo(num/10);
             }
         }
         return existenDosSeguidos;
@@ -180,7 +180,7 @@ public class ejerciciosObligatorios {
         }
         if (fil<num) {
             System.out.print(caracter+" ");
-            mostrarPiramide(caracter, num, fil, col = col-1);
+            piramideCharRecursivo(num, caracter, fil, col = col-1);
         }
     }
     /* FIN EJERCICIOS OBLIGATORIOS */

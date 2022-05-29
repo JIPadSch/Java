@@ -65,10 +65,18 @@ public class arreglosBidi {
         }
     }
     /*Módulo que carga automaticamente una matriz con números aleatorios*/
-    public static void cargarAutoMatrizCuadrada(int[][] matrizCuadrada){
+    public static void cargarAutoMatrizCuadradaInts(int[][] matrizCuadrada){
         for (int i=0;i<matrizCuadrada.length;i++){
             for (int j=0;j<matrizCuadrada[i].length;j++){
                 matrizCuadrada[i][j]=ThreadLocalRandom.current().nextInt(-32,32);
+            }
+        }
+    }
+    /*Módulo que carga automaticamente una matriz con números doubles aleatorios*/
+    public static void cargarAutoMatrizCuadradaDoubles(Double[][] matrizCuadrada){
+        for (int i=0;i<matrizCuadrada.length;i++){
+            for (int j=0;j<matrizCuadrada[i].length;j++){
+                matrizCuadrada[i][j]=ThreadLocalRandom.current().nextDouble(0, 5);
             }
         }
     }

@@ -27,6 +27,7 @@ public class ejercicio5 {
         System.out.println("--------------------------------");
         int contador = contar3();
         System.out.println("Usted escribió "+contador+" números múltiplos de 3");
+        scan.close();
     }
     /* Modulo que dado un digito cuenta cuantos de los numeros multiplos de 3 */
     public static int contarMult3(int digitos){
@@ -58,6 +59,7 @@ public class ejercicio5 {
         } else{
             contador = 0;
         }
+        scan.close();
         return contador;
     }
 }

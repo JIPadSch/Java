@@ -1,5 +1,6 @@
 package desarrolloDeAlgoritmos.tp4Recursividad;
 import java.util.*;
+import libreriaJuanIPadSch.*;
 /**
  *
  * @author JuanPadSch
@@ -13,10 +14,18 @@ public class ejerciciosObligatorios {
         Scanner scan = new Scanner (System.in);
         int opcion;
         do{
-            System.out.println("MENU");
-            System.out.println("Retornar verdadero si dentro del número existen dos dígitos seguido consecutivos");
-
-        }while (opcion!=7);
+            System.out.println("                                              MENU                                              ");
+            System.out.println("-----------------------------------------------------------------------------------------------");
+            System.out.println("1) Retorna verdadero si dentro del número existen dos dígitos seguido consecutivos");
+            System.out.println("2) Retorna si una matriz NxN dada es de identidad");
+            System.out.println("3) Retorna un texto en jeringoza agregándole p+ la vocal cada vez que se utilice una vocal");
+            System.out.println("4) Dado un número entero y un caracter, genera una piramide");
+            System.out.println("5) Dado un arreglo de enteros retorne la cantidad de elementos mayores al promedio");
+            System.out.println("6) Salir del programa");
+            System.out.println("-----------------------------------------------------------------------------------------------");
+            opcion=scan.nextInt();
+            scan.nextLine(); //Limpiamos el Scanner
+        }while (opcion!=6);
         scan.close();
     } 
     /* MENU */
@@ -30,16 +39,40 @@ public class ejerciciosObligatorios {
                 System.out.println("Dentro de su número ¿Existen dos dígitos seguidos?: "+exitenDosDigitosSeguidosRecursivo(numero));
                 break;
             case 2:
+                int[][] matrizInt = new int[3][3];
+                libreriaJuanIPadSch.arreglosBidi.llenarArrBidIntAleS(matrizInt);
+                System.out.println("Trabajaremos con la siguiente matriz cargada automáticamente:");
+                libreriaJuanIPadSch.arreglosBidi.imprimirArrBidInt(matrizInt);
+                System.out.println("La matriz ¿es identidad?: "+esIdentidadRecursivo(matrizInt, 0, 0));
                 break;
             case 3:
+                String vocales = "aeiou", palabra = "";
+                System.out.println("Escriba la palabra que desea poner en jeringoza: ");
+                palabra = scan.nextLine();
+                System.out.println("Su palabra en jeringoza es: "+jeringozaRecursivo(palabra.toLowerCase(), 0, vocales));
                 break;
             case 4:
+                int num = 0;
+                char caracter;
+                System.out.println("Escriba un numero: ");
+                num = scan.nextInt();
+                scan.nextLine(); //Limpiamos el Scanner
+                System.out.println("Escriba una caractér: ");
+                caracter = scan.next().charAt(0);
+                piramideCharRecursivo(num, caracter, 0, 0);
                 break;
             case 5:
+                int[] arrInt = new int[6];
+                libreriaJuanIPadSch.arreglosUni.llenarArrIntAutoS(arrInt);
+                System.out.println("Trabajaremos con el siguiente arreglo cargado automáticamente");
+                libreriaJuanIPadSch.arreglosUni.imprimirArrInt(arrInt);
+                int promedio = 0;
+                for (int i = 0; i < arrInt.length; i++) {
+                    promedio += arrInt[i]; 
+                }
+                System.out.println("Cantidad de elementos mayores al promedio: "+cantElemMayorPromRecrusivo(arrInt, 0, promedio));
                 break;
             case 6:
-                break;
-            case 7:
                 System.out.println("Adiós!");
                 break;
             default:
@@ -61,12 +94,14 @@ public class ejerciciosObligatorios {
     */
     public static boolean exitenDosDigitosSeguidosRecursivo (int num){
         boolean existenDosSeguidos = false;
-        if((num%10)+1 == (num%100)){ //Caso base 1
-            existenDosSeguidos = true;
-        } else if ((num%10)==9 && (num%100)==0){ //Caso base 2 (cuando es 9 y sigue 0)
-            existenDosSeguidos = true;
-        } else{ //Caso general
-            existenDosSeguidos = existenDosDigitosSeguidosRecursivo(num/10);
+        if (num>=10){ //Si no tenemos un solo digito  
+            if((num%10)+1 == (num%100)){ //Caso base 1
+                existenDosSeguidos = true;
+            } else if ((num%10)==9 && (num%100)==0){ //Caso base 2 (cuando es 9 y sigue 0)
+                existenDosSeguidos = true;
+            } else{ //Caso general
+                existenDosSeguidos = existenDosDigitosSeguidosRecursivo(num/10);
+            }
         }
         return existenDosSeguidos;
     }
@@ -137,14 +172,16 @@ public class ejerciciosObligatorios {
     *  * * * 
     *  * * * *
     */
-    public static char[][] piramideCharRecursivo(int num, char caracter, int fil, int col, int numAux){
-        char[][] piramide = new char[num][num];
-        if(){
-            
-        } else{
-
+    public static void piramideCharRecursivo(int num, char caracter, int fil, int col){
+        if (col<0) {
+            fil = fil+1;
+            col = fil;
+            System.out.println("");
         }
-        return piramide;
+        if (fil<num) {
+            System.out.print(caracter+" ");
+            mostrarPiramide(caracter, num, fil, col = col-1);
+        }
     }
     /* FIN EJERCICIOS OBLIGATORIOS */
 

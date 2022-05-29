@@ -20,6 +20,7 @@ public class Ejercicio17 {
                 System.out.println("El/La estudiante "+apellidoAlumno[i]+" no aprobo el cuatrim.");
             }
         }
+        scan.close();
     }
     //Este módulo, según un arreglo del tipo texto, cargará un apellido en cada posición
     public static void cargarArregloApellido(String[] apellido){
@@ -29,6 +30,7 @@ public class Ejercicio17 {
             System.out.println("Por favor ingrese el apellido del estudiante: "+(i+1));
             apellido[i] = entrada.next();
         }
+        scan.close();
     }    
     //Este módulo, según un arreglo del tipo real, cargará una nota en cada posición
     public static double[] cargarArregloNota(){

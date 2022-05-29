@@ -25,6 +25,7 @@ public class ejercicio9 {
             scan.nextLine();
         }while(divisor<=0);
         System.out.println("El numero "+divisor+" dividió a "+dividendo+": "+restaSucesiva(dividendo, divisor)+" veces");
+        scan.close();
     }
     /* Modulo recursivo */
     public static int restaSucesiva (int dividendo, int divisor){

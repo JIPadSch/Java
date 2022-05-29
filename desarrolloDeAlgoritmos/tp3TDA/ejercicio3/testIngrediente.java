@@ -20,6 +20,7 @@ public class testIngrediente {
             scan.nextLine(); //Limpiamos el Scanner
             menu(opcion, ingrediente);
         }while(opcion!=3);
+        scan.close();
     }
     /* Menu */
     public static void menu(int opcion,Ingrediente ingrediente){
@@ -53,6 +54,7 @@ public class testIngrediente {
         System.out.println("Ingrese la unidad de medida: ");
         unDeMed=scan.nextLine();
         scan.nextLine(); //Limpiamos el Scanner
+        scan.close();
         return ingredienteAux = new Ingrediente(nom, cant, unDeMed);
     }
     /* Modulo que permite elegir que desea cambiar del ingrediente */
@@ -78,6 +80,7 @@ public class testIngrediente {
                 System.out.println("ERROR: Opción inválida");
                 break;
         }
+        scan.close();
     }
     /* Menu para elegir la opcion de cambiarInfoIngrediente */
     public static int menuCambio(){
@@ -87,6 +90,7 @@ public class testIngrediente {
         System.out.println("--------------------");
         System.out.println("1. Cantidad");
         System.out.println("2. Unidad de medida");
+        scan.close();
         return opcion=scan.nextInt();
     }
 }

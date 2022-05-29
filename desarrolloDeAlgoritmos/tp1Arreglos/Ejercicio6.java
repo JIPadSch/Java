@@ -50,6 +50,7 @@ public class Ejercicio6 {
                 scan.nextLine();
             }
         }
+        scan.close();
         return letra;
     }
     //Este módulo cuenta la cantidad de letras guardads en el arreglo

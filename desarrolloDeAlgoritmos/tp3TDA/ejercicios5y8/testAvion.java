@@ -22,6 +22,7 @@ public class testAvion {
             scan.nextLine();
             menu(opcion,unAvion);
         }while(opcion!=3);
+        scan.close();
     }
     public static void menu(int opcion, Avion unAvion){
         switch (opcion) {
@@ -58,6 +59,7 @@ public class testAvion {
         cantAsi=ponerCambiarAsientos();
         kmRec=ponerCambiarKm();
         velProm=ponerCambiarVelProm();   
+        scan.close();
         return unAvion = new Avion (id,mod,cantAsi,kmRec,velProm);
     }
     /* Modulo que permite cambiar la información del avión */
@@ -91,6 +93,7 @@ public class testAvion {
                 System.out.println("OPCION INVALIDA. Volviendo al menú");
                 break;
         }
+        scan.close();
     }
     /* Modulo que reutilizamos para setear y cambiar cantidadAsientos */
     public static int ponerCambiarAsientos(){
@@ -104,6 +107,7 @@ public class testAvion {
                 System.out.println("NO PUEDE PONER ASIENTOS NEGATIVOS O NINGUN ASIENTO");
             }
         } while (cantAsi<=0);
+        scan.close();
         return cantAsi;
     }
     /* Modulo que reutilizamos para setear y cambiar kmRecorridos */
@@ -118,6 +122,7 @@ public class testAvion {
                 System.out.println("NO PUEDE PONER KMs NEGATIVOS");
             }
         }while (kmRec<0);  
+        scan.close();
         return kmRec;
     }
     /* Modulo que reutilizamos para setear y cambiar la velocidadPromedio */
@@ -132,6 +137,7 @@ public class testAvion {
                 System.out.println("NO PUEDE PONER VELOCIDAD PROMEDIO NEGATIVO O 0");
             }
         }while(velProm<=0);
+        scan.close();
         return velProm;
     }
 }

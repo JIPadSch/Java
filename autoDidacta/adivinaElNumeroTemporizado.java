@@ -1,4 +1,4 @@
-//package autoDidacta;
+package autoDidacta;
 import java.util.*;
 /**
  *

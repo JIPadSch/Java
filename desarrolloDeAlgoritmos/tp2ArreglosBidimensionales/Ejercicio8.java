@@ -20,9 +20,10 @@ public class Ejercicio8 {
         }else{
             System.out.println("Su matriz NO es simetrica");
         }
+        scan.close();
     }
+    /* Este modulo permite cargar los elementos de la matriz */
     public static void cargarMatriz(int[][]matriz){
-        //Este modulo permite cargar los elementos de la matriz
         Scanner sc= new Scanner(System.in);
         int i=0,j=0;
         for(i=0;i<matriz.length; i++){
@@ -31,7 +32,9 @@ public class Ejercicio8 {
                 matriz[i][j] =sc.nextInt();
             }
         }
+        scan.close();
     }
+    /* Verifica si la matriz es cuadrada */
     public static boolean esCuadrada(int [][] matriz ){
     return matriz.length==matriz[0].length;
     }

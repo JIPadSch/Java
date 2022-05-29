@@ -27,6 +27,7 @@ public class testMascota {
             opcion=scan.nextInt();
             scan.nextLine();
         }while(opcion!=5);
+        scan.close();
     }
     /* Menu */
     public static void menu(int opcion,Mascota mascota){
@@ -81,6 +82,7 @@ public class testMascota {
                 System.out.println("ERROR: La edad no puede ser menor a 0");
             }
         }while(edad<0);
+        scan.close();
         return mascota = new Mascota(codigo,nombre,peso,edad);
     }
     /* Modulo que permite cambiar el peso de la mascota según lo que ingrese el usario */
@@ -96,5 +98,6 @@ public class testMascota {
             }
         }while(nuevoPeso<=0);
         mascota.setPeso(nuevoPeso);
+        scan.close();
     }
 }

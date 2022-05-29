@@ -31,6 +31,7 @@ public class Ejercicio7 {
             scan.nextLine();
             menu(Character.toLowerCase(opcion),matrizCuadrada); 
         }while (opcion!='e');
+        scan.close();
     }
     /*Menú*/
     public static void menu(char opcion, int[][] matrizCuadrada){

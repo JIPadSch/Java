@@ -24,6 +24,7 @@ public class holaMundo {
             scan.nextLine();
             menuDelAmor(opcion);
         }while (opcion!=5);
+        scan.close();
     }
     /* Menu del amor */
     public static void menuDelAmor(int opcion){
@@ -74,6 +75,7 @@ public class holaMundo {
                 System.out.println("Volviendo al menú ...");
                 break;
         }
+        scan.close();
     }
     /* Modulo de mensaje del amor */
     public static void mensajeDelAmor(){

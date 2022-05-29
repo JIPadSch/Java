@@ -19,7 +19,6 @@ public class ejerciciosMatrices {
        libreriaJuanIPadSch.arreglosBidi.cargarAutoMatrizCuadradaDoubles(medicionesLluvia);
        Double[] promedioAnualesLluvia = promedioLluviaAnual(medicionesLluvia);
        System.out.println("Promedios anuales de lluvias: "+promedioAnualesLluvia.toString());
-       
    }
    /* Módulo que genera un arreglo de promedios anuales de lluvias */
    public static Double[] promedioLluviaAnual(Double[][] medicionesLluvia){

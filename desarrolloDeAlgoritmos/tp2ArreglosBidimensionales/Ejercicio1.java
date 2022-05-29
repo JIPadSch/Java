@@ -30,6 +30,7 @@ public class Ejercicio1 {
         arrBidInt = new int[filas][columnas];
         llenarArrBidInt(arrBidInt);
         imprimirArrBidInt(arrBidInt);
+        scan.close();
     }
         /*Módulo que permite llenar un arreglo bidimensional de enteros*/
         public static void llenarArrBidInt (int[][] arrBidInt){
@@ -42,6 +43,7 @@ public class Ejercicio1 {
                     scan.nextLine();
                 }
             }
+            scan.close();
         }
         /*Módulo que muestra por pantalla un arreglo bidimensional de enteros*/
         public static void imprimirArrBidInt (int[][] arrBidInt){

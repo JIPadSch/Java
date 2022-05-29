@@ -25,6 +25,7 @@ public class Ejercicio16 {
         llenarArrayString(arrString);
         reemplazarStrSoloLetras(arrString);
         mostrarArrayString(arrString);
+        scan.close();
     }
     /*Este módulo nos permite llenar un arreglo de String*/
     public static void llenarArrayString (String[] arrString){
@@ -34,6 +35,7 @@ public class Ejercicio16 {
             arrString[i]=scan.nextLine();
             scan.nextLine();
         }
+        scan.close();
     }
     /*Este módulo verifica que los Strings del array posean solo letras, caso
     contrario el String de ese lugar es reemplazado por el siguiente String

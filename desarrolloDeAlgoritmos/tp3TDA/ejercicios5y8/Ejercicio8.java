@@ -30,7 +30,8 @@ public class Ejercicio8 {
             opcion=scan.nextInt();
             scan.nextLine();
             menu(opcion,arrAvion);
-        }while(opcion!=5);        
+        }while(opcion!=5);       
+        scan.close(); 
     }
     /* Menu */
     public static void menu(int opcion, Avion[] arrAvion){
@@ -70,6 +71,7 @@ public class Ejercicio8 {
                 System.out.println("OPCIÓN INVÁLIDA");
                 break;
         }
+        scan.close();
     }
     /* Modulo que verifica que la longitud del arreglo sea mayor a 0 */
     public static int verificarLongitud(){
@@ -82,6 +84,7 @@ public class Ejercicio8 {
                 System.out.println("ERROR: La longitud debe ser mayor a 0");
             }
         } while(longitud<=0);
+        scan.close();
         return longitud;        
     }
     /* Modulo que permite cargar cada avión del arreglo de Avion(es) */

@@ -18,6 +18,7 @@ public class ejercicio12 {
         System.out.println("Ingrese el caracter que desea buscar en el arreglo: ");
         caracterEncontrar = scan.next().charAt(0);
         System.out.println("El caracter "+caracterEncontrar+" ¿se encuentra en el arreglo? "+caracterExisteRecursivo(arrChar, 0, caracterEncontrar));
+        scan.close();
     }
     /* Metodo recursivo */
     public static boolean caracterExisteRecursivo(char[] arrChar, int pos, char caracterEncontrar){

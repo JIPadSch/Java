@@ -29,6 +29,7 @@ public class testTerreno {
             scan.nextLine();
             menu(opcion,terreno);
         }while(opcion!=4);
+        scan.close();
     }
     /* Menu */
     public static void menu(int opcion, Terreno terreno){
@@ -82,6 +83,7 @@ public class testTerreno {
                 System.out.println("ERROR: La manzana no puede ser menor o igual a 0");
             }
         }while(manzana<=0);
+        scan.close();
         return terreno=new Terreno(codigo, base, altura, manzana);
     }
     /* Modulo que muestra el perimetro y la cantidad de alambre necesario para dar 3 vueltas al terreno */
@@ -106,5 +108,6 @@ public class testTerreno {
             }
         }while(precioMtCuadrado<=0);
         System.out.println("El valor del terreno es de $"+(terreno.superficie()*precioMtCuadrado));       
+        scan.close();
     }
 }

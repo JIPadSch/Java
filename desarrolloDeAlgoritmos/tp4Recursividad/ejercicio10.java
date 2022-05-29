@@ -23,6 +23,7 @@ public class ejercicio10 {
         } else{ //Caso base
             strDeCarac="";
         }
+        scan.close();
         return strDeCarac;
     }
 }

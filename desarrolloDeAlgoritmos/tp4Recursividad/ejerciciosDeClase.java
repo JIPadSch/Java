@@ -21,6 +21,7 @@ public class ejerciciosDeClase {
             scan.nextLine();
             menu(opcion);
         }while(opcion!=5);
+        scan.close();
     }
     /* Menu */
     public static void menu(int opcion){
@@ -71,6 +72,7 @@ public class ejerciciosDeClase {
                 System.out.println("ERROR: Opcion invalida. Volviendo al menu");
                 break;
         }
+        scan.close();
     }
     /* Método para sacar factorial */
     public static int factorial(int n){

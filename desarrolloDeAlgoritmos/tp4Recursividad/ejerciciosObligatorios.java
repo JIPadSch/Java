@@ -36,20 +36,22 @@ public class ejerciciosObligatorios {
             case 1:
                 System.out.println("Escriba el numero: ");
                 numero = scan.nextInt();
-                System.out.println("Dentro de su número ¿Existen dos dígitos seguidos?: "+exitenDosDigitosSeguidosRecursivo(numero));
+                System.out.println("Dentro de su número ¿Existen dos dígitos seguidos?: "+(exitenDosDigitosSeguidosRecursivo(numero)?"SI":"NO"));
+                scan.nextLine(); //Limpiamos el Scanner
                 break;
             case 2:
                 int[][] matrizInt = new int[3][3];
                 libreriaJuanIPadSch.arreglosBidi.llenarArrBidIntAleS(matrizInt);
                 System.out.println("Trabajaremos con la siguiente matriz cargada automáticamente:");
                 libreriaJuanIPadSch.arreglosBidi.imprimirArrBidInt(matrizInt);
-                System.out.println("La matriz ¿es identidad?: "+esIdentidadRecursivo(matrizInt, 0, 0));
+                System.out.println("La matriz ¿es identidad?: "+(esIdentidadRecursivo(matrizInt, 0, 0)?"SI":"NO"));
                 break;
             case 3:
                 String vocales = "aeiou", palabra = "";
                 System.out.println("Escriba la palabra que desea poner en jeringoza: ");
                 palabra = scan.nextLine();
                 System.out.println("Su palabra en jeringoza es: "+jeringozaRecursivo(palabra.toLowerCase(), 0, vocales));
+                scan.nextLine(); //Limpiamos el Scanner
                 break;
             case 4:
                 int num = 0;
@@ -60,17 +62,15 @@ public class ejerciciosObligatorios {
                 System.out.println("Escriba una caractér: ");
                 caracter = scan.next().charAt(0);
                 piramideCharRecursivo(num, caracter, 0, 0);
+                scan.nextLine(); //Limpiamos el Scanner
                 break;
             case 5:
-                int[] arrInt = new int[6];
+                int[] arrInt = new int[6], promedio = {0,0}; 
+                //promedio[0] almacena cantidad mayor al promedio, promedio[1] almacena el promedio de los numeros
                 libreriaJuanIPadSch.arreglosUni.llenarArrIntAutoS(arrInt);
                 System.out.println("Trabajaremos con el siguiente arreglo cargado automáticamente");
                 libreriaJuanIPadSch.arreglosUni.imprimirArrInt(arrInt);
-                int promedio = 0;
-                for (int i = 0; i < arrInt.length; i++) {
-                    promedio += arrInt[i]; 
-                }
-                System.out.println("Cantidad de elementos mayores al promedio: "+cantElemMayorPromRecrusivo(arrInt, 0, promedio));
+                System.out.println("Cantidad de elementos mayores al promedio: "+cantElemMayorPromRecrusivo(arrInt, 0, promedio)+"\nPromedio: "+promedio[1]);
                 break;
             case 6:
                 System.out.println("Adiós!");
@@ -124,17 +124,12 @@ public class ejerciciosObligatorios {
             } else{ //Si alguna de las 2 no se cumple, no es identidad y corto
                 esIdentidad = false;
             }
-        /* SOLO SE ENTRA UNA VEZ QUE NOS PASAMOS DE COL, Y MIENBTRAS NO NOS PASAMOS DE FILAS */
-        } else if (fil<matriz.length){
+        /* SOLO SE ENTRA UNA VEZ QUE NOS PASAMOS DE COL, Y MIENTRAS NO NOS PASAMOS DE FILAS */
+        } else if ((fil+1)<matriz.length){
             col=0;
-            if (fil==col){ //Primero verificamos si estamos en la diagonal
-                if(matriz[fil][col] == 1){ //Verificamos que sea 1
-                    esIdentidad = esIdentidadRecursivo(matriz, (fil+1), col); 
-                }   else{
-                    esIdentidad = false; //Si no es 1, cortamos la recursividad
-                }
-            } else if (matriz[fil][col] == 0){ //Si no estamos en la diagonal, verificamos que sea 0
-                esIdentidad = esIdentidadRecursivo(matriz, (fil+1), col);
+            fil+=1;
+            if (matriz[fil][col] == 0){ //Verificamos que sea 0 en la siguiente fila
+                esIdentidad = esIdentidadRecursivo(matriz, fil, col);
             } else{ //Si alguna de las 2 no se cumple, no es identidad y corto
                 esIdentidad = false;
             }
@@ -153,9 +148,9 @@ public class ejerciciosObligatorios {
         String palabraEnJeringoza="";
         if(pos<palabra.length()){ //Si no nos pasamos de la longitud
             if(vocales.indexOf(palabra.charAt(pos)) > -1){ //Si el charAt(pos) esta dentro de las vocales
-                palabraEnJeringoza = 'p'+palabra.charAt(pos)+jeringozaRecursivo(palabra, (pos+1), vocales);
+                palabraEnJeringoza = palabra.charAt(pos) + "p" + palabra.charAt(pos) + jeringozaRecursivo(palabra, (pos+1), vocales);
             } else{ //Como no es vocal, solo agregamos la letra en pos y llamo recursivamente
-                palabraEnJeringoza = palabra.charAt(pos)+jeringozaRecursivo(palabra, (pos+1), vocales); 
+                palabraEnJeringoza = palabra.charAt(pos) + jeringozaRecursivo(palabra, (pos+1), vocales); 
             }
         } else{ //Si nos pasamos, cortamos la recursividad
             palabraEnJeringoza="";
@@ -181,7 +176,7 @@ public class ejerciciosObligatorios {
         }
         if (fil<num) {
             System.out.print(caracter+" ");
-            mostrarPiramide(caracter, num, fil, col = col-1);
+            piramideCharRecursivo(num, caracter, fil, col-1);
         }
     }
     /* FIN EJERCICIOS OBLIGATORIOS */
@@ -192,17 +187,18 @@ public class ejerciciosObligatorios {
     *  a) Dado un arreglo de enteros retorne la cantidad de elementos mayores al
     *  promedio
     */
-    public static int cantElemMayorPromRecrusivo (int[] arrInt, int pos, int prom){
-        int cantMayoresPromedio = 0;
-        if(pos<arrInt.length){ //Caso general, recorro el arreglo
-            if (arrInt[pos]>prom){ //Si el numero en la posicion es mayor al promedio
-                cantMayoresPromedio = cantElemMayorPromRecrusivo(arrInt, (pos+1), prom)+1;
-            } else{ //Si no es mayor al promedio
-                cantMayoresPromedio = cantElemMayorPromRecrusivo(arrInt, (pos+1), prom);
+    public static int cantElemMayorPromRecrusivo (int[] arrInt, int pos, int[] prom){
+        if(pos<arrInt.length){
+            prom[0] += cantElemMayorPromRecrusivo(arrInt, (pos+1),(prom[1]+arrInt[pos]));
+            if (arrInt[pos]>prom[1]) { //Si el elemento en pos es mayor al promedio, sumamos 1
+                prom[0]+=1;
             }
-        } else{ //Caso base, llegue al final del arreglo
-            cantMayoresPromedio=0;
+        }else{ //Entramos cuando llegamos al final del arreglo
+            prom[1] = prom[1] / arrInt.length; //Calculamos el promedio
+            if (arrInt[pos-1]>prom[1]) { //Si el ultimo elemento de mayor al promedio, sumamos 1
+                prom[0]+=1;
+            }
         }
-        return cantMayoresPromedio;
+        return prom[0]; //Devolvemos la cantidad de mayores al promedio
     }
 }

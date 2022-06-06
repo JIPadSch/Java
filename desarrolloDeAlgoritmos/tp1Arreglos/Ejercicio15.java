@@ -24,6 +24,7 @@ public class Ejercicio15 {
         }
         letDni=letraDni((restoDni(numDni)));
         System.out.println("El DNI completo es: "+numDni+letDni);
+        scan.close();
     }
     /*El módulo calcula el resto de dividir el número de DNI en 23*/
     public static int restoDni(int dni){

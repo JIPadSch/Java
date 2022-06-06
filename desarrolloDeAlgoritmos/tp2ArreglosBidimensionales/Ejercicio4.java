@@ -24,6 +24,7 @@ public class Ejercicio4 {
             scan.nextLine();
             menu(opcion,notasAlus);
         } while (opcion!='d');
+        scan.close();
     }
     /*Menú del programa, nos lleva a los módulos según invocación*/
     public static void menu (int opcion, int[][] notasAlus){
@@ -57,6 +58,7 @@ public class Ejercicio4 {
                 System.out.println("ERROR: Esa no es una opción válida");
                 break;
         }
+        scan.close();
     }
     /*Módulo que permite llenar un arreglo bidimensional de enteros*/
     public static void llenarArrBidInt (int[][] arrBidInt){
@@ -69,6 +71,7 @@ public class Ejercicio4 {
                 scan.nextLine();
             }
         }
+        scan.close();
     }
     /*Módulo que muestra por pantalla un arreglo bidimensional de enteros*/
     public static void imprimirArrBidInt (int[][] arrBidInt){

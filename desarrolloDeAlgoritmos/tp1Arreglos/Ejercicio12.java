@@ -1,4 +1,5 @@
 package desarrolloDeAlgoritmos.tp1Arreglos;
+import libreriaJuanIPadSch.*;
 /**
  *
  * @author JuanPadSch
@@ -14,7 +15,7 @@ public class Ejercicio12 {
         llenarArrChar(arrayChar);
         copiaArrChar = new char [arrayChar.length];
         copiaArrChar = copiarArrChar(arrayChar);
-        libJuanIPadSch.imprimirArrChar(copiaArrChar);
+        libreriaJuanIPadSch.arreglosUni.imprimirArrChar(copiaArrChar);
     }
     //Este módulo nos permite llenar un arreglo de caractéres
     public static void llenarArrChar(char[] arrayDeCarac){

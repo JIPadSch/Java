@@ -1,5 +1,9 @@
 package desarrolloDeAlgoritmos.tp6MetodosOrdenamiento;
 import java.util.*;
+/**
+ *
+ * @author JuanPadSch
+ */
 public class ejercicioClase {
     public static void main (String[] args){
         /* Algoritmo principal */

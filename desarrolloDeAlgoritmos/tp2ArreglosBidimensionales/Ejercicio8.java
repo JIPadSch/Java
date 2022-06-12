@@ -38,7 +38,7 @@ public class Ejercicio8 {
     public static boolean esCuadrada(int [][] matriz ){
     return matriz.length==matriz[0].length;
     }
-    
+    /*Modulo que verificia si la matriz es simetrica*/
     public static boolean esSimetrica(int [][] matriz ){
     int  fila, col;
     boolean simetrica;

@@ -24,7 +24,6 @@ public class ejerciciosObligatorios {
             System.out.println("6) Salir del programa");
             System.out.println("-----------------------------------------------------------------------------------------------");
             opcion=scan.nextInt();
-            menu(opcion);
             scan.nextLine(); //Limpiamos el Scanner
         }while (opcion!=6);
         scan.close();
@@ -33,7 +32,7 @@ public class ejerciciosObligatorios {
     public static void menu(int opcion){
         Scanner scan = new Scanner (System.in);
         int numero;
-        switch (opcion) {
+        switch (key) {
             case 1:
                 System.out.println("Escriba el numero: ");
                 numero = scan.nextInt();
@@ -70,7 +69,15 @@ public class ejerciciosObligatorios {
                 libreriaJuanIPadSch.arreglosUni.llenarArrIntAutoS(arrInt);
                 System.out.println("Trabajaremos con el siguiente arreglo cargado automáticamente");
                 libreriaJuanIPadSch.arreglosUni.imprimirArrInt(arrInt);
+<<<<<<< HEAD
                 System.out.println("Cantidad de elementos mayores al promedio: "+cantElemMayorPromRecrusivo(arrInt, 0, 0));
+=======
+                int promedio = 0;
+                for (int i = 0; i < arrInt.length; i++) {
+                    promedio += arrInt[i]; 
+                }
+                System.out.println("Cantidad de elementos mayores al promedio: "+cantElemMayorPromRecrusivo(arrInt, 0, promedio));
+>>>>>>> 5c02dc527b0809202bdb83851b31100cb25d52c6
                 break;
             case 6:
                 System.out.println("Adiós!");
@@ -95,12 +102,12 @@ public class ejerciciosObligatorios {
     public static boolean exitenDosDigitosSeguidosRecursivo (int num){
         boolean existenDosSeguidos = false;
         if (num>=10){ //Si no tenemos un solo digito  
-            if((num%10) == (num%100)+1){ //Caso base 1
+            if((num%10)+1 == (num/10)%10){ //Caso base 1
                 existenDosSeguidos = true;
             } else if ((num%10)==9 && (num%100)==0){ //Caso base 2 (cuando es 9 y sigue 0)
                 existenDosSeguidos = true;
             } else{ //Caso general
-                existenDosSeguidos = exitenDosDigitosSeguidosRecursivo(num/10);
+                existenDosSeguidos = existenDosDigitosSeguidosRecursivo(num/10);
             }
         }
         return existenDosSeguidos;
@@ -124,12 +131,26 @@ public class ejerciciosObligatorios {
             } else{ //Si alguna de las 2 no se cumple, no es identidad y corto
                 esIdentidad = false;
             }
+<<<<<<< HEAD
         /* SOLO SE ENTRA UNA VEZ QUE NOS PASAMOS DE COL, Y MIENTRAS NO NOS PASAMOS DE FILAS */
         } else if ((fil+1)<matriz.length){
             col=0;
             fil+=1;
             if (matriz[fil][col] == 0){ //Verificamos que sea 0 en la siguiente fila
                 esIdentidad = esIdentidadRecursivo(matriz, fil, col);
+=======
+        /* SOLO SE ENTRA UNA VEZ QUE NOS PASAMOS DE COL, Y MIENBTRAS NO NOS PASAMOS DE FILAS */
+        } else if (fil<matriz.length){
+            col=0;
+            if (fil==col){ //Primero verificamos si estamos en la diagonal
+                if(matriz[fil][col] == 1){ //Verificamos que sea 1
+                    esIdentidad = esIdentidadRecursivo(matriz, (fil+1), col); 
+                }   else{
+                    esIdentidad = false; //Si no es 1, cortamos la recursividad
+                }
+            } else if (matriz[fil][col] == 0){ //Si no estamos en la diagonal, verificamos que sea 0
+                esIdentidad = esIdentidadRecursivo(matriz, (fil+1), col);
+>>>>>>> 5c02dc527b0809202bdb83851b31100cb25d52c6
             } else{ //Si alguna de las 2 no se cumple, no es identidad y corto
                 esIdentidad = false;
             }
@@ -148,9 +169,15 @@ public class ejerciciosObligatorios {
         String palabraEnJeringoza="";
         if(pos<palabra.length()){ //Si no nos pasamos de la longitud
             if(vocales.indexOf(palabra.charAt(pos)) > -1){ //Si el charAt(pos) esta dentro de las vocales
+<<<<<<< HEAD
                 palabraEnJeringoza = palabra.charAt(pos) + "p" + palabra.charAt(pos) + jeringozaRecursivo(palabra, (pos+1), vocales);
             } else{ //Como no es vocal, solo agregamos la letra en pos y llamo recursivamente
                 palabraEnJeringoza = palabra.charAt(pos) + jeringozaRecursivo(palabra, (pos+1), vocales); 
+=======
+                palabraEnJeringoza = 'p'+palabra.charAt(pos)+jeringozaRecursivo(palabra, (pos+1), vocales);
+            } else{ //Como no es vocal, solo agregamos la letra en pos y llamo recursivamente
+                palabraEnJeringoza = palabra.charAt(pos)+jeringozaRecursivo(palabra, (pos+1), vocales); 
+>>>>>>> 5c02dc527b0809202bdb83851b31100cb25d52c6
             }
         } else{ //Si nos pasamos, cortamos la recursividad
             palabraEnJeringoza="";
@@ -176,7 +203,11 @@ public class ejerciciosObligatorios {
         }
         if (fil<num) {
             System.out.print(caracter+" ");
+<<<<<<< HEAD
             piramideCharRecursivo(num, caracter, fil, col-1);
+=======
+            mostrarPiramide(caracter, num, fil, col = col-1);
+>>>>>>> 5c02dc527b0809202bdb83851b31100cb25d52c6
         }
     }
     /* FIN EJERCICIOS OBLIGATORIOS */

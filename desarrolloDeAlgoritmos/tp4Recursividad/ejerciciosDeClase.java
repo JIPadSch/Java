@@ -18,12 +18,14 @@ public class ejerciciosDeClase {
             System.out.println("5. Suma los numeros pares de una matriz");
             System.out.println("6. Hace traspuesta una matriz");
             System.out.println("7. Suma los digitos de un numero");
-            System.out.println("8. Salir del programa");
+            System.out.println("8. Dada una palabra, pone las consonantes primero y dsp la vocales");
+            System.out.println("9. Dada una palabra, repite la letra segun la posicion");
+            System.out.println("10. Salir del programa");
             System.out.println("--------------------------------------------------");
             opcion=scan.nextInt();
             scan.nextLine();
             menu(opcion);
-        }while(opcion!=8);
+        }while(opcion!=10);
         scan.close();
     }
     /* Menu */
@@ -96,6 +98,18 @@ public class ejerciciosDeClase {
                 System.out.println("La suma de los digitos es: "+sumaDigitos);
                 break;
             case 8:
+                System.out.println("Ingrese una palabra: ");
+                String palabra = scan.nextLine();
+                String palabraAcom = consonantesVocalesRecursivo(palabra, 0);
+                System.out.println("Su palabra acomodada es: "+palabraAcom);
+                break;
+            case 9:
+                System.out.println("Ingrese una palabra: ");
+                String palabra2 = scan.nextLine();
+                String palabraRepetidaLetras = repetirLetraSegunPosRecursivo(palabra2, 0, 0);
+                System.out.println("La palabra nueva es: "+palabraRepetidaLetras);
+                break;
+            case 10:
                 System.out.println("Adios!");
                 break;
             default:
@@ -186,7 +200,7 @@ public class ejerciciosDeClase {
             }
         }
     }
-    /*Sumar digitos de un numero */
+    /* Método para sumar digitos de un numero */
     public static int sumarDigitos (int numero){
         int suma = 0;
         if(numero>=10){
@@ -196,5 +210,34 @@ public class ejerciciosDeClase {
         }
         return suma;
     }
-
+    /* Método que dado un String pone primero las consonantes y despues las vocales */
+    public static String consonantesVocalesRecursivo(String palabra, int pos){
+        String palabraAcomodada = "", vocales = "aeiouAEIOU";
+        if(pos<palabra.length()){
+            if (vocales.indexOf(palabra.charAt(pos)) > -1 ){ //Si es vocal
+                palabraAcomodada = consonantesVocalesRecursivo(palabra, (pos+1)) + palabra.charAt(pos);
+            }else{ //Si es consonante
+                palabraAcomodada = palabra.charAt(pos) + consonantesVocalesRecursivo(palabra, (pos+1));
+            }
+        }
+        return palabraAcomodada.replace(" ", "");
+    }
+    /* Método (recursivo) que dada una palabra, repita la cantidad de veces igual a la posición */
+    public static String repetirLetraSegunPosRecursivo(String palabra, int pos, int cantRep){
+        String palabraLetrasRepetidas = "";
+        if(cantRep<pos){
+            if(pos<palabra.length()){
+                palabraLetrasRepetidas = palabra.charAt(pos) + repetirLetraSegunPosRecursivo(palabra, pos, (cantRep+1));
+            }else{
+                palabraLetrasRepetidas = "";
+            }
+        }else{
+            if(pos<palabra.length()){
+                palabraLetrasRepetidas = palabra.charAt(pos) + repetirLetraSegunPosRecursivo(palabra, (pos+1), 0);
+            }else{
+                palabraLetrasRepetidas = "";
+            }
+        }
+        return palabraLetrasRepetidas;
+    }
 }

@@ -32,7 +32,7 @@ public class ejerciciosObligatorios {
     public static void menu(int opcion){
         Scanner scan = new Scanner (System.in);
         int numero;
-        switch (key) {
+        switch (opcion) {
             case 1:
                 System.out.println("Escriba el numero: ");
                 numero = scan.nextInt();
@@ -70,19 +70,7 @@ public class ejerciciosObligatorios {
                 libreriaJuanIPadSch.arreglosUni.llenarArrIntAutoS(arrInt);
                 System.out.println("Trabajaremos con el siguiente arreglo cargado automáticamente");
                 libreriaJuanIPadSch.arreglosUni.imprimirArrInt(arrInt);
-<<<<<<< HEAD
-<<<<<<< HEAD
-                System.out.println("Cantidad de elementos mayores al promedio: "+cantElemMayorPromRecrusivo(arrInt, 0, 0));
-=======
-                int promedio = 0;
-                for (int i = 0; i < arrInt.length; i++) {
-                    promedio += arrInt[i]; 
-                }
-                System.out.println("Cantidad de elementos mayores al promedio: "+cantElemMayorPromRecrusivo(arrInt, 0, promedio));
->>>>>>> 5c02dc527b0809202bdb83851b31100cb25d52c6
-=======
                 System.out.println("Cantidad de elementos mayores al promedio: "+cantElemMayorPromRecrusivo(arrInt, 0, promedio)+"\nPromedio: "+promedio[1]);
->>>>>>> 7f7a9d1250e83b89bb5cb12a5b73d7677d530ad6
                 break;
             case 6:
                 System.out.println("Adiós!");
@@ -136,18 +124,12 @@ public class ejerciciosObligatorios {
             } else{ //Si alguna de las 2 no se cumple, no es identidad y corto
                 esIdentidad = false;
             }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 7f7a9d1250e83b89bb5cb12a5b73d7677d530ad6
         /* SOLO SE ENTRA UNA VEZ QUE NOS PASAMOS DE COL, Y MIENTRAS NO NOS PASAMOS DE FILAS */
         } else if ((fil+1)<matriz.length){
             col=0;
             fil+=1;
             if (matriz[fil][col] == 0){ //Verificamos que sea 0 en la siguiente fila
                 esIdentidad = esIdentidadRecursivo(matriz, fil, col);
-<<<<<<< HEAD
-=======
         /* SOLO SE ENTRA UNA VEZ QUE NOS PASAMOS DE COL, Y MIENBTRAS NO NOS PASAMOS DE FILAS */
         } else if (fil<matriz.length){
             col=0;
@@ -159,12 +141,10 @@ public class ejerciciosObligatorios {
                 }
             } else if (matriz[fil][col] == 0){ //Si no estamos en la diagonal, verificamos que sea 0
                 esIdentidad = esIdentidadRecursivo(matriz, (fil+1), col);
->>>>>>> 5c02dc527b0809202bdb83851b31100cb25d52c6
-=======
->>>>>>> 7f7a9d1250e83b89bb5cb12a5b73d7677d530ad6
             } else{ //Si alguna de las 2 no se cumple, no es identidad y corto
                 esIdentidad = false;
             }
+        }
         }
         return esIdentidad;
     }
@@ -180,21 +160,15 @@ public class ejerciciosObligatorios {
         String palabraEnJeringoza="";
         if(pos<palabra.length()){ //Si no nos pasamos de la longitud
             if(vocales.indexOf(palabra.charAt(pos)) > -1){ //Si el charAt(pos) esta dentro de las vocales
-<<<<<<< HEAD
-<<<<<<< HEAD
                 palabraEnJeringoza = palabra.charAt(pos) + "p" + palabra.charAt(pos) + jeringozaRecursivo(palabra, (pos+1), vocales);
             } else{ //Como no es vocal, solo agregamos la letra en pos y llamo recursivamente
                 palabraEnJeringoza = palabra.charAt(pos) + jeringozaRecursivo(palabra, (pos+1), vocales); 
-=======
                 palabraEnJeringoza = 'p'+palabra.charAt(pos)+jeringozaRecursivo(palabra, (pos+1), vocales);
             } else{ //Como no es vocal, solo agregamos la letra en pos y llamo recursivamente
                 palabraEnJeringoza = palabra.charAt(pos)+jeringozaRecursivo(palabra, (pos+1), vocales); 
->>>>>>> 5c02dc527b0809202bdb83851b31100cb25d52c6
-=======
                 palabraEnJeringoza = palabra.charAt(pos) + "p" + palabra.charAt(pos) + jeringozaRecursivo(palabra, (pos+1), vocales);
             } else{ //Como no es vocal, solo agregamos la letra en pos y llamo recursivamente
                 palabraEnJeringoza = palabra.charAt(pos) + jeringozaRecursivo(palabra, (pos+1), vocales); 
->>>>>>> 7f7a9d1250e83b89bb5cb12a5b73d7677d530ad6
             }
         } else{ //Si nos pasamos, cortamos la recursividad
             palabraEnJeringoza="";
@@ -220,15 +194,8 @@ public class ejerciciosObligatorios {
         }
         if (fil<num) {
             System.out.print(caracter+" ");
-<<<<<<< HEAD
-<<<<<<< HEAD
             piramideCharRecursivo(num, caracter, fil, col-1);
-=======
-            mostrarPiramide(caracter, num, fil, col = col-1);
->>>>>>> 5c02dc527b0809202bdb83851b31100cb25d52c6
-=======
-            piramideCharRecursivo(num, caracter, fil, col-1);
->>>>>>> 7f7a9d1250e83b89bb5cb12a5b73d7677d530ad6
+
         }
     }
     /* FIN EJERCICIOS OBLIGATORIOS */

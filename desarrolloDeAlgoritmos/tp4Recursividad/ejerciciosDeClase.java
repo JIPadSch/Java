@@ -15,12 +15,15 @@ public class ejerciciosDeClase {
             System.out.println("2. Calcular Fibonacci");
             System.out.println("3. Contar iteraciones de un número dentro de otro");
             System.out.println("4. Saber si un numero es primo o no");
-            System.out.println("5. Salir del programa");
+            System.out.println("5. Suma los numeros pares de una matriz");
+            System.out.println("6. Hace traspuesta una matriz");
+            System.out.println("7. Suma los digitos de un numero");
+            System.out.println("8. Salir del programa");
             System.out.println("--------------------------------------------------");
             opcion=scan.nextInt();
             scan.nextLine();
             menu(opcion);
-        }while(opcion!=5);
+        }while(opcion!=8);
         scan.close();
     }
     /* Menu */
@@ -66,6 +69,33 @@ public class ejerciciosDeClase {
                 System.out.println("El numero "+n+" ¿Es primo? "+esPrimo(n,n-1));
                 break;
             case 5:
+                int[][] matriz = new int[4][4];
+                libreriaJuanIPadSch.arreglosBidi.cargarAutoMatrizCuadradaInts(matriz);
+                System.out.println("Trabajaremos con la siguiente matriz:");
+                libreriaJuanIPadSch.arreglosBidi.imprimirArrBidInt(matriz);
+                int sumaPares = sumarParesMatriz(matriz, 0, 0);
+                System.out.println("La suma de los números pares de la matriz es: "+sumaPares);
+                break;
+            case 6:
+                int[][] matriz2 = new int[4][4];
+                libreriaJuanIPadSch.arreglosBidi.cargarAutoMatrizCuadradaInts(matriz2);
+                System.out.println("Trabajaremos con la siguiente matriz:");
+                libreriaJuanIPadSch.arreglosBidi.imprimirArrBidInt(matriz2);
+                matrizTraspuestaRecursivo(matriz2, 0, 0, 0);
+                System.out.println("La matriz traspuesta es:");
+                libreriaJuanIPadSch.arreglosBidi.imprimirArrBidInt(matriz2);
+                break;
+            case 7:
+                do{
+                    System.out.println("Ingrese el numero al que desee sumar sus digitos: ");
+                    n = scan.nextInt();
+                    if (n<=0) System.out.println("ERROR: El numero no puede ser menor o igual a 0");
+                    scan.nextLine(); //Limpiamos el Scanner
+                }while (n<=0);
+                int sumaDigitos = sumarDigitos(n);
+                System.out.println("La suma de los digitos es: "+sumaDigitos);
+                break;
+            case 8:
                 System.out.println("Adios!");
                 break;
             default:
@@ -126,4 +156,45 @@ public class ejerciciosDeClase {
         }
         return primoBoolean;
     }
+    /* Método para sumar los nros. pares de una matriz (recursivamente) */
+    public static int sumarParesMatriz(int[][] matriz, int fil, int col){
+        int sumaPares = 0;
+        if(fil<matriz.length){
+            if(col<matriz[0].length){
+                if((matriz[fil][col])%2 == 0){
+                    sumaPares = sumarParesMatriz(matriz, fil, (col+1)) + (matriz[fil][col]);
+                }else{
+                    sumaPares = sumarParesMatriz(matriz, fil, (col+1));
+                }
+            }else{
+                sumaPares = sumarParesMatriz(matriz, (fil+1), 0);
+            }
+        }        
+        return sumaPares;
+    }
+    /* Método que dada una Matriz devuelve su traspuesta */
+    public static void matrizTraspuestaRecursivo(int[][] matriz, int fil, int col, int iniCol){
+        int aux = 0;
+        if(fil<matriz.length){
+            if(col<matriz[0].length){
+                    aux = matriz[col][fil];
+                    matriz[col][fil] = matriz[fil][col];
+                    matriz[fil][col] = aux;
+                    matrizTraspuestaRecursivo(matriz, fil, (col+1), iniCol);
+            } else{
+                matrizTraspuestaRecursivo(matriz, (fil+1), (iniCol+1), (iniCol+1));
+            }
+        }
+    }
+    /*Sumar digitos de un numero */
+    public static int sumarDigitos (int numero){
+        int suma = 0;
+        if(numero>=10){
+            suma = (numero%10) + sumarDigitos(numero/10);
+        }else{
+            suma = numero;
+        }
+        return suma;
+    }
+
 }

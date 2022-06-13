@@ -7,14 +7,6 @@ public class metodosDeOrdenamiento {
     public static void main(String[] args) {
         
     }
-    /* Método de Ordenamiento Secuencial */   
-    public static void secuencialInts(int[] arrInt){
-
-    }
-    /* Método de Ordenamiento Binario */
-    public static void binarioInts(){
-
-    }
     /* Método de Ordenamiento Selección */
     public static void seleccionInts(int[] arrInt){
         int i, posMenor;

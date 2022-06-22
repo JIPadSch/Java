@@ -81,7 +81,16 @@ public class ejercicios {
     }
     /* Ejercicio 4 */
     /* Método de ordenamiento a elección (insercion, burbuja, seleccion o burbuja mejorada) */
-    public static void metodoDeOrdenamiento(int[] arrInt){
-        
+    public static void metodoDeOrdenamiento(int[] arrInt){ //Elejimos insercion
+        int i, j, aux;
+        for (i = 1; i < arrInt.length; i++) {
+            aux = arrInt[i];
+            j = i;
+            while(j > 0 && arrInt[j-1] < aux){
+                arrInt[j] = arrInt[j-1];
+                j--;
+            }
+            arrInt[j] = aux;
+        }
     }
 }

@@ -15,20 +15,31 @@ public class testCiudad {
         leerGuardarCiudadDesdeTxtAUnArray(arrCiudad, archivoInfoCiudades);
     }
     /* Metodo para generar un archivo de Ciudades aleatorio */
-    public static void generarTxtCiudades(String archivoInfoCiudades, Ciudad[] arrCiudad){
+    public static void generarTxtCiudades(String archivoInfoCiudades){
         boolean claveRepetida = false;
+        String nombreCiudad = "";
+        int poblacionCiudad = 0;
+        double latitudCiudad = 0, longitudCiudad = 0;
 
-        String nombreCiudad = generarNombreCiudadAleatorio();
-        int poblacionCiudad = ThreadLocalRandom.current().nextInt(500, 3000000);
-        do {
-            double latitudCiudad = ThreadLocalRandom.current().nextDouble(0,90);
-            double longitudCiudad = ThreadLocalRandom.current().nextDouble(0,180);
-            claveRepetida = verificarClaveDeCiudad(latitudCiudad, longitudCiudad, arrCiudad);
-        }while(claveRepetida);
+        FileWriter escritorArchivo = new FileWriter(archivoInfoCiudades);
+        BufferedWriter bufferEscritura = new BufferedWriter(escritorArchivo);
+
+        for (int i = 0; i < 100; i++) {
+            nombreCiudad = generarNombreCiudadAleatorio();
+            poblacionCiudad = ThreadLocalRandom.current().nextInt(500, 3000000);
+            do {
+                latitudCiudad = ThreadLocalRandom.current().nextDouble(0,90);
+                longitudCiudad = ThreadLocalRandom.current().nextDouble(0,180);
+                claveRepetida = verificarClaveDeCiudad(latitudCiudad, longitudCiudad);
+            }while(claveRepetida);
+
+            bufferEscritura.write(nombreCiudad+"-"+poblacionCiudad+"*"+latitudCiudad+"º"+longitudCiudad+"\n");
+            
+        }
     }
     /* Metodo para generar nombre de Ciudad aleatorio */
     public static String generarNombreCiudadAleatorio(){
-        int nroAleatorio = 0;
+        int nroAleatorio = ThreadLocalRandom.current().nextInt(0,30);
         String nombreAleatorio = "";
         switch(nroAleatorio){
             case(0):
@@ -37,7 +48,24 @@ public class testCiudad {
             case(1):
                 nombreAleatorio = "Neuquén";
                 break;
-
+            case (2):
+                nombreAleatorio = "Villa Regina";
+                break;
+            case (3):
+                nombreAleatorio = "Fernadez Oro";
+                break;
+            case (4):
+                nombreAleatorio = "Allen";
+                break;
+            case (5):
+                nombreAleatorio = "Chichinales";
+                break;
+            case (6):
+                nombreAleatorio = "Cervantes";
+                break;
+            default:
+                System.out.println("Se produjo un error inesperado");
+                break;
         }
         return nombreAleatorio;
     }
@@ -67,8 +95,12 @@ public class testCiudad {
                 for (int i = 0; i < aux.length(); i++) {
                     if(aux.charAt(i) == '-'){
 
-                    }else if(aux.charAt(i) == '\n'){
+                    }else if(aux.charAt(i) == '*'){
     
+                    }else if(aux.charAt(i) == 'º'){
+                        
+                    }else if(aux.charAt(i) == '\n'){
+
                     }
                 }
             }

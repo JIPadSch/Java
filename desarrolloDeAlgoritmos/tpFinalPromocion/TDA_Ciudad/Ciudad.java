@@ -5,7 +5,7 @@ package desarrolloDeAlgoritmos.tpFinalPromocion.TDA_Ciudad;
  */
 public class Ciudad {
     /* ATRIBUTOS */
-    private String nombre;
+    private String nombre; //Se expresara siempre en MAYUSCULAS
     private int poblacion;
     //La combinacion de ambas hacen la clave principal
     private double latitud;
@@ -53,24 +53,31 @@ public class Ciudad {
     }
 
     /* PROPIOS DEL TIPO */
+    /* Metodo equals */
     public boolean equals(Ciudad otraCiudad){
         return ((this.latitud == otraCiudad.latitud) && (this.longitud == otraCiudad.longitud));
     }
-    public int compareTo(Ciudad otraCiudad){
+    /* Metodo compareTo (se basa en el abecedario) */
+    public int compareTo(String nombreOtraCiudad){
         int prioridad, i = 0;
         prioridad = 0; //Si los nombres son iguales, no tiene prioridad
         boolean  corte = false;
-        while(!corte && (i < this.nombre.length() && i < otraCiudad.nombre.length())){
+        while(!corte && (i < this.nombre.length() && i < nombreOtraCiudad.length())){
             //Comparamos el valor ASCII de los caracteres (del atributo "nombre") para saber a que objeto Ciudad darle prioridad al ordenar
-            if(this.nombre.charAt(i) > otraCiudad.nombre.charAt(i)){ //Si el valor de la palabra entrante es menor, entonces, la palabra que llama el metodo tiene prioridad
+            if(this.nombre.charAt(i) > nombreOtraCiudad.charAt(i)){ //Si el valor de la palabra entrante es menor, entonces, la Ciudad.nombre que llama el metodo tiene prioridad
                 prioridad = 1; 
                 corte = true;
-            }else if(this.nombre.charAt(i) < otraCiudad.nombre.charAt(i)){ //Si el valor de la palabra entrante es mayor, entonces, dicha palabra tiene prioridad
+            }else if(this.nombre.charAt(i) < nombreOtraCiudad.charAt(i)){ //Si el valor de la palabra entrante es mayor, entonces, dicha palabra tiene prioridad
                 prioridad = -1;
                 corte = true;
             } //Si ninguna de las condiciones se cumple, recorreremos la palabra hasta encontrar una diferencia o hasta la longitud
             i++; 
         }
         return prioridad;
+    }
+    /* Metodo clonar que clona un arreglo de ciudades */
+    public Ciudad clone(){
+        Ciudad nuevaCiudad = new Ciudad(this.nombre, this.poblacion, this.latitud, this.longitud);
+        return nuevaCiudad;
     }
 }

@@ -1,4 +1,4 @@
-//package ejemplos_InOut;
+package desarrolloDeAlgoritmos.tpFinalPromocion.Archivos_Materia;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
@@ -17,7 +17,7 @@ import java.util.Scanner;
  * https://docs.oracle.com/javase/7/docs/api/java/util/Scanner.html
  * @author jpinero
  */
-public class Ejemplo_3_Scanner {
+public class Ejemplo_2_Scanner {
     static final int CANTNUMEROS = 10;
     static final int MAX_VALOR = 1000000;
     static final String NOMBRE_ARCHIVO = "src/ejemplo_InOut/numeros.txt";

@@ -1,6 +1,7 @@
 package desarrolloDeAlgoritmos.tpFinalPromocion;
 import desarrolloDeAlgoritmos.tpFinalPromocion.TDA_Ciudad.*;
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 import java.io.*;
 /**
  *
@@ -10,26 +11,99 @@ public class testCiudad {
     public static void main(String[] args) {
         Ciudad[] arrCiudad = new Ciudad[100];
         String archivoInfoCiudades = "TDA_Ciudad/src/infoCiudades.txt";
+        generarTxtCiudades(archivoInfoCiudades);
+        leerGuardarCiudadDesdeTxtAUnArray(arrCiudad, archivoInfoCiudades);
+    }
+    /* Metodo para generar un archivo de Ciudades aleatorio */
+    public static void generarTxtCiudades(String archivoInfoCiudades, Ciudad[] arrCiudad){
+        boolean claveRepetida = false;
+
+        String nombreCiudad = generarNombreCiudadAleatorio();
+        int poblacionCiudad = ThreadLocalRandom.current().nextInt(500, 3000000);
+        do {
+            double latitudCiudad = ThreadLocalRandom.current().nextDouble(0,90);
+            double longitudCiudad = ThreadLocalRandom.current().nextDouble(0,180);
+            claveRepetida = verificarClaveDeCiudad(latitudCiudad, longitudCiudad, arrCiudad);
+        }while(claveRepetida);
+    }
+    /* Metodo para generar nombre de Ciudad aleatorio */
+    public static String generarNombreCiudadAleatorio(){
+        int nroAleatorio = 0;
+        String nombreAleatorio = "";
+        switch(nroAleatorio){
+            case(0):
+                nombreAleatorio = "General Roca";
+                break;
+            case(1):
+                nombreAleatorio = "Neuquén";
+                break;
+
+        }
+        return nombreAleatorio;
+    }
+    /* Modulo que verifica que la clave de Ciudad no este repetida */
+    public static boolean verificarClaveDeCiudad(double latitud, double longitud, Ciudad[] arrCiudad){
+        Ciudad ciudadAux = new Ciudad(latitud, longitud);
+        boolean yaExiste = false;
+        int i = 0;
+        while ((!yaExiste) && (arrCiudad[i] != null) && (i < arrCiudad.length)){
+            if (arrCiudad[i].equals(ciudadAux)){
+                yaExiste = true;
+            }else{
+                i++;
+            }
+        }
+        return yaExiste;
     }
     /* Metodo que sirve para leer un archivo y guarda la informacion en un arreglo */
-    public static void leerGuardarCiudadDesdeTxt(Ciudad[] arrCiudad, String archivoInfoCiudades){
+    public static void leerGuardarCiudadDesdeTxtAUnArray(Ciudad[] arrCiudad, String archivoInfoCiudades){
         String aux = "";
         try{
             FileReader lectorArchivo = new FileReader(archivoInfoCiudades);
             FileWriter escritorArchivo = new FileWriter(archivoInfoCiudades);
             BufferedReader bufferLectura = new BufferedReader(lectorArchivo);
             BufferedWriter bufferEscritura = new BufferedWriter(escritorArchivo);
-            while(aux != null){
-                aux = bufferLectura.readLine();
+            while((aux = bufferLectura.readLine()) != null){
                 for (int i = 0; i < aux.length(); i++) {
-                    //arrCiudad[i] = aux.split("/n");
+                    if(aux.charAt(i) == '-'){
+
+                    }else if(aux.charAt(i) == '\n'){
+    
+                    }
                 }
             }
-        }catch(Exception e){
-            System.out.println("Se producio un error inesperado");
+            //Cerramos los buffers una vez terminamos de usarlos
+            bufferLectura.close(); 
+            bufferEscritura.close();
+        //A continuacion manejo de distintos errores
+        }catch (FileNotFoundException fnfe){
+            System.err.println(fnfe.getMessage()+"\nNo se pudo encontrar el archivo");
+        }catch (IOException ioe){
+            System.err.println(ioe.getMessage()+"\nError leyendo o escribiendo el archivo");
+        }catch (Exception e){
+            System.err.println(e.getMessage()+"\nSe producio un error inesperado");
         }       
     }
-
+    /* Metodo para clonar un arreglo de Ciudades */
+    public static Ciudad[] clonarArrCiudad (Ciudad[] arrCiudad){
+        Ciudad[] arrClonCiudad = new Ciudad[100];
+        for (int i = 0; i < arrClonCiudad.length; i++) {
+            arrClonCiudad[i] = arrCiudad[i].clone();
+        }
+        return arrClonCiudad;
+    }
+    /* Metodo recursivo para generar un String de abreviatura de nombre */
+    public static String abreviaturaNombreRecursivo(String nombreCiudad, int pos){
+        String nombreAbreviado = "", vocales = "aeiouAEIOU";
+        if(pos < nombreAbreviado.length()){ //Entramos si no nos pasamos de la longitud
+            if(vocales.indexOf(nombreCiudad.charAt(pos)) > -1){ //Si la letra en pos, es vocal
+                nombreAbreviado = nombreCiudad.charAt(pos) + abreviaturaNombreRecursivo(nombreCiudad, (pos+1));
+            }else{
+                nombreAbreviado = abreviaturaNombreRecursivo(nombreCiudad, (pos+1));
+            }
+        }
+        return nombreAbreviado;
+    }
 }
 
 

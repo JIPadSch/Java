@@ -29,8 +29,8 @@ public class Ejemplo_1_InOut {
          * consola, quiten de la ruta de los archivos el "src/ejemplo_InOut/" porque va a fallar
          * la creacion y apertura de archivos al apuntar a rutas que no existan.
          */
-        String nombreArchivoEntrada = "src/ejemplo_InOut/entrada.txt";
-        String nombreArchivoSalida = "src/ejemplo_InOut/salida.txt";
+        String nombreArchivoEntrada = "Archivo_Materia/salida.txt";
+        String nombreArchivoSalida = "Archivo_Materia/salida.txt";
         //¿Que pasa si tratamos de leer un archivo que no existe?
         //nombreArchivoEntrada = "noexiste.txt";
 

@@ -1,9 +1,9 @@
-package desarrolloDeAlgoritmos.tp6MetodosOrdenamiento;
+package desarrolloDeAlgoritmos.tpFinalPromocion.TDA_Ciudad;
 /**
  *
  * @author JuanPadSch
  */
-public class metodosDeOrdenamiento {
+public class metodosDeOrdenamientoCiudad {
     /* Método de Ordenamiento Selección */
     public static void seleccionInts(int[] arrInt){
         int i, posMenor;

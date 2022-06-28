@@ -1,4 +1,4 @@
-package desarrolloDeAlgoritmos.tp6MetodosOrdenamiento;
+package libreriaJuanIPadSch;
 /**
  *
  * @author JuanPadSch

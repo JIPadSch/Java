@@ -48,7 +48,6 @@ public class ejercicios {
     public static int[] ordenarDosArrInts(int[] arrInt1, int[] arrInt2){
         int[] arrIntOrdenado = new int [(arrInt1.length + arrInt2.length)];
         int posArr1 = 0, posArr2 = 0, posArrOrd = 0;
-
         while (posArr1<arrInt1.length && posArr2<arrInt2.length){
             //Si el elemento del primer arreglo es menor o igual al elemento del segundo
             if(arrInt1[posArr1]<=arrInt2[posArr2]){ //Lo guardamos
@@ -67,8 +66,7 @@ public class ejercicios {
                     posArr2++;
                     posArrOrd++;
                 }
-            }else 
-            if(posArr2 >= arrInt2.length){ // Si nos pasamos de la longitud del segundo arreglo
+            }else if(posArr2 >= arrInt2.length){ // Si nos pasamos de la longitud del segundo arreglo
                 while (posArr1<arrInt1.length){ //Guardamos los elementos faltantes del primer arreglo
                     arrIntOrdenado[posArrOrd] = arrInt1[posArr1];
                     posArr1++;
@@ -86,7 +84,7 @@ public class ejercicios {
         for (i = 1; i < arrInt.length; i++) {
             aux = arrInt[i];
             j = i;
-            while(j > 0 && arrInt[j-1] < aux){
+            while(j > 0 && arrInt[j-1] > aux){
                 arrInt[j] = arrInt[j-1];
                 j--;
             }

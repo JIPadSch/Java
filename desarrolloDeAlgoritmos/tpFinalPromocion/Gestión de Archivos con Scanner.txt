@@ -1,0 +1,33 @@
+import java.io.*;
+public class archivo{
+   
+
+    public static void crearYEscribirArchivo()
+    {
+
+    	File f;
+    	f = new File("C:\\Users\\nbaeza\\Desktop\\miTexto.txt");
+
+    	//Escritura
+
+    	try{
+
+    		FileWriter w = new FileWriter(f);
+    		BufferedWriter bw = new BufferedWriter(w);
+    		PrintWriter wr = new PrintWriter(bw);  
+    		wr.write("Esta es una linea de codigo");//escribimos en el archivo
+    		wr.append(" - y aqui continua"); //concatenamos en el archivo sin borrar lo existente
+    		wr.append("\r\n"); //insertamos un salto de linea
+    		wr.append("continuamos escribiendo");
+    		wr.append("\r\n esta es una l�nea con un salto de l�nea");
+    		wr.append("\r\n ac� hay caracteres especiales #$%&!�=?� -1 +2 *3 /4");
+    		
+    		//ahora cerramos los flujos de canales de datos, al cerrarlos el archivo quedar� guardado con informaci�n escrita
+    		//de no hacerlo no se escribir� nada en el archivo
+    		wr.close();
+    		bw.close();
+    	}catch(IOException e){
+    		System.out.println("no encontr� este archivo" );
+    	};
+    }
+}

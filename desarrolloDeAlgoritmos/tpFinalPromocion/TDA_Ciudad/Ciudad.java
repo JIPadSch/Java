@@ -8,19 +8,19 @@ public class Ciudad {
     private String nombre; //Se expresara siempre en MAYUSCULAS
     private int poblacion;
     //La combinacion de ambas hacen la clave principal
-    private double latitud;
-    private double longitud;
+    private float latitud;
+    private float longitud;
 
     /* CONSTRUCTORES */
     /* Constructor vacio (solo clave principal) */
-    public Ciudad (double lati, double longi){
+    public Ciudad (float lati, float longi){
         nombre = "";
         poblacion = 0;
         latitud = lati;
         longitud = longi;
     }
     /* Constructor completo */
-    public Ciudad (String nom, int pob, double lati, double longi){
+    public Ciudad (String nom, int pob, float lati, float longi){
         nombre = nom;
         poblacion = pob;
         latitud = lati;

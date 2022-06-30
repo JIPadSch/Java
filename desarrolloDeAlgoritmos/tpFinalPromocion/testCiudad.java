@@ -16,30 +16,34 @@ public class testCiudad {
     }
     /* Metodo para generar un archivo de Ciudades aleatorio */
     public static void generarTxtCiudades(String archivoInfoCiudades){
-        boolean claveRepetida = false;
+        //boolean claveRepetida = false;
         String nombreCiudad = "";
         int poblacionCiudad = 0;
-        double latitudCiudad = 0, longitudCiudad = 0;
+        float latitudCiudad = 0, longitudCiudad = 0;
+        
+        try{
 
-        FileWriter escritorArchivo = new FileWriter(archivoInfoCiudades);
-        BufferedWriter bufferEscritura = new BufferedWriter(escritorArchivo);
+            FileWriter escritorArchivo = new FileWriter(archivoInfoCiudades);
+            BufferedWriter bufferEscritura = new BufferedWriter(escritorArchivo);
 
-        for (int i = 0; i < 100; i++) {
-            nombreCiudad = generarNombreCiudadAleatorio();
-            poblacionCiudad = ThreadLocalRandom.current().nextInt(500, 3000000);
-            do {
-                latitudCiudad = ThreadLocalRandom.current().nextDouble(0,90);
-                longitudCiudad = ThreadLocalRandom.current().nextDouble(0,180);
-                claveRepetida = verificarClaveDeCiudad(latitudCiudad, longitudCiudad);
-            }while(claveRepetida);
+            for (int i = 0; i < 100; i++) {
 
-            bufferEscritura.write(nombreCiudad+"-"+poblacionCiudad+"*"+latitudCiudad+"º"+longitudCiudad+"\n");
-            
+                nombreCiudad = generarNombreCiudadAleatorio();
+                poblacionCiudad = ThreadLocalRandom.current().nextInt(500, 3000000);
+                latitudCiudad = ThreadLocalRandom.current().nextFloat()*10;
+                longitudCiudad = ThreadLocalRandom.current().nextFloat()*10 + (ThreadLocalRandom.current().nextInt(0, 80));
+
+                bufferEscritura.write(nombreCiudad+";"+poblacionCiudad+";"+latitudCiudad+";"+longitudCiudad+"\n");
+            }
+            bufferEscritura.close(); //Cerramos el buffer
+        }catch (Exception e){
+            System.err.println(e.getMessage()+"ERROR INESPERADO");
         }
+        
     }
     /* Metodo para generar nombre de Ciudad aleatorio */
     public static String generarNombreCiudadAleatorio(){
-        int nroAleatorio = ThreadLocalRandom.current().nextInt(0,30);
+        int nroAleatorio = ThreadLocalRandom.current().nextInt(0,6);
         String nombreAleatorio = "";
         switch(nroAleatorio){
             case(0):
@@ -69,44 +73,23 @@ public class testCiudad {
         }
         return nombreAleatorio;
     }
-    /* Modulo que verifica que la clave de Ciudad no este repetida */
-    public static boolean verificarClaveDeCiudad(double latitud, double longitud, Ciudad[] arrCiudad){
-        Ciudad ciudadAux = new Ciudad(latitud, longitud);
-        boolean yaExiste = false;
-        int i = 0;
-        while ((!yaExiste) && (arrCiudad[i] != null) && (i < arrCiudad.length)){
-            if (arrCiudad[i].equals(ciudadAux)){
-                yaExiste = true;
-            }else{
-                i++;
-            }
-        }
-        return yaExiste;
-    }
+
     /* Metodo que sirve para leer un archivo y guarda la informacion en un arreglo */
     public static void leerGuardarCiudadDesdeTxtAUnArray(Ciudad[] arrCiudad, String archivoInfoCiudades){
-        String aux = "";
+        String linea = "";
         try{
             FileReader lectorArchivo = new FileReader(archivoInfoCiudades);
-            FileWriter escritorArchivo = new FileWriter(archivoInfoCiudades);
             BufferedReader bufferLectura = new BufferedReader(lectorArchivo);
-            BufferedWriter bufferEscritura = new BufferedWriter(escritorArchivo);
-            while((aux = bufferLectura.readLine()) != null){
-                for (int i = 0; i < aux.length(); i++) {
-                    if(aux.charAt(i) == '-'){
-
-                    }else if(aux.charAt(i) == '*'){
-    
-                    }else if(aux.charAt(i) == 'º'){
-                        
-                    }else if(aux.charAt(i) == '\n'){
-
-                    }
-                }
+            //FileWriter escritorArchivo = new FileWriter(archivoInfoCiudades);
+            //BufferedWriter bufferEscritura = new BufferedWriter(escritorArchivo);
+            int pos = 0;
+            while((linea = bufferLectura.readLine()) != null && pos < 100){
+                arrCiudad[pos] = generarObjetoCiudad(linea);
+                pos++;
             }
             //Cerramos los buffers una vez terminamos de usarlos
             bufferLectura.close(); 
-            bufferEscritura.close();
+            //bufferEscritura.close();
         //A continuacion manejo de distintos errores
         }catch (FileNotFoundException fnfe){
             System.err.println(fnfe.getMessage()+"\nNo se pudo encontrar el archivo");
@@ -115,6 +98,14 @@ public class testCiudad {
         }catch (Exception e){
             System.err.println(e.getMessage()+"\nSe producio un error inesperado");
         }       
+    }
+    public static Ciudad generarObjetoCiudad(String lineaLeida){
+        String[] ciudadEnStr = lineaLeida.split(";");
+        String nom = ciudadEnStr[0];
+        int pob = Integer.parseInt(ciudadEnStr[1]);
+        float lati = Float.parseFloat(ciudadEnStr[2]), longi = Float.parseFloat(ciudadEnStr[3]);
+        Ciudad nuevaCiudad = new Ciudad(nom, pob, lati, longi);
+        return nuevaCiudad;
     }
     /* Metodo para clonar un arreglo de Ciudades */
     public static Ciudad[] clonarArrCiudad (Ciudad[] arrCiudad){
@@ -178,3 +169,18 @@ public class testCiudad {
                 metodosDeOrdenamientoCiudad.seleccion(nuevoArrCiudadOrd);
                 break;
         } */
+
+            /* Modulo que verifica que la clave de Ciudad no este repetida */
+    /* public static boolean verificarClaveDeCiudad(float latitud, float longitud, Ciudad[] arrCiudad){
+        Ciudad ciudadAux = new Ciudad(latitud, longitud);
+        boolean yaExiste = false;
+        int i = 0;
+        while ((!yaExiste) && (arrCiudad[i] != null) && (i < arrCiudad.length)){
+            if (arrCiudad[i].equals(ciudadAux)){
+                yaExiste = true;
+            }else{
+                i++;
+            }
+        }
+        return yaExiste;
+    } */

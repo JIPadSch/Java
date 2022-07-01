@@ -9,20 +9,23 @@ import java.io.*;
 public class testCiudad {
     public static void main(String[] args) {
         Ciudad[] arrCiudad = new Ciudad[100];
-        String archivoInfoCiudades = "TDA_Ciudad/src/ciudades.txt";
+        String archivoInfoCiudades = "TDA_Ciudad/ciudades.txt";
         Scanner scan = new Scanner(System.in);
         int opcion = 0;
         //Llenamos el arreglo de Ciudades con la información del .txt
         leerGuardarCiudadDesdeTxtAUnArray(arrCiudad, archivoInfoCiudades);
-
+        //Inicio del loop del menu
         do{
             System.out.println("MENU");
             System.out.println("Elija una opción:");
             System.out.println("1) Ver el arreglo de Ciudades en su estado actual");
             System.out.println("2) Ordenar el arreglo de ciudades (eligirá como desea hacerlo)");
             System.out.println("3) Dada una posición del arreglo, se le mostrará el nombre de la ciudad abreviado");
-            System.out.println("4) Salir");
-        }while(opcion != 4);
+            System.out.println("4) Verifica si 2 Ciudades tienen el mismo numero (?");
+            System.out.println("5) Salir");
+            opcion = scan.nextInt();
+            menu(opcion, arrCiudad, scan);
+        }while(opcion != 5);
         //Cerramos el Scanner una vez finalizamos de usarlo
         scan.close();
     }
@@ -43,6 +46,9 @@ public class testCiudad {
                 System.out.println("El nombre abreviado de la ciudad: "+arrCiudad[num].getNombre()+"\nEs el siguiente: "+nombreAbreviado);
                 break;
             case 4:
+                System.out.println("PH");
+                break;
+            case 5:
                 System.out.println("Adiós!");
                 break;
             default:

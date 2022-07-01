@@ -60,7 +60,7 @@ public class Ciudad {
     /* Metodo compareTo (se basa en el abecedario) */
     public int compareTo(String nombreOtraCiudad){
         int prioridad, i = 0;
-        prioridad = 0; //Si los nombres son iguales, no tiene prioridad
+        prioridad = 0; //Si los nombres son iguales, no tiene ninguno prioridad
         boolean  corte = false;
         while(!corte && (i < this.nombre.length() && i < nombreOtraCiudad.length())){
             //Comparamos el valor ASCII de los caracteres (del atributo "nombre") para saber a que objeto Ciudad darle prioridad al ordenar
@@ -70,7 +70,8 @@ public class Ciudad {
             }else if(this.nombre.charAt(i) < nombreOtraCiudad.charAt(i)){ //Si el valor de la palabra entrante es mayor, entonces, dicha palabra tiene prioridad
                 prioridad = -1;
                 corte = true;
-            } //Si ninguna de las condiciones se cumple, recorreremos la palabra hasta encontrar una diferencia o hasta la longitud
+            } 
+            //Si ninguna de las condiciones se cumple, recorreremos la palabra hasta encontrar una diferencia o hasta la longitud
             i++; 
         }
         return prioridad;

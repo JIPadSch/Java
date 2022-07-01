@@ -10,12 +10,56 @@ public class testCiudad {
     public static void main(String[] args) {
         Ciudad[] arrCiudad = new Ciudad[100];
         String archivoInfoCiudades = "TDA_Ciudad/src/infoCiudades.txt";
-        generarTxtCiudades(archivoInfoCiudades);
+        Scanner scan = new Scanner(System.in);
+        int opcion = 0;
+
         leerGuardarCiudadDesdeTxtAUnArray(arrCiudad, archivoInfoCiudades);
+
+        do{
+            System.out.println("MENU");
+            System.out.println("Elija una opción:");
+            System.out.println("1) Ver el arreglo de Ciudades en su estado actual");
+            System.out.println("2) Ordenar el arreglo de ciudades (eligirá como desea hacerlo)");
+            System.out.println("3) Dada una posición del arreglo, se le mostrará el nombre de la ciudad abreviado");
+            System.out.println("4) Salir");
+        }while(opcion != 4);
+
+        scan.close();
     }
     /* MENU */
-    public static void menu(int opcion, Ciudad[] arrCiudad){
+    public static void menu(int opcion, Ciudad[] arrCiudad, Scanner scan){
+        int num = 0; //Variable utilizada en el menu para
+        switch(opcion){
+            case 1:
+                mostrarArregloCiudades(arrCiudad);
+                break;
+            case 2:
+                String forma, tipo; //Forma = (ascendente, descendiente); Tipo = (Seleccion, )
+                break;
+            case 3:
+                num = elegirPosArregloValida(scan);
+                num--; //Reducimos en uno para que este dentro del arreglo (que sea entre 1 y 100 es para el usuario)
+                String nombreAbreviado = abreviaturaNombreRecursivo(arrCiudad[num].getNombre(), 0);
+                System.out.println("El nombre abreviado de la ciudad: "+arrCiudad[num].getNombre()+"\nEs el siguiente: "+nombreAbreviado);
+                break;
 
+
+        }
+
+    }
+    /* Metodo para elegir una posicion del arreglo valida */
+    public static int elegirPosArregloValida(Scanner scan){
+        int num = 0;
+        do{
+            try{
+                System.out.print("Elija una posicion del arreglo (de 1 a 100): ");
+                num = scan.nextInt();
+            }catch (Exception e){
+                System.err.println(e.getMessage()+"ERROR: Eso no es un numero");
+            }
+            if (num < 1 || num > 100) System.out.println("Ese numero no esta entre el 1 y el 100");
+        }while (num < 1 && num > 100);
+        return num;
     }
     /* Metodo para generar un archivo de Ciudades aleatorio */
     public static void generarTxtCiudades(String archivoInfoCiudades){

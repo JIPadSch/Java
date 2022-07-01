@@ -9,10 +9,10 @@ import java.io.*;
 public class testCiudad {
     public static void main(String[] args) {
         Ciudad[] arrCiudad = new Ciudad[100];
-        String archivoInfoCiudades = "TDA_Ciudad/src/infoCiudades.txt";
+        String archivoInfoCiudades = "TDA_Ciudad/src/ciudades.txt";
         Scanner scan = new Scanner(System.in);
         int opcion = 0;
-
+        //Llenamos el arreglo de Ciudades con la información del .txt
         leerGuardarCiudadDesdeTxtAUnArray(arrCiudad, archivoInfoCiudades);
 
         do{
@@ -23,12 +23,12 @@ public class testCiudad {
             System.out.println("3) Dada una posición del arreglo, se le mostrará el nombre de la ciudad abreviado");
             System.out.println("4) Salir");
         }while(opcion != 4);
-
+        //Cerramos el Scanner una vez finalizamos de usarlo
         scan.close();
     }
     /* MENU */
     public static void menu(int opcion, Ciudad[] arrCiudad, Scanner scan){
-        int num = 0; //Variable utilizada en el menu para
+        int num = 0; //Variable utilizada en el metodo de menu con diversos usos
         switch(opcion){
             case 1:
                 mostrarArregloCiudades(arrCiudad);
@@ -42,10 +42,19 @@ public class testCiudad {
                 String nombreAbreviado = abreviaturaNombreRecursivo(arrCiudad[num].getNombre(), 0);
                 System.out.println("El nombre abreviado de la ciudad: "+arrCiudad[num].getNombre()+"\nEs el siguiente: "+nombreAbreviado);
                 break;
-
-
+            case 4:
+                System.out.println("Adiós!");
+                break;
+            default:
+                System.out.println("Opción inválida: Volviendo al menú");
+                break;
         }
-
+    }
+    /* Metodo para mostrar un arreglo de Ciudades */
+    public static void mostrarArregloCiudades(Ciudad[] arrCiudad){
+        for (int i = 0; i < arrCiudad.length; i++) {
+            System.out.println(arrCiudad[i].toString());
+        }
     }
     /* Metodo para elegir una posicion del arreglo valida */
     public static int elegirPosArregloValida(Scanner scan){
@@ -60,65 +69,6 @@ public class testCiudad {
             if (num < 1 || num > 100) System.out.println("Ese numero no esta entre el 1 y el 100");
         }while (num < 1 && num > 100);
         return num;
-    }
-    /* Metodo para generar un archivo de Ciudades aleatorio */
-    public static void generarTxtCiudades(String archivoInfoCiudades){
-        //boolean claveRepetida = false;
-        String nombreCiudad = "";
-        int poblacionCiudad = 0;
-        float latitudCiudad = 0, longitudCiudad = 0;
-        
-        try{
-
-            FileWriter escritorArchivo = new FileWriter(archivoInfoCiudades);
-            BufferedWriter bufferEscritura = new BufferedWriter(escritorArchivo);
-
-            for (int i = 0; i < 100; i++) {
-
-                nombreCiudad = generarNombreCiudadAleatorio();
-                poblacionCiudad = ThreadLocalRandom.current().nextInt(500, 3000000);
-                latitudCiudad = ThreadLocalRandom.current().nextFloat()*10;
-                longitudCiudad = ThreadLocalRandom.current().nextFloat()*10 + (ThreadLocalRandom.current().nextInt(0, 80));
-
-                bufferEscritura.write(nombreCiudad+";"+poblacionCiudad+";"+latitudCiudad+";"+longitudCiudad+"\n");
-            }
-            bufferEscritura.close(); //Cerramos el buffer
-        }catch (Exception e){
-            System.err.println(e.getMessage()+"ERROR INESPERADO");
-        }
-        
-    }
-    /* Metodo para generar nombre de Ciudad aleatorio */
-    public static String generarNombreCiudadAleatorio(){
-        int nroAleatorio = ThreadLocalRandom.current().nextInt(0,6);
-        String nombreAleatorio = "";
-        switch(nroAleatorio){
-            case(0):
-                nombreAleatorio = "General Roca";
-                break;
-            case(1):
-                nombreAleatorio = "Neuquén";
-                break;
-            case (2):
-                nombreAleatorio = "Villa Regina";
-                break;
-            case (3):
-                nombreAleatorio = "Fernadez Oro";
-                break;
-            case (4):
-                nombreAleatorio = "Allen";
-                break;
-            case (5):
-                nombreAleatorio = "Chichinales";
-                break;
-            case (6):
-                nombreAleatorio = "Cervantes";
-                break;
-            default:
-                System.out.println("Se produjo un error inesperado");
-                break;
-        }
-        return nombreAleatorio;
     }
     /* Metodo que sirve para leer un archivo y guarda la informacion en un arreglo */
     public static void leerGuardarCiudadDesdeTxtAUnArray(Ciudad[] arrCiudad, String archivoInfoCiudades){
@@ -174,7 +124,15 @@ public class testCiudad {
 }
 
 
-    /* SECCION DE CODIGO OBSOLETO */
+    /* SECCION DE CODIGO OBSOLETO (IGNORAR, NO FORMA PARTE DEL TP FINAL/COLOQUIO */
+    /* 
+    *  En un principio iba a hacer que se pudiera elegir cualquier metodo, 
+    *  hasta que me di cuenta que solo debia hacer uno. Además en un momento
+    *  tuve la idea de generar la info del txt de manera aleatoria, pero cuando
+    *  mis compañeros pasaron una lista (en txt) ya unica de toda la info de ciudades
+    *  decidi dejar esa idea de lado. Asi que aca se puede ver todo ese código
+    *  (completo e incompleto) en la parte de abajo
+    */
 
     /* Metodo utilizado para elegir con que metodo desea el usuario ordenar un arreglo */
     /* public static char eleccionDeMetodo(){
@@ -227,4 +185,65 @@ public class testCiudad {
             }
         }
         return yaExiste;
+    } */
+
+    /* Metodo para generar un archivo de Ciudades aleatorio */
+    /* public static void generarTxtCiudades(String archivoInfoCiudades){
+        //boolean claveRepetida = false;
+        String nombreCiudad = "";
+        int poblacionCiudad = 0;
+        float latitudCiudad = 0, longitudCiudad = 0;
+        
+        try{
+
+            FileWriter escritorArchivo = new FileWriter(archivoInfoCiudades);
+            BufferedWriter bufferEscritura = new BufferedWriter(escritorArchivo);
+
+            for (int i = 0; i < 100; i++) {
+
+                nombreCiudad = generarNombreCiudadAleatorio();
+                poblacionCiudad = ThreadLocalRandom.current().nextInt(500, 3000000);
+                latitudCiudad = ThreadLocalRandom.current().nextFloat()*10;
+                longitudCiudad = ThreadLocalRandom.current().nextFloat()*10 + (ThreadLocalRandom.current().nextInt(0, 80));
+
+                bufferEscritura.write(nombreCiudad+";"+poblacionCiudad+";"+latitudCiudad+";"+longitudCiudad+"\n");
+            }
+            bufferEscritura.close(); //Cerramos el buffer
+        }catch (Exception e){
+            System.err.println(e.getMessage()+"ERROR INESPERADO");
+        }
+        
+    } */
+
+        /* Metodo para generar nombre de Ciudad aleatorio */
+    /* public static String generarNombreCiudadAleatorio(){
+        int nroAleatorio = ThreadLocalRandom.current().nextInt(0,6);
+        String nombreAleatorio = "";
+        switch(nroAleatorio){
+            case(0):
+                nombreAleatorio = "General Roca";
+                break;
+            case(1):
+                nombreAleatorio = "Neuquén";
+                break;
+            case (2):
+                nombreAleatorio = "Villa Regina";
+                break;
+            case (3):
+                nombreAleatorio = "Fernadez Oro";
+                break;
+            case (4):
+                nombreAleatorio = "Allen";
+                break;
+            case (5):
+                nombreAleatorio = "Chichinales";
+                break;
+            case (6):
+                nombreAleatorio = "Cervantes";
+                break;
+            default:
+                System.out.println("Se produjo un error inesperado");
+                break;
+        }
+        return nombreAleatorio;
     } */

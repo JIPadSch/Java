@@ -41,7 +41,7 @@ public class Ciudad {
         return longitud;
     }
     public String toString(){
-        return "Nombre: "+nombre+"/nCantidad de población: "+poblacion+"/nLatitud: "+latitud+"/nLongitud: "+longitud;
+        return "Nombre: "+nombre+"\nCantidad de población: "+poblacion+"\nLatitud: "+latitud+"\nLongitud: "+longitud;
     }
 
     /* METODOS MODIFICADORES */

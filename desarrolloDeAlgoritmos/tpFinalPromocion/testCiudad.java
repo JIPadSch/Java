@@ -9,7 +9,7 @@ import java.io.*;
 public class testCiudad {
     public static void main(String[] args) {
         Ciudad[] arrCiudad = new Ciudad[100];
-        String archivoInfoCiudades = "TDA_Ciudad/ciudades.txt";
+        String archivoInfoCiudades = "R:/Programación/gitHub/Java/desarrolloDeAlgoritmos/tpFinalPromocion/TDA_Ciudad/src/ciudades.txt";
         Scanner scan = new Scanner(System.in);
         int opcion = 0;
         //Llenamos el arreglo de Ciudades con la información del .txt
@@ -21,7 +21,7 @@ public class testCiudad {
             System.out.println("1) Ver el arreglo de Ciudades en su estado actual");
             System.out.println("2) Ordenar el arreglo de ciudades (eligirá como desea hacerlo)");
             System.out.println("3) Dada una posición del arreglo, se le mostrará el nombre de la ciudad abreviado");
-            System.out.println("4) Verifica si 2 Ciudades tienen el mismo numero (?");
+            System.out.println("4) Verifica si 2 Ciudades tienen 2 letras iguales");
             System.out.println("5) Salir");
             opcion = scan.nextInt();
             menu(opcion, arrCiudad, scan);
@@ -31,7 +31,7 @@ public class testCiudad {
     }
     /* MENU */
     public static void menu(int opcion, Ciudad[] arrCiudad, Scanner scan){
-        int num = 0; //Variable utilizada en el metodo de menu con diversos usos
+        int num = 0, num2 = 0; //Variables utilizada en el metodo de menu con diversos usos
         switch(opcion){
             case 1:
                 mostrarArregloCiudades(arrCiudad);
@@ -46,7 +46,13 @@ public class testCiudad {
                 System.out.println("El nombre abreviado de la ciudad: "+arrCiudad[num].getNombre()+"\nEs el siguiente: "+nombreAbreviado);
                 break;
             case 4:
-                System.out.println("PH");
+                System.out.println("Elija la posición de la 1ra Ciudad para compararla con la 2da:");    
+                num = elegirPosArregloValida(scan);
+                System.out.println("Elija la posición de la 2da Ciudad para compararla con la 1ra:");
+                num2 = elegirPosArregloValida(scan);
+                boolean tienenDosLetrasIguales = nombresTienenDosLetrasIguales(arrCiudad[num].getNombre(),arrCiudad[num2].getNombre());
+                System.out.println("Se comparó el nombre "+arrCiudad[num].getNombre()+" con "+arrCiudad[num2].getNombre());
+                System.out.println("¿Tenian dos letras iguales?"+(tienenDosLetrasIguales?"SI":"NO"));
                 break;
             case 5:
                 System.out.println("Adiós!");
@@ -59,6 +65,7 @@ public class testCiudad {
     /* Metodo para mostrar un arreglo de Ciudades */
     public static void mostrarArregloCiudades(Ciudad[] arrCiudad){
         for (int i = 0; i < arrCiudad.length; i++) {
+            System.out.println("CIUDAD EN POSICIÓN "+(i+1)+":");
             System.out.println(arrCiudad[i].toString());
         }
     }
@@ -118,7 +125,7 @@ public class testCiudad {
     /* Metodo recursivo para generar un String de abreviatura de nombre */
     public static String abreviaturaNombreRecursivo(String nombreCiudad, int pos){
         String nombreAbreviado = "", vocales = "aeiouAEIOU";
-        if(pos < nombreAbreviado.length()){ //Entramos si no nos pasamos de la longitud
+        if(pos < nombreCiudad.length()){ //Entramos si no nos pasamos de la longitud
             if(vocales.indexOf(nombreCiudad.charAt(pos)) > -1){ //Si la letra en pos, es vocal
                 nombreAbreviado = abreviaturaNombreRecursivo(nombreCiudad, (pos+1));
             }else if (nombreCiudad.charAt(pos) != ' '){ //Si la letra es vocal
@@ -126,6 +133,24 @@ public class testCiudad {
             }
         }
         return nombreAbreviado;
+    }
+    /* Metodo que dado dos nombres de Ciudades verifica si tienen 2 letras iguales */
+    public static boolean nombresTienenDosLetrasIguales(String nomC1, String nomC2){
+        boolean tienenDosLetrasIguales = false;
+        int i = 0, cantLetrasIguales = 0;
+        //Condiciones de corte: Tener 2 o más letras iguales, o llegar a la longitud de alguno de los 2 nombres
+        while(!tienenDosLetrasIguales && (i < nomC1.length() && i < nomC2.length())){
+            if(cantLetrasIguales >= 2){ //Si la cantidad de letras iguales es mayor o igual a 2, cortamos
+                tienenDosLetrasIguales = true;
+            }else if(nomC1.charAt(i) == nomC2.charAt(i)){ //Comparamos el valor ASCII de los char en i
+                //Si son iguales, sumamos en uno a cantLetrasIguales y aumentamos el iterador
+                cantLetrasIguales++;
+                i++;
+            }else{ //Si nada se cumple, aumentamos el iterador
+                i++;
+            }
+        }
+        return tienenDosLetrasIguales;
     }
 }
 

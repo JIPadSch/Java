@@ -1,7 +1,5 @@
 package desarrolloDeAlgoritmos.tpFinalPromocion;
 import desarrolloDeAlgoritmos.tpFinalPromocion.src.*;
-import libreriaJuanIPadSch.arreglosBidi;
-
 import java.util.*;
 import java.io.*;
 /**

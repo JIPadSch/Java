@@ -4,6 +4,7 @@ package desarrolloDeAlgoritmos.tpFinalPromocion.src;
  * @author JuanPadSch
  */
 public class Ciudad {
+    /* PUNTO 1 */
     /* ATRIBUTOS */
     private String nombre; //Se expresara siempre en MAYUSCULAS
     private int poblacion;

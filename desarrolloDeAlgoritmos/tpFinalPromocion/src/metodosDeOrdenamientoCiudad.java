@@ -5,6 +5,7 @@ package desarrolloDeAlgoritmos.tpFinalPromocion.src;
  * @author JuanPadSch
  */
 public class metodosDeOrdenamientoCiudad {
+    /* PUNTOS 3 Y 5 */
     /* ME TOCO EL METODO DE SELECCION (1646 % 3 = 2) */
 
     /* MENOR A MAYOR (ASCENDENTE) */

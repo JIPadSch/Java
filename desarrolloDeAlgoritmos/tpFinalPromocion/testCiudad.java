@@ -7,6 +7,10 @@ import java.io.*;
  * @author JuanPadSch
  */
 public class testCiudad {
+    /* 
+     *  Algoritmo del TP Final y Promocion de Desarrollo de Algoritmos:
+     *  Los puntos a desarrollar se pueden encontrar en el PDF "TP Final y de Promocion"
+     */
     public static void main(String[] args) {
         Ciudad[] arrCiudad = new Ciudad[100];
         String archivoInfoCiudades = "R:/Programación/gitHub/Java/desarrolloDeAlgoritmos/tpFinalPromocion/src/ciudades.txt";
@@ -109,7 +113,7 @@ public class testCiudad {
             System.out.println(arrCiudad[i].toStringNombre());
         }
     }
-    /* Metodo para elegir una posicion del arreglo valida */
+    /* Modulo para elegir una posicion del arreglo valida (utilizado en el metodo menu() en los case 3 y 4) */
     public static int elegirPosArregloValida(Scanner scan){
         int num = 0;
         do{
@@ -123,7 +127,7 @@ public class testCiudad {
         }while (num < 1 && num > 100);
         return num;
     }
-    /* Metodo que sirve para leer un archivo y guarda la informacion en un arreglo */
+    /* Metodo que sirve para leer un archivo y guarda la informacion en un arreglo (PUNTO 2) */
     public static void leerGuardarCiudadDesdeTxtAUnArray(Ciudad[] arrCiudad, String archivoInfoCiudades){
         String linea = "";
         try{
@@ -145,7 +149,7 @@ public class testCiudad {
             System.err.println(e.getMessage()+"\nSe producio un error inesperado");
         }       
     }
-    /* Metodo que genera una ciudad dado un String leido del txt */
+    /* Metodo que genera una ciudad dado un String leido del txt (PUNTO 2) */
     public static Ciudad generarObjetoCiudad(String lineaLeida){
         String[] ciudadEnStr = lineaLeida.split(";");
         String nom = ciudadEnStr[0];
@@ -154,7 +158,7 @@ public class testCiudad {
         Ciudad nuevaCiudad = new Ciudad(nom, pob, lati, longi);
         return nuevaCiudad;
     }
-    /* Metodo para clonar un arreglo de Ciudades */
+    /* Metodo para clonar un arreglo de Ciudades (PUNTO 3) */
     public static Ciudad[] copiarArrCiudad (Ciudad[] arrCiudad){
         Ciudad[] arrCopiaCiudad = new Ciudad[100];
         for (int i = 0; i < arrCopiaCiudad.length; i++) {
@@ -162,7 +166,7 @@ public class testCiudad {
         }
         return arrCopiaCiudad;
     }
-    /* Metodo recursivo para generar un String de abreviatura de nombre */
+    /* Metodo recursivo para generar un String de abreviatura de nombre (PUNTO 4) */
     public static String abreviaturaNombreRecursivo(String nombreCiudad, int pos){
         String nombreAbreviado = "", vocales = "aeiouAEIOU";
         if(pos < nombreCiudad.length()){ //Entramos si no nos pasamos de la longitud
@@ -174,7 +178,7 @@ public class testCiudad {
         }
         return nombreAbreviado;
     }
-    /* Metodo que dado dos nombres de Ciudades verifica si tienen 2 letras iguales */
+    /* Metodo que dado dos nombres de Ciudades verifica si tienen 2 letras iguales (PUNTO 5) */
     public static boolean nombresTienenDosLetrasIguales(String nomC1, String nomC2){
         boolean tienenDosLetrasIguales = false;
         int i = 0, cantLetrasIguales = 0;
@@ -192,7 +196,7 @@ public class testCiudad {
         }
         return tienenDosLetrasIguales;
     }
-    /* Metodo para elegir entre Opcion 1 o 2 */
+    /* Modulo para elegir entre Opcion 1 o 2 (utilizado en el metodo menu() en los case 1, 2 y 4) */
     public static int seleccionUnoDos(Scanner scan){
         int eleccion = 0;
         do{
@@ -206,7 +210,7 @@ public class testCiudad {
         }while(eleccion != 1 && eleccion != 2);
         return eleccion;
     }
-    /* Modulo que limpia el case 2 del menu. Toma los datos conseguidos y ordena arrCiudadAux */
+    /* Modulo que limpia el case 2 del metodo menu(). Toma los datos conseguidos y ordena arrCiudadAux (PUNTO 3) */
     public static void ordenamientoArregloAux(Ciudad[] arrCiudadAux, int num, int num2){
         if(num == 1){ //ASCENDENTE
             System.out.println("Ordenando de manera DESCENDENTE");

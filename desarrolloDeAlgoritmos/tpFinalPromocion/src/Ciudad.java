@@ -1,4 +1,4 @@
-package desarrolloDeAlgoritmos.tpFinalPromocion.TDA_Ciudad;
+package desarrolloDeAlgoritmos.tpFinalPromocion.src;
 /**
  *
  * @author JuanPadSch
@@ -42,6 +42,9 @@ public class Ciudad {
     }
     public String toString(){
         return "Nombre: "+nombre+"\nCantidad de población: "+poblacion+"\nLatitud: "+latitud+"\nLongitud: "+longitud;
+    }
+    public String toStringNombre(){
+        return "Nombre: "+nombre;
     }
 
     /* METODOS MODIFICADORES */

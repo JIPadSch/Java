@@ -1,5 +1,7 @@
 package desarrolloDeAlgoritmos.tpFinalPromocion;
-import desarrolloDeAlgoritmos.tpFinalPromocion.TDA_Ciudad.*;
+import desarrolloDeAlgoritmos.tpFinalPromocion.src.*;
+import libreriaJuanIPadSch.arreglosBidi;
+
 import java.util.*;
 import java.io.*;
 /**
@@ -9,7 +11,7 @@ import java.io.*;
 public class testCiudad {
     public static void main(String[] args) {
         Ciudad[] arrCiudad = new Ciudad[100];
-        String archivoInfoCiudades = "R:/Programación/gitHub/Java/desarrolloDeAlgoritmos/tpFinalPromocion/TDA_Ciudad/src/ciudades.txt";
+        String archivoInfoCiudades = "R:/Programación/gitHub/Java/desarrolloDeAlgoritmos/tpFinalPromocion/src/ciudades.txt";
         Scanner scan = new Scanner(System.in);
         int opcion = 0;
         //Llenamos el arreglo de Ciudades con la información del .txt
@@ -19,7 +21,7 @@ public class testCiudad {
             System.out.println("MENU");
             System.out.println("Elija una opción:");
             System.out.println("1) Ver el arreglo de Ciudades en su estado actual");
-            System.out.println("2) Ordenar el arreglo de ciudades (eligirá como desea hacerlo)");
+            System.out.println("2) Copia y ordena el arreglo de ciudades (eligirá como desea hacerlo)");
             System.out.println("3) Dada una posición del arreglo, se le mostrará el nombre de la ciudad abreviado");
             System.out.println("4) Verifica si 2 Ciudades tienen 2 letras iguales");
             System.out.println("5) Salir");
@@ -37,7 +39,18 @@ public class testCiudad {
                 mostrarArregloCiudades(arrCiudad);
                 break;
             case 2:
-                String forma, tipo; //Forma = (ascendente, descendiente); Tipo = (Seleccion, )
+                Ciudad[] arrCiudadAux = copiarArrCiudad(arrCiudad);
+                //Forma: 1)Descendente 2)Ascendente
+                System.out.println("Si desea que sea de forma DESCENDENTE elija 1");
+                System.out.println("Si desea que sea de forma ASCENDENTE elija 2");
+                num = seleccionUnoDos(scan);
+                //Tipo: 1)Seleccion 2)Quicksort)
+                System.out.println("Si desea hacerlo con el metodo de SELECCION elija 1");
+                System.out.println("Si desea hacerlo con el metodo QUICKSORT elija 2");
+                num2 = seleccionUnoDos(scan);
+                ordenamientoArregloAux(arrCiudadAux,num,num2);
+                System.out.println("Asi quedo el arreglo ordenado:");
+                mostrarArregloCiudades(arrCiudadAux);
                 break;
             case 3:
                 num = elegirPosArregloValida(scan);
@@ -66,7 +79,7 @@ public class testCiudad {
     public static void mostrarArregloCiudades(Ciudad[] arrCiudad){
         for (int i = 0; i < arrCiudad.length; i++) {
             System.out.println("CIUDAD EN POSICIÓN "+(i+1)+":");
-            System.out.println(arrCiudad[i].toString());
+            System.out.println(arrCiudad[i].toStringNombre());
         }
     }
     /* Metodo para elegir una posicion del arreglo valida */
@@ -126,9 +139,9 @@ public class testCiudad {
     public static String abreviaturaNombreRecursivo(String nombreCiudad, int pos){
         String nombreAbreviado = "", vocales = "aeiouAEIOU";
         if(pos < nombreCiudad.length()){ //Entramos si no nos pasamos de la longitud
-            if(vocales.indexOf(nombreCiudad.charAt(pos)) > -1){ //Si la letra en pos, es vocal
+            if(vocales.indexOf(nombreCiudad.charAt(pos)) > -1 || nombreCiudad.charAt(pos) == ' '){ //Si la letra en pos, es vocal
                 nombreAbreviado = abreviaturaNombreRecursivo(nombreCiudad, (pos+1));
-            }else if (nombreCiudad.charAt(pos) != ' '){ //Si la letra es vocal
+            }else{ //Si la letra NO es vocal NI espacio
                 nombreAbreviado = nombreCiudad.charAt(pos) + abreviaturaNombreRecursivo(nombreCiudad, (pos+1));
             }
         }
@@ -139,11 +152,11 @@ public class testCiudad {
         boolean tienenDosLetrasIguales = false;
         int i = 0, cantLetrasIguales = 0;
         //Condiciones de corte: Tener 2 o más letras iguales, o llegar a la longitud de alguno de los 2 nombres
-        while(!tienenDosLetrasIguales && (i < nomC1.length() && i < nomC2.length())){
+        while(!tienenDosLetrasIguales && i < nomC1.length()){
             if(cantLetrasIguales >= 2){ //Si la cantidad de letras iguales es mayor o igual a 2, cortamos
                 tienenDosLetrasIguales = true;
-            }else if(nomC1.charAt(i) == nomC2.charAt(i)){ //Comparamos el valor ASCII de los char en i
-                //Si son iguales, sumamos en uno a cantLetrasIguales y aumentamos el iterador
+            }else if(nomC2.indexOf(nomC1.charAt(i)) > -1){
+                //Si el char en i esta en el String, sumamos en uno a cantLetrasIguales y aumentamos el iterador
                 cantLetrasIguales++;
                 i++;
             }else{ //Si nada se cumple, aumentamos el iterador
@@ -151,6 +164,42 @@ public class testCiudad {
             }
         }
         return tienenDosLetrasIguales;
+    }
+    /* Metodo para elegir entre Opcion 1 o 2 */
+    public static int seleccionUnoDos(Scanner scan){
+        int eleccion = 0;
+        do{
+            try{
+                System.out.println("Elija 1 o 2:");
+                eleccion = scan.nextInt();
+            }catch (Exception e){
+                System.err.println(e.getMessage()+" ESO NO ES UN NUMERO");
+            }
+            if(eleccion != 1 && eleccion != 2) System.out.println("ERROR: El numero no es ni 1 ni 2");
+        }while(eleccion != 1 && eleccion != 2);
+        return eleccion;
+    }
+    /* Modulo que limpia el case 2 del menu. Toma los datos conseguidos y ordena arrCiudadAux */
+    public static void ordenamientoArregloAux(Ciudad[] arrCiudadAux, int num, int num2){
+        if(num == 1){ //ASCENDENTE
+            System.out.println("Ordenando de manera DESCENDENTE");
+            if(num2 == 1){//SELECCION
+                System.out.println("Con el metodo de SELECCION");
+                metodosDeOrdenamientoCiudad.seleccionCiudadDescendente(arrCiudadAux);
+            }else{//QUICKSORT
+                System.out.println("Con el metodo QUICKSORT");
+                metodosDeOrdenamientoCiudad.quickSortDescendente(arrCiudadAux, 0, arrCiudadAux.length);
+            }
+        }else{ //DESCENDENTE
+            System.out.println("Ordenando de manera ASCENDENTE");
+            if(num2 == 1){//SELECCION
+                System.out.println("Con el metodo de SELECCION");
+                metodosDeOrdenamientoCiudad.seleccionCiudadAscendente(arrCiudadAux);
+            }else{//QUICKSORT
+                System.out.println("Con el metodo QUICKSORT");
+                metodosDeOrdenamientoCiudad.quickSortAscendente(arrCiudadAux, 0, arrCiudadAux.length);
+            }
+        }
     }
 }
 

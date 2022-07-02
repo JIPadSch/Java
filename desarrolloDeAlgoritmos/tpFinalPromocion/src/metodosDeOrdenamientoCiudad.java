@@ -1,5 +1,5 @@
-package desarrolloDeAlgoritmos.tpFinalPromocion.TDA_Ciudad.src;
-import desarrolloDeAlgoritmos.tpFinalPromocion.TDA_Ciudad.Ciudad;
+package desarrolloDeAlgoritmos.tpFinalPromocion.src;
+
 /**
  *
  * @author JuanPadSch
@@ -9,62 +9,62 @@ public class metodosDeOrdenamientoCiudad {
 
     /* MENOR A MAYOR (ASCENDENTE) */
     /* Método de Ordenamiento Selección Ascendente */
-    public static void seleccionCiudadAscendente(Ciudad[] arrCiudad){
-        int i, posMenor;
+    public static void seleccionCiudadDescendente(Ciudad[] arrCiudad){
+        int i, posMayor;
         
         for (i = 0; i < arrCiudad.length; i++) {
-            posMenor = buscarMenor(i,arrCiudad);
-            if(arrCiudad[posMenor].compareTo(arrCiudad[i].getNombre()) > 0){
+            posMayor = buscarMayor(i,arrCiudad);
+            if(arrCiudad[posMayor].compareTo(arrCiudad[i].getNombre()) > 0){
                 //O sea, que si la palabra en pos menor tiene prioridad realizamos el intercambio
-                intercambioSeleccionCiudad(i, posMenor, arrCiudad);
+                intercambioSeleccionCiudad(i, posMayor, arrCiudad);
             }
         }
         
     }
     /* Módulo que busca el menor del Método Selección */
-    private static int buscarMenor(int i, Ciudad[] arrCiudad){
-        String menor = arrCiudad[i].getNombre();
-        int posMenor = i;
-
-        for (i=i; i < arrCiudad.length; i++) {
-            if(arrCiudad[posMenor].compareTo(arrCiudad[i].getNombre()) < 0){
-                //Si la palabra en "i" es menor a la que tenemos guardada, cambiamos el menor
-                menor = arrCiudad[i].getNombre();
-                posMenor = i;
-            }            
-        }
-
-        return posMenor;
-    }
-
-    /* MAYOR A MENOR (DESCENDENTE) */
-    /* Metodo de Ordenamiento Selección Descendente */
-    public static void seleccionCiudadDescendente(Ciudad[] arrCiudad){
-        int i, posMayor;
-
-        for (i = 0; i < arrCiudad.length; i++) {
-            posMayor = buscarMayor(i,arrCiudad);
-            if(arrCiudad[posMayor].compareTo(arrCiudad[i].getNombre()) > 0){
-                //O sea, que si la palabra en pos mayor tiene prioridad realizamos el intercambio
-                intercambioSeleccionCiudad(i, posMayor, arrCiudad);
-            }
-        }
-
-    }
-    /* Módulo que busca el mayor del Método Selección */
     private static int buscarMayor(int i, Ciudad[] arrCiudad){
         String mayor = arrCiudad[i].getNombre();
         int posMayor = i;
 
         for (i=i; i < arrCiudad.length; i++) {
-            if(arrCiudad[posMayor].compareTo(arrCiudad[i].getNombre()) > 0){
+            if(arrCiudad[posMayor].compareTo(arrCiudad[i].getNombre()) < 0){
                 //Si la palabra en "i" es menor a la que tenemos guardada, cambiamos el menor
                 mayor = arrCiudad[i].getNombre();
                 posMayor = i;
-            }
+            }            
         }
 
         return posMayor;
+    }
+
+    /* MAYOR A MENOR (DESCENDENTE) */
+    /* Metodo de Ordenamiento Selección Descendente */
+    public static void seleccionCiudadAscendente(Ciudad[] arrCiudad){
+        int i, posMenor;
+
+        for (i = 0; i < arrCiudad.length; i++) {
+            posMenor = buscarMenor(i,arrCiudad);
+            if(arrCiudad[posMenor].compareTo(arrCiudad[i].getNombre()) < 0){
+                //O sea, que si la palabra en pos mayor tiene prioridad realizamos el intercambio
+                intercambioSeleccionCiudad(i, posMenor, arrCiudad);
+            }
+        }
+
+    }
+    /* Módulo que busca el mayor del Método Selección */
+    private static int buscarMenor(int i, Ciudad[] arrCiudad){
+        String menor = arrCiudad[i].getNombre();
+        int posMenor = i;
+
+        for (i=i; i < arrCiudad.length; i++) {
+            if(arrCiudad[posMenor].compareTo(arrCiudad[i].getNombre()) > 0){
+                //Si la palabra en "i" es menor a la que tenemos guardada, cambiamos el menor
+                menor = arrCiudad[i].getNombre();
+                posMenor = i;
+            }
+        }
+
+        return posMenor;
     }
 
     /* MODULO UTILIZADO POR LOS 2 METODOS DE SELECCION */
@@ -86,7 +86,7 @@ public class metodosDeOrdenamientoCiudad {
         if(ini < fin){
             int indexParticion = particionAscendente(arrCiudad,ini,fin);
             quickSortAscendente(arrCiudad, ini, (indexParticion-1));
-            quickSortAscendente(arrCiudad,(indexParticion+1), fin);
+            quickSortAscendente(arrCiudad, (indexParticion+1), fin);
         }
     }
     /* Modulo de particion de quickSort para el Metodo Ascendente */
@@ -121,7 +121,7 @@ public class metodosDeOrdenamientoCiudad {
         }
     }
     /* Modulo de particion de QuickSort para el Metodo Descendente */
-    public static int particionDescendente(Ciudad[] arrCiudad, int ini, int fin){
+    private static int particionDescendente(Ciudad[] arrCiudad, int ini, int fin){
         Ciudad pivote = arrCiudad[fin];
         int i = (ini-1);
 

@@ -16,15 +16,20 @@ public class testCiudad {
         leerGuardarCiudadDesdeTxtAUnArray(arrCiudad, archivoInfoCiudades);
         //Inicio del loop del menu
         do{
-            System.out.println("MENU");
-            System.out.println("Elija una opción:");
-            System.out.println("1) Ver el arreglo de Ciudades original");
-            System.out.println("2) Copia y ordena el arreglo de ciudades (eligirá como desea hacerlo)");
-            System.out.println("3) Dada una posición del arreglo, se le mostrará el nombre de la ciudad abreviado");
-            System.out.println("4) Verifica si 2 Ciudades tienen 2 letras iguales");
-            System.out.println("5) Salir");
-            opcion = scan.nextInt();
-            menu(opcion, arrCiudad, scan);
+            try{
+                System.out.println("                                       MENU                                       ");
+                System.out.println("-----------------------------------------------------------------------------------");
+                System.out.println("1) Ver el arreglo de Ciudades original");
+                System.out.println("2) Copia y ordena el arreglo de ciudades (eligirá como desea hacerlo)");
+                System.out.println("3) Dada una posición del arreglo, se le mostrará el nombre de la ciudad abreviado");
+                System.out.println("4) Verifica si 2 Ciudades tienen 2 letras iguales");
+                System.out.println("5) Salir");
+                System.out.println("-----------------------------------------------------------------------------------");
+                opcion = scan.nextInt();
+                menu(opcion, arrCiudad, scan);
+            }catch(Exception e){
+                System.err.println(e.getMessage()+" ERROR: Eso no es un numero");
+            }
         }while(opcion != 5);
         //Cerramos el Scanner una vez finalizamos de usarlo
         scan.close();
@@ -34,7 +39,15 @@ public class testCiudad {
         int num = 0, num2 = 0; //Variables utilizada en el metodo de menu con diversos usos
         switch(opcion){
             case 1:
-                mostrarArregloCiudades(arrCiudad);
+                System.out.println("¿Desea ver el arreglo con toda la información o solo los nombres?");
+                System.out.println("Si desea que sea COMPLETO elija 1");
+                System.out.println("Si desea que sea SOLO NOMBRES elija 2");
+                num = seleccionUnoDos(scan);
+                if(num == 1){
+                    mostrarArregloCiudades(arrCiudad);
+                }else{
+                    mostrarArregloCiudadesSoloNombres(arrCiudad);
+                }
                 break;
             case 2:
                 Ciudad[] arrCiudadAux = copiarArrCiudad(arrCiudad);
@@ -47,8 +60,17 @@ public class testCiudad {
                 System.out.println("Si desea hacerlo con el metodo QUICKSORT elija 2");
                 num2 = seleccionUnoDos(scan);
                 ordenamientoArregloAux(arrCiudadAux,num,num2);
+                //Ahora preguntamos como desea verlo, si con toda la info o solo los nombres
+                System.out.println("¿Desea ver el arreglo con toda la información o solo los nombres?");
+                System.out.println("Si desea que sea COMPLETO elija 1");
+                System.out.println("Si desea que sea SOLO NOMBRES elija 2");
+                int aux = seleccionUnoDos(scan);
                 System.out.println("Asi queda el arreglo ordenado de manera "+(num==1 ? "DESCENDENTE":"ASCENDENTE")+" con el método "+(num2==1 ? "SELECCION":"QUICKSORT"));
-                mostrarArregloCiudades(arrCiudadAux);
+                if(aux == 1){
+                    mostrarArregloCiudades(arrCiudadAux);
+                }else{
+                    mostrarArregloCiudadesSoloNombres(arrCiudadAux);
+                }
                 break;
             case 3:
                 num = elegirPosArregloValida(scan);
@@ -73,8 +95,15 @@ public class testCiudad {
                 break;
         }
     }
-    /* Metodo para mostrar un arreglo de Ciudades */
+    /* Metodo para mostrar un arreglo de Ciudades completo */
     public static void mostrarArregloCiudades(Ciudad[] arrCiudad){
+        for (int i = 0; i < arrCiudad.length; i++) {
+            System.out.println("CIUDAD EN POSICIÓN "+(i+1)+":");
+            System.out.println(arrCiudad[i].toString());
+        }
+    }
+    /* Metodo para mostrar un arreglo de Ciudades, pero solo los nombres */
+    public static void mostrarArregloCiudadesSoloNombres(Ciudad[] arrCiudad){
         for (int i = 0; i < arrCiudad.length; i++) {
             System.out.println("CIUDAD EN POSICIÓN "+(i+1)+":");
             System.out.println(arrCiudad[i].toStringNombre());
@@ -171,7 +200,7 @@ public class testCiudad {
                 System.out.println("Elija 1 o 2:");
                 eleccion = scan.nextInt();
             }catch (Exception e){
-                System.err.println(e.getMessage()+" ESO NO ES UN NUMERO");
+                System.err.println(e.getMessage()+" ERROR: Eso no es un numero");
             }
             if(eleccion != 1 && eleccion != 2) System.out.println("ERROR: El numero no es ni 1 ni 2");
         }while(eleccion != 1 && eleccion != 2);
@@ -186,7 +215,7 @@ public class testCiudad {
                 metodosDeOrdenamientoCiudad.seleccionCiudadDescendente(arrCiudadAux);
             }else{//QUICKSORT
                 System.out.println("Con el metodo QUICKSORT");
-                metodosDeOrdenamientoCiudad.quickSortDescendente(arrCiudadAux, 0, arrCiudadAux.length);
+                metodosDeOrdenamientoCiudad.quickSortDescendente(arrCiudadAux, 0, (arrCiudadAux.length-1));
             }
         }else{ //DESCENDENTE
             System.out.println("Ordenando de manera ASCENDENTE");
@@ -195,7 +224,7 @@ public class testCiudad {
                 metodosDeOrdenamientoCiudad.seleccionCiudadAscendente(arrCiudadAux);
             }else{//QUICKSORT
                 System.out.println("Con el metodo QUICKSORT");
-                metodosDeOrdenamientoCiudad.quickSortAscendente(arrCiudadAux, 0, arrCiudadAux.length);
+                metodosDeOrdenamientoCiudad.quickSortAscendente(arrCiudadAux, 0, (arrCiudadAux.length-1));
             }
         }
     }

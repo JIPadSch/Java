@@ -80,17 +80,16 @@ public class metodosDeOrdenamientoCiudad {
     /* Guia utilizada para crear los metodos quickSort: https://www.baeldung.com/java-quicksort */
 
     /* MENOR A MAYOR (ASCENDENTE) */
-
     /* Metodo de Ordenamiento QuickSort Ascendente */
-    public static void quickSortAscendente(Ciudad[] arrCiudad, int ini, int fin){
+    public static void quickSortDescendente(Ciudad[] arrCiudad, int ini, int fin){
         if(ini < fin){
-            int indexParticion = particionAscendente(arrCiudad,ini,fin);
-            quickSortAscendente(arrCiudad, ini, (indexParticion-1));
-            quickSortAscendente(arrCiudad, (indexParticion+1), fin);
+            int indexParticion = particionDescendente(arrCiudad,ini,fin);
+            quickSortDescendente(arrCiudad, ini, (indexParticion-1));
+            quickSortDescendente(arrCiudad, (indexParticion+1), fin);
         }
     }
     /* Modulo de particion de quickSort para el Metodo Ascendente */
-    private static int particionAscendente(Ciudad[] arrCiudad, int ini, int fin){
+    private static int particionDescendente(Ciudad[] arrCiudad, int ini, int fin){
         Ciudad pivote = arrCiudad[fin];
         int i = (ini-1);
 
@@ -111,17 +110,16 @@ public class metodosDeOrdenamientoCiudad {
     }
 
     /* MAYOR A MENOR (DESCENDENTE) */
-
     /* Metodo de Ordenamiento Quicksort Descendente */
-    public static void quickSortDescendente(Ciudad[] arrCiudad, int ini, int fin){
+    public static void quickSortAscendente(Ciudad[] arrCiudad, int ini, int fin){
         if (ini < fin){
-            int indexParticion = particionDescendente(arrCiudad, ini, fin);
-            quickSortDescendente(arrCiudad, ini, (indexParticion-1));
-            quickSortDescendente(arrCiudad, (indexParticion+1), fin);
+            int indexParticion = particionAscendente(arrCiudad, ini, fin);
+            quickSortAscendente(arrCiudad, ini, (indexParticion-1));
+            quickSortAscendente(arrCiudad, (indexParticion+1), fin);
         }
     }
     /* Modulo de particion de QuickSort para el Metodo Descendente */
-    private static int particionDescendente(Ciudad[] arrCiudad, int ini, int fin){
+    private static int particionAscendente(Ciudad[] arrCiudad, int ini, int fin){
         Ciudad pivote = arrCiudad[fin];
         int i = (ini-1);
 

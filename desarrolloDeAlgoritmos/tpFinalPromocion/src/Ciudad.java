@@ -34,10 +34,10 @@ public class Ciudad {
     public int getPoblacion(){
         return poblacion;
     }
-    public double getLatitud(){
+    public float getLatitud(){
         return latitud;
     }
-    public double getLongitud(){
+    public float getLongitud(){
         return longitud;
     }
     public String toString(){

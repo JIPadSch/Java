@@ -18,7 +18,7 @@ public class testCiudad {
         do{
             System.out.println("MENU");
             System.out.println("Elija una opción:");
-            System.out.println("1) Ver el arreglo de Ciudades en su estado actual");
+            System.out.println("1) Ver el arreglo de Ciudades original");
             System.out.println("2) Copia y ordena el arreglo de ciudades (eligirá como desea hacerlo)");
             System.out.println("3) Dada una posición del arreglo, se le mostrará el nombre de la ciudad abreviado");
             System.out.println("4) Verifica si 2 Ciudades tienen 2 letras iguales");
@@ -43,11 +43,11 @@ public class testCiudad {
                 System.out.println("Si desea que sea de forma ASCENDENTE elija 2");
                 num = seleccionUnoDos(scan);
                 //Tipo: 1)Seleccion 2)Quicksort)
-                System.out.println("Si desea hacerlo con el metodo de SELECCION elija 1");
+                System.out.println("Si desea hacerlo con el metodo SELECCION elija 1");
                 System.out.println("Si desea hacerlo con el metodo QUICKSORT elija 2");
                 num2 = seleccionUnoDos(scan);
                 ordenamientoArregloAux(arrCiudadAux,num,num2);
-                System.out.println("Asi quedo el arreglo ordenado:");
+                System.out.println("Asi queda el arreglo ordenado de manera "+(num==1 ? "DESCENDENTE":"ASCENDENTE")+" con el método "+(num2==1 ? "SELECCION":"QUICKSORT"));
                 mostrarArregloCiudades(arrCiudadAux);
                 break;
             case 3:
@@ -63,7 +63,7 @@ public class testCiudad {
                 num2 = elegirPosArregloValida(scan);
                 boolean tienenDosLetrasIguales = nombresTienenDosLetrasIguales(arrCiudad[num].getNombre(),arrCiudad[num2].getNombre());
                 System.out.println("Se comparó el nombre "+arrCiudad[num].getNombre()+" con "+arrCiudad[num2].getNombre());
-                System.out.println("¿Tenian dos letras iguales?"+(tienenDosLetrasIguales?"SI":"NO"));
+                System.out.println("¿Tenian dos letras iguales? "+(tienenDosLetrasIguales?"SI":"NO"));
                 break;
             case 5:
                 System.out.println("Adiós!");

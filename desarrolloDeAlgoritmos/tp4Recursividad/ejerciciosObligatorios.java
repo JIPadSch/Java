@@ -36,7 +36,7 @@ public class ejerciciosObligatorios {
             case 1:
                 System.out.println("Escriba el numero: ");
                 numero = scan.nextInt();
-                System.out.println("Dentro de su número ¿Existen dos dígitos seguidos?: "+(exitenDosDigitosSeguidosRecursivo(numero)?"SI":"NO"));
+                System.out.println("Dentro de su número ¿Existen dos dígitos seguidos?: "+(existenDosDigitosSeguidosRecursivo(numero)?"SI":"NO"));
                 scan.nextLine(); //Limpiamos el Scanner
                 break;
             case 2:
@@ -92,7 +92,7 @@ public class ejerciciosObligatorios {
     *  4215 false
     *  9044 true
     */
-    public static boolean exitenDosDigitosSeguidosRecursivo (int num){
+    public static boolean existenDosDigitosSeguidosRecursivo (int num){
         boolean existenDosSeguidos = false;
         if (num>=10){ //Si no tenemos un solo digito  
             if((num%10)+1 == (num/10)%10){ //Caso base 1
@@ -161,16 +161,11 @@ public class ejerciciosObligatorios {
         if(pos<palabra.length()){ //Si no nos pasamos de la longitud
             if(vocales.indexOf(palabra.charAt(pos)) > -1){ //Si el charAt(pos) esta dentro de las vocales
                 palabraEnJeringoza = palabra.charAt(pos) + "p" + palabra.charAt(pos) + jeringozaRecursivo(palabra, (pos+1), vocales);
-            } else{ //Como no es vocal, solo agregamos la letra en pos y llamo recursivamente
-                palabraEnJeringoza = palabra.charAt(pos) + jeringozaRecursivo(palabra, (pos+1), vocales); 
-                palabraEnJeringoza = 'p'+palabra.charAt(pos)+jeringozaRecursivo(palabra, (pos+1), vocales);
-            } else{ //Como no es vocal, solo agregamos la letra en pos y llamo recursivamente
+            }else{ //Como no es vocal, solo agregamos la letra en pos y llamo recursivamente
                 palabraEnJeringoza = palabra.charAt(pos)+jeringozaRecursivo(palabra, (pos+1), vocales); 
                 palabraEnJeringoza = palabra.charAt(pos) + "p" + palabra.charAt(pos) + jeringozaRecursivo(palabra, (pos+1), vocales);
-            } else{ //Como no es vocal, solo agregamos la letra en pos y llamo recursivamente
-                palabraEnJeringoza = palabra.charAt(pos) + jeringozaRecursivo(palabra, (pos+1), vocales); 
             }
-        } else{ //Si nos pasamos, cortamos la recursividad
+        }else{ //Si nos pasamos, cortamos la recursividad
             palabraEnJeringoza="";
         }
         return palabraEnJeringoza;
@@ -208,7 +203,7 @@ public class ejerciciosObligatorios {
     */
     public static int cantElemMayorPromRecrusivo (int[] arrInt, int pos, int[] prom){
         if(pos<arrInt.length){
-            prom[0] += cantElemMayorPromRecrusivo(arrInt, (pos+1),(prom[1]+arrInt[pos]));
+            prom[0] += cantElemMayorPromRecrusivo(arrInt, (pos+1),prom);
             if (arrInt[pos]>prom[1]) { //Si el elemento en pos es mayor al promedio, sumamos 1
                 prom[0]+=1;
             }

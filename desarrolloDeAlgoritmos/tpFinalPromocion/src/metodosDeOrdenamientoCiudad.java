@@ -1,5 +1,4 @@
 package desarrolloDeAlgoritmos.tpFinalPromocion.src;
-
 /**
  *
  * @author JuanPadSch
@@ -138,5 +137,85 @@ public class metodosDeOrdenamientoCiudad {
         arrCiudad[fin] = ciudadAux;
 
         return (i+1);
+    }
+
+    /* METODOS MERGESORT Y HEAPSORT */
+    /* Fueron creados para poder hacer calculos empiricos sobre la velocidad de los algoritmos */
+
+    /* Metodo de Ordenamiento MergeSort */
+    /* Guia utilizada para crear el meotod mergeSort: https://www.baeldung.com/java-merge-sort */
+    public static void mergeSort(Ciudad[] arrCiudad, int longitud){
+        if(longitud >= 2){
+            int medio = longitud/2;
+            Ciudad[] izq = new Ciudad[medio];
+            Ciudad[] der = new Ciudad[(longitud-medio)];
+    
+            for (int i = 0; i < medio; i++) {
+                izq[i] = arrCiudad[i];
+            }
+            for (int i = medio; i < longitud; i++) {
+                der[(i-medio)] = arrCiudad[i];
+            }
+    
+            mergeSort(arrCiudad, medio);
+            mergeSort(arrCiudad, (longitud-medio));
+    
+            merge(arrCiudad, izq, der, medio, (longitud-medio));
+        }
+    }
+    /* Modulo utilizado en el Metodo mergeSort */
+    private static void merge(Ciudad[] arrCiudad,Ciudad[] izq,Ciudad[] der, int izquierda, int derecha){
+        int i = 0, j = 0, k = 0;
+
+        while(i < izquierda && j < derecha){
+            if(izq[i].compareTo(der[j].getNombre()) <= 0){
+                arrCiudad[k++] = izq[i++];
+            }else{
+                arrCiudad[k++] = der[j++];
+            }
+        }
+
+        while(i < izquierda){
+            arrCiudad[k++] = izq[i++];
+        }
+
+        while(j < derecha){
+            arrCiudad[k++] = der[j++];
+        }
+    }
+
+    /* Metodo de Ordenamiento HeapSort */
+    /* Guia utilizada para crear el metodo heapSort: https://stackabuse.com/heap-sort-in-java/ */
+    public static void heapSort(Ciudad[] arrCiudad){
+        int longitud = (arrCiudad.length-1);
+        
+        for (int i = longitud/2-1 ; i >= 0; i--) {
+           heapify(arrCiudad,longitud,i);
+        }
+
+        for (int i = longitud-1; i > 0; i--) {
+            Ciudad ciudadAux = arrCiudad[0];
+            arrCiudad[0] = arrCiudad[i];
+            arrCiudad[i] = ciudadAux;
+            heapify(arrCiudad, i, 0);
+        }
+    }
+    /* Modulo utilizado en el Metodo heapSort */
+    private static void heapify(Ciudad[] arrCiudad, int longitud, int i){
+        int izq = 2*i+1;
+        int der = 2*i+2;
+        int masGrande = i;
+        if(izq < longitud && arrCiudad[izq].compareTo(arrCiudad[der].getNombre()) > 0){
+            masGrande = izq;
+        }
+        if(der < longitud && arrCiudad[der].compareTo(arrCiudad[masGrande].getNombre()) > 0){
+            masGrande = der;
+        }
+        if(masGrande != i){
+            Ciudad ciudadAux = arrCiudad[i];
+            arrCiudad[i] = arrCiudad[masGrande];
+            arrCiudad[masGrande] = ciudadAux;
+            heapify(arrCiudad, longitud, masGrande);
+        }
     }
 }

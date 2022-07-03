@@ -13,28 +13,30 @@ public class testCiudad {
      */
     public static void main(String[] args) {
         Ciudad[] arrCiudad = new Ciudad[100];
-        String archivoInfoCiudades = "R:/Programación/gitHub/Java/desarrolloDeAlgoritmos/tpFinalPromocion/src/ciudades.txt";
+        String debuggerScan = "", archivoInfoCiudades = "R:/Programación/gitHub/Java/desarrolloDeAlgoritmos/tpFinalPromocion/src/ciudades.txt";
         Scanner scan = new Scanner(System.in);
         int opcion = 0;
         //Llenamos el arreglo de Ciudades con la información del .txt
         leerGuardarCiudadDesdeTxtAUnArray(arrCiudad, archivoInfoCiudades);
         //Inicio del loop del menu
         do{
-            try{
                 System.out.println("                                       MENU                                       ");
                 System.out.println("-----------------------------------------------------------------------------------");
                 System.out.println("1) Ver el arreglo de Ciudades original");
                 System.out.println("2) Copia y ordena el arreglo de ciudades (eligirá como desea hacerlo)");
                 System.out.println("3) Dada una posición del arreglo, se le mostrará el nombre de la ciudad abreviado");
                 System.out.println("4) Verifica si 2 Ciudades tienen 2 letras iguales");
-                System.out.println("5) Salir");
+                System.out.println("5) Muestra la velocidad de los algoritmos de ordenamiento de manera empírica");
+                System.out.println("6) Salir");
                 System.out.println("-----------------------------------------------------------------------------------");
-                opcion = scan.nextInt();
-                menu(opcion, arrCiudad, scan);
-            }catch(Exception e){
-                System.err.println(e.getMessage()+" ERROR: Eso no es un numero");
-            }
-        }while(opcion != 5);
+                debuggerScan = scan.nextLine(); //Decidi esta forma ya que try, catch me generaba error
+                if(debuggerScan.matches("[1-6]")){
+                    opcion = Integer.valueOf(debuggerScan);
+                    menu(opcion, arrCiudad, scan);
+                } else {
+                    System.err.println("ERROR: Eso no es un número entre el 1 y el 5");
+                }
+        }while(opcion != 6);
         //Cerramos el Scanner una vez finalizamos de usarlo
         scan.close();
     }
@@ -92,12 +94,16 @@ public class testCiudad {
                 System.out.println("¿Tenian dos letras iguales? "+(tienenDosLetrasIguales?"SI":"NO"));
                 break;
             case 5:
+                calculoEmpiricoVelocidadMetodosOrdenamiento(arrCiudad);
+                break;
+            case 6:
                 System.out.println("Adiós!");
                 break;
             default:
                 System.out.println("Opción inválida: Volviendo al menú");
                 break;
         }
+        scan.nextLine(); //Limpiamos el Scanner después de usarlo
     }
     /* Metodo para mostrar un arreglo de Ciudades completo */
     public static void mostrarArregloCiudades(Ciudad[] arrCiudad){
@@ -231,5 +237,33 @@ public class testCiudad {
                 metodosDeOrdenamientoCiudad.quickSortAscendente(arrCiudadAux, 0, (arrCiudadAux.length-1));
             }
         }
+    }
+    /* Modulo que dado un arreglo de Ciudades, muestra cuanto tarda en ordenar cada método, además limpia el case 5 */
+    public static void calculoEmpiricoVelocidadMetodosOrdenamiento(Ciudad[] arrCiudad){
+        long tiempoInicio = 0, tiempoFin = 0;
+        //Creo un nuevo arreglo porque sino modificaria el original
+        Ciudad[] arrCiudadMerge = copiarArrCiudad(arrCiudad);
+        tiempoInicio = System.nanoTime();
+        metodosDeOrdenamientoCiudad.mergeSort(arrCiudadMerge, (arrCiudadMerge.length-1));
+        tiempoFin = System.nanoTime();
+        System.out.println("El algoritmo MergeSort tardó "+(tiempoFin - tiempoInicio)+" nanosegundos en finalizar el ordenamiento");
+        tiempoInicio = 0;
+        tiempoFin = 0;
+
+        //Creo un nuevo arreglo porque sino trabajaria sobre un arreglo ordenado o el original
+        Ciudad[] arrCiudadQuick = copiarArrCiudad(arrCiudad);
+        tiempoInicio = System.nanoTime();
+        metodosDeOrdenamientoCiudad.quickSortAscendente(arrCiudad, 0, (arrCiudadQuick.length-1));
+        tiempoFin = System.nanoTime();
+        System.out.println("El algoritmo QuickSort tardó "+(tiempoFin - tiempoInicio)+" nanosegundos en finalizar el ordenamiento");
+        tiempoInicio = 0;
+        tiempoFin = 0;
+
+        //Creo un nuevo arreglo porque sino trabajaria sobre un arreglo ordenado o el original
+        Ciudad[] arrCiudadHeap = copiarArrCiudad(arrCiudad);
+        tiempoInicio = System.nanoTime();
+        metodosDeOrdenamientoCiudad.heapSort(arrCiudadHeap);
+        tiempoFin = System.nanoTime();
+        System.out.println("El algoritmo HeapSort tardó "+(tiempoFin - tiempoInicio)+" nanosegundos en finalizar el ordenamiento");
     }
 }

@@ -265,5 +265,14 @@ public class testCiudad {
         metodosDeOrdenamientoCiudad.heapSort(arrCiudadHeap);
         tiempoFin = System.nanoTime();
         System.out.println("El algoritmo HeapSort tardó "+(tiempoFin - tiempoInicio)+" nanosegundos en finalizar el ordenamiento");
+        tiempoInicio = 0;
+        tiempoFin = 0;
+
+        //Creo un nuevo arreglo porque sino trabajaria sobre un arreglo ordenado o el original
+        Ciudad[] arrCiudadSeleccion = copiarArrCiudad(arrCiudad);
+        tiempoInicio = System.nanoTime();
+        metodosDeOrdenamientoCiudad.seleccionCiudadAscendente(arrCiudadSeleccion);
+        tiempoFin = System.nanoTime();
+        System.out.println("El algoritmo Selección tardó "+(tiempoFin - tiempoInicio)+" nanosegundos en finalizar el ordenamiento");
     }
 }

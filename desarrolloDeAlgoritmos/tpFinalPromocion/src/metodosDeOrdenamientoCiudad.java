@@ -144,43 +144,43 @@ public class metodosDeOrdenamientoCiudad {
 
     /* Metodo de Ordenamiento MergeSort */
     /* Guia utilizada para crear el meotod mergeSort: https://www.baeldung.com/java-merge-sort */
-    public static void mergeSort(Ciudad[] arrCiudad, int longitud){
-        if(longitud >= 2){
-            int medio = longitud/2;
-            Ciudad[] izq = new Ciudad[medio];
-            Ciudad[] der = new Ciudad[(longitud-medio)];
+    public static void mergeSort(Ciudad[] arrCiudad, int izq, int der){
+        if(izq < der){
+            int medio = (izq+der)/2;
+            //Divide en 2
+            mergeSort(arrCiudad, izq, medio);
+            mergeSort(arrCiudad, (medio+1), der);
     
-            for (int i = 0; i < medio; i++) {
-                izq[i] = arrCiudad[i];
-            }
-            for (int i = medio; i < longitud; i++) {
-                der[(i-medio)] = arrCiudad[i];
-            }
-    
-            mergeSort(arrCiudad, medio);
-            mergeSort(arrCiudad, (longitud-medio));
-    
-            merge(arrCiudad, izq, der, medio, (longitud-medio));
+            merge(arrCiudad, izq, medio, der);
         }
     }
     /* Modulo utilizado en el Metodo mergeSort */
-    private static void merge(Ciudad[] arrCiudad,Ciudad[] izq,Ciudad[] der, int izquierda, int derecha){
+    private static void merge(Ciudad[] arrCiudad, int izq, int medio, int der){
         int i = 0, j = 0, k = 0;
+        Ciudad[] ciudadAux = new Ciudad[arrCiudad.length];
 
-        while(i < izquierda && j < derecha){
-            if(izq[i].compareTo(der[j].getNombre()) <= 0){
-                arrCiudad[k++] = izq[i++];
-            }else{
-                arrCiudad[k++] = der[j++];
+        for (i = izq; i <= der; i++) {
+            ciudadAux[i] = arrCiudad[i];
+        }
+
+        i = izq;
+        j = medio + 1;
+        k = izq;
+
+        while (i <= medio && j <= der) {
+            if (ciudadAux[i].compareTo(ciudadAux[j].getNombre()) < 0) { 
+                arrCiudad[k] = ciudadAux[i];
+                k++;
+                i++;
+            } else {
+                arrCiudad[k] = ciudadAux[j];
+                k++;
+                j++;
             }
         }
 
-        while(i < izquierda){
-            arrCiudad[k++] = izq[i++];
-        }
-
-        while(j < derecha){
-            arrCiudad[k++] = der[j++];
+        while (i <= medio) {// copia los elementos que quedan de la primera mitad (si los hay)
+            arrCiudad[k++] = ciudadAux[i++];
         }
     }
 

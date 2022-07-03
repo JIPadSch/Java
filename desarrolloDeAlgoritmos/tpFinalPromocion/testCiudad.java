@@ -25,7 +25,7 @@ public class testCiudad {
                 System.out.println("1) Ver el arreglo de Ciudades original");
                 System.out.println("2) Copia y ordena el arreglo de ciudades (eligirá como desea hacerlo)");
                 System.out.println("3) Dada una posición del arreglo, se le mostrará el nombre de la ciudad abreviado");
-                System.out.println("4) Verifica si 2 Ciudades tienen 2 letras iguales");
+                System.out.println("4) Lista las ciudades con letras repetias");
                 System.out.println("5) Muestra la velocidad de los algoritmos de ordenamiento de manera empírica");
                 System.out.println("6) Salir");
                 System.out.println("-----------------------------------------------------------------------------------");
@@ -85,13 +85,7 @@ public class testCiudad {
                 System.out.println("El nombre abreviado de la ciudad: "+arrCiudad[num].getNombre()+"\nEs el siguiente: "+nombreAbreviado);
                 break;
             case 4:
-                System.out.println("Elija la posición de la 1ra Ciudad para compararla con la 2da:");    
-                num = elegirPosArregloValida(scan);
-                System.out.println("Elija la posición de la 2da Ciudad para compararla con la 1ra:");
-                num2 = elegirPosArregloValida(scan);
-                boolean tienenDosLetrasIguales = nombresTienenDosLetrasIguales(arrCiudad[num].getNombre(),arrCiudad[num2].getNombre());
-                System.out.println("Se comparó el nombre "+arrCiudad[num].getNombre()+" con "+arrCiudad[num2].getNombre());
-                System.out.println("¿Tenian dos letras iguales? "+(tienenDosLetrasIguales?"SI":"NO"));
+                listaCiudadesLetrasRep(arrCiudad);
                 break;
             case 5:
                 calculoEmpiricoVelocidadMetodosOrdenamiento(arrCiudad);
@@ -184,23 +178,35 @@ public class testCiudad {
         }
         return nombreAbreviado;
     }
-    /* Metodo que dado dos nombres de Ciudades verifica si tienen 2 letras iguales (PUNTO 5) */
-    public static boolean nombresTienenDosLetrasIguales(String nomC1, String nomC2){
-        boolean tienenDosLetrasIguales = false;
-        int i = 0, cantLetrasIguales = 0;
-        //Condiciones de corte: Tener 2 o más letras iguales, o llegar a la longitud de alguno de los 2 nombres
-        while(!tienenDosLetrasIguales && i < nomC1.length()){
-            if(cantLetrasIguales >= 2){ //Si la cantidad de letras iguales es mayor o igual a 2, cortamos
-                tienenDosLetrasIguales = true;
-            }else if(nomC2.indexOf(nomC1.charAt(i)) > -1){
-                //Si el char en i esta en el String, sumamos en uno a cantLetrasIguales y aumentamos el iterador
-                cantLetrasIguales++;
-                i++;
-            }else{ //Si nada se cumple, aumentamos el iterador
-                i++;
+    /* Metodo que dado un arreglo de ciudades, muestra las ciudades que repitan letras en su nombre */
+    public static void listaCiudadesLetrasRep(Ciudad[] arrCiudad) {
+        for (int i = 0; i < arrCiudad.length; i++) {
+            if (repiteLetraEnPalabra(arrCiudad[i].getNombre())) {
+                System.out.println("EN LA POSICIÓN: "+(i+1));
+                System.out.println(arrCiudad[i].getNombre()+" tiene letras repetidas en su nombre");       
             }
         }
-        return tienenDosLetrasIguales;
+    }
+    /* Modulo del metodo listaCiudadesLetraRep */
+    private static boolean repiteLetraEnPalabra(String palabra) {
+        String palabraModificada = palabra.replaceAll(" ", "").toUpperCase(); //Sacamos los espacios y hacemos todo Mayusculas
+        boolean palabraRepetida = false;
+        int i = 0, j, longitudPalabra = palabraModificada.length();
+        char letraEvaluada;
+
+        while (i <= longitudPalabra - 1 && !palabraRepetida) {
+            letraEvaluada = palabraModificada.charAt(i);
+            j = i + 1;
+            while (j < longitudPalabra && !palabraRepetida) {
+                if (letraEvaluada == palabraModificada.charAt(j)) {
+                    palabraRepetida = true;
+                }
+                j++;
+            }
+            i++;
+        }
+        
+        return palabraRepetida;
     }
     /* Modulo para elegir entre Opcion 1 o 2 (utilizado en el metodo menu() en los case 1, 2 y 4) */
     public static int seleccionUnoDos(Scanner scan){
@@ -244,7 +250,7 @@ public class testCiudad {
         //Creo un nuevo arreglo porque sino modificaria el original
         Ciudad[] arrCiudadMerge = copiarArrCiudad(arrCiudad);
         tiempoInicio = System.nanoTime();
-        metodosDeOrdenamientoCiudad.mergeSort(arrCiudadMerge, (arrCiudadMerge.length-1));
+        metodosDeOrdenamientoCiudad.mergeSort(arrCiudadMerge, 0, (arrCiudadMerge.length-1));
         tiempoFin = System.nanoTime();
         System.out.println("El algoritmo MergeSort tardó "+(tiempoFin - tiempoInicio)+" nanosegundos en finalizar el ordenamiento");
         tiempoInicio = 0;

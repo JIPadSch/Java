@@ -14,7 +14,7 @@ public class metodosDeOrdenamientoCiudad {
         
         for (i = 0; i < arrCiudad.length; i++) {
             posMayor = buscarMayor(i,arrCiudad);
-            if(arrCiudad[posMayor].compareTo(arrCiudad[i].getNombre()) > 0){
+            if(arrCiudad[posMayor].compareTo(arrCiudad[i]) > 0){
                 //O sea, que si la palabra en pos menor tiene prioridad realizamos el intercambio
                 intercambioSeleccionCiudad(i, posMayor, arrCiudad);
             }
@@ -27,7 +27,7 @@ public class metodosDeOrdenamientoCiudad {
         int posMayor = i;
 
         for (i=i; i < arrCiudad.length; i++) {
-            if(arrCiudad[posMayor].compareTo(arrCiudad[i].getNombre()) < 0){
+            if(arrCiudad[posMayor].compareTo(arrCiudad[i]) < 0){
                 //Si la palabra en "i" es menor a la que tenemos guardada, cambiamos el menor
                 mayor = arrCiudad[i].getNombre();
                 posMayor = i;
@@ -44,7 +44,7 @@ public class metodosDeOrdenamientoCiudad {
 
         for (i = 0; i < arrCiudad.length; i++) {
             posMenor = buscarMenor(i,arrCiudad);
-            if(arrCiudad[posMenor].compareTo(arrCiudad[i].getNombre()) < 0){
+            if(arrCiudad[posMenor].compareTo(arrCiudad[i]) < 0){
                 //O sea, que si la palabra en pos mayor tiene prioridad realizamos el intercambio
                 intercambioSeleccionCiudad(i, posMenor, arrCiudad);
             }
@@ -57,7 +57,7 @@ public class metodosDeOrdenamientoCiudad {
         int posMenor = i;
 
         for (i=i; i < arrCiudad.length; i++) {
-            if(arrCiudad[posMenor].compareTo(arrCiudad[i].getNombre()) > 0){
+            if(arrCiudad[posMenor].compareTo(arrCiudad[i]) > 0){
                 //Si la palabra en "i" es menor a la que tenemos guardada, cambiamos el menor
                 menor = arrCiudad[i].getNombre();
                 posMenor = i;
@@ -94,7 +94,7 @@ public class metodosDeOrdenamientoCiudad {
         int i = (ini-1);
 
         for (int j = ini; j < fin; j++) {
-            if(arrCiudad[j].compareTo(pivote.getNombre()) >= 0 ){ //Si arrCiudad[j] tiene prioridad
+            if(arrCiudad[j].compareTo(pivote) >= 0 ){ //Si arrCiudad[j] tiene prioridad
                 i++;
                 Ciudad ciudadAux = arrCiudad[i];
                 arrCiudad[i] = arrCiudad[j];
@@ -124,7 +124,7 @@ public class metodosDeOrdenamientoCiudad {
         int i = (ini-1);
 
         for (int j = ini; j < fin; j++) {
-            if(arrCiudad[j].compareTo(pivote.getNombre()) < 0 ){ //Si arrCiudad[j] NO tiene prioridad
+            if(arrCiudad[j].compareTo(pivote) < 0 ){ //Si arrCiudad[j] NO tiene prioridad
                 i++;
                 Ciudad ciudadAux = arrCiudad[i];
                 arrCiudad[i] = arrCiudad[j];
@@ -168,7 +168,7 @@ public class metodosDeOrdenamientoCiudad {
         k = izq;
 
         while (i <= medio && j <= der) {
-            if (ciudadAux[i].compareTo(ciudadAux[j].getNombre()) < 0) { 
+            if (ciudadAux[i].compareTo(ciudadAux[j]) < 0) { 
                 arrCiudad[k] = ciudadAux[i];
                 k++;
                 i++;
@@ -205,10 +205,10 @@ public class metodosDeOrdenamientoCiudad {
         int izq = 2*i+1;
         int der = 2*i+2;
         int masGrande = i;
-        if(izq < longitud && arrCiudad[izq].compareTo(arrCiudad[der].getNombre()) > 0){
+        if(izq < longitud && arrCiudad[izq].compareTo(arrCiudad[der]) > 0){
             masGrande = izq;
         }
-        if(der < longitud && arrCiudad[der].compareTo(arrCiudad[masGrande].getNombre()) > 0){
+        if(der < longitud && arrCiudad[der].compareTo(arrCiudad[masGrande]) > 0){
             masGrande = der;
         }
         if(masGrande != i){

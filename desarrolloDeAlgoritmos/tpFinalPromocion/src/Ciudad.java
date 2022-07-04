@@ -62,16 +62,16 @@ public class Ciudad {
         return ((this.latitud == otraCiudad.latitud) && (this.longitud == otraCiudad.longitud));
     }
     /* Metodo compareTo (se basa en el abecedario) */
-    public int compareTo(String nombreOtraCiudad){
+    public int compareTo(Ciudad otraCiudad){
         int prioridad, i = 0;
         prioridad = 0; //Si los nombres son iguales, no tiene ninguno prioridad
         boolean  corte = false;
-        while(!corte && (i < this.nombre.length() && i < nombreOtraCiudad.length())){
+        while(!corte && (i < this.nombre.length() && i < otraCiudad.nombre.length())){
             //Comparamos el valor ASCII de los caracteres (del atributo "nombre") para saber a que objeto Ciudad darle prioridad al ordenar
-            if(this.nombre.charAt(i) > nombreOtraCiudad.charAt(i)){ //Si el valor de la palabra entrante es menor, entonces, la Ciudad.nombre que llama el metodo tiene prioridad
+            if(this.nombre.charAt(i) > otraCiudad.nombre.charAt(i)){ //Si el valor de la palabra entrante es menor, entonces, la Ciudad.nombre que llama el metodo tiene prioridad
                 prioridad = 1; 
                 corte = true;
-            }else if(this.nombre.charAt(i) < nombreOtraCiudad.charAt(i)){ //Si el valor de la palabra entrante es mayor, entonces, dicha palabra tiene prioridad
+            }else if(this.nombre.charAt(i) < otraCiudad.nombre.charAt(i)){ //Si el valor de la palabra entrante es mayor, entonces, dicha palabra tiene prioridad
                 prioridad = -1;
                 corte = true;
             } 

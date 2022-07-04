@@ -25,7 +25,7 @@ public class testCiudad {
                 System.out.println("1) Ver el arreglo de Ciudades original");
                 System.out.println("2) Copia y ordena el arreglo de ciudades (eligirá como desea hacerlo)");
                 System.out.println("3) Dada una posición del arreglo, se le mostrará el nombre de la ciudad abreviado");
-                System.out.println("4) Lista las ciudades con letras repetias");
+                System.out.println("4) Lista las ciudades con letras repetidas en su nombre");
                 System.out.println("5) Muestra la velocidad de los algoritmos de ordenamiento de manera empírica");
                 System.out.println("6) Salir");
                 System.out.println("-----------------------------------------------------------------------------------");

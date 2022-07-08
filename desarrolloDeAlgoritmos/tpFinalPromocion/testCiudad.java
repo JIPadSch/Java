@@ -194,7 +194,7 @@ public class testCiudad {
         int i = 0, j, longitudPalabra = palabraModificada.length();
         char letraEvaluada;
 
-        while (i <= longitudPalabra - 1 && !palabraRepetida) {
+        while (i < longitudPalabra && !palabraRepetida) {
             letraEvaluada = palabraModificada.charAt(i);
             j = i + 1;
             while (j < longitudPalabra && !palabraRepetida) {

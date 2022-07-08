@@ -82,4 +82,27 @@ public class Entrada {
         String vocales = "aeiouAEIOU";
         return (vocales.indexOf(caracterIngresado) > -1);
     }
+    /*Módulo que verifica si un caractér es letra*/
+    public static boolean caracterEsLetra(char caracter){
+        boolean esLetra=false;
+        /*Hacemos una verificación de ASCII. De la A hasta la Z,
+        los valores númericos van del 65 al 122 (incluidos)*/
+        if (caracter>=65 && caracter<=122){
+            esLetra=true;                
+        }
+        return esLetra;
+    }
+    /*Módulo que verifica que un String tiene solo letras*/
+    public static boolean lineaSoloLetras (String str){
+        boolean tieneSoloLetras=true;
+        int i=0;
+        while (tieneSoloLetras && i<str.length()){
+            if (Entrada.caracterEsLetra(str.charAt(i))){
+                i++;
+            } else{
+                tieneSoloLetras=false;
+            }
+        }
+        return tieneSoloLetras;
+    }
 }

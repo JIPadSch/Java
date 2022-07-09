@@ -5,6 +5,7 @@ import java.util.*;
  * @author JuanPadSch
  */
 public class Entrada {
+    /* Scanner que utilizaremos en toda la clase */
     private static final Scanner scan = new Scanner(System.in);
     /*
      * @parameters
@@ -22,6 +23,29 @@ public class Entrada {
         }while(lineaLeida == null);
         scan.close();
         return lineaLeida;
+    }
+    /* 
+     * 
+     * 
+     */
+    public static String leerPalabra(){
+        String palabraLeida = leerLinea();
+        return separarPalabra(palabraLeida);
+    }
+    /* Modulo para separar la primer palabra */
+    private static String separarPalabra(String palabraLeida){
+        String palabra = null;
+        int i = 0;
+        boolean corte = false;
+        while(!corte && i < palabraLeida.length()){
+            if(palabraLeida.charAt(i) != ' '){
+                palabra = ""+palabraLeida.charAt(i);
+                i++;
+            }else{
+                corte = true;
+            }
+        }
+        return palabra;
     }
     /*
      * @parameters 

@@ -203,6 +203,15 @@ public class Entrada {
         String vocales = "aeiouAEIOU";
         return (vocales.indexOf(caracterIngresado) > -1);
     }
+    /* 
+     * 
+     * 
+     */
+    public static boolean esVocal(){
+        String vocales = "aeiouAEIOU";
+        char caracter = leerCaracter();
+        return (vocales.indexOf(caracter) > -1);
+    }
     /*Módulo que verifica que un String tiene solo letras*/
     public static boolean lineaSoloLetras (String linea){
         boolean tieneSoloLetras = true;
@@ -224,6 +233,33 @@ public class Entrada {
          * los valores númericos van del 65 al 90 y del 97 al 122 (incluidos), respectivamente
          */
         if ((caracter >= 65 && caracter <= 90) || (caracter >= 97 && caracter <= 122)){
+            esLetra = true;                
+        }
+        return esLetra;
+    }
+    /* Modulo que pide una linea y luego verifica si tiene solo letras */
+    public static boolean lineaSoloLetras(){
+        boolean tieneSoloLetras = false;
+        int i = 0;
+        String linea = leerLinea();
+        while (tieneSoloLetras && i < linea.length()){
+            if (Entrada.caracterEsLetra(linea.charAt(i))){
+                i++;
+            } else{
+                tieneSoloLetras = false;
+            }
+        }
+        return tieneSoloLetras;
+    }
+    /* Modulo que pide un caracter y verifica si es una letra */
+    public static boolean caracterEsLetra(){
+        boolean esLetra = false;
+        char letra = leerCaracter();
+        /* 
+         * Hacemos una verificación de ASCII. De la A hasta la Z, y de la a hasta la z,
+         * los valores númericos van del 65 al 90 y del 97 al 122 (incluidos), respectivamente
+         */
+        if ((letra >= 65 && letra <= 90) || (letra >= 97 && letra <= 122)){
             esLetra = true;                
         }
         return esLetra;

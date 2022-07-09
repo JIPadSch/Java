@@ -12,7 +12,7 @@ public class Entrada {
      * @return String
      */
     public static String leerLinea(){
-        String lineaLeida = null;
+        String lineaLeida;
         do{
             try{
                 lineaLeida = scan.nextLine();
@@ -52,7 +52,7 @@ public class Entrada {
      * @return int
      */
     public static int leerEntero(){
-        Integer enteroLeido = null;
+        Integer enteroLeido;
         do{
             try{
                 enteroLeido = scan.nextInt();
@@ -74,7 +74,7 @@ public class Entrada {
      * @return
      */
     public static char leerCaracter(){
-        Character caracterLeido = null;
+        Character caracterLeido;
         do{
             try{
                 caracterLeido = scan.nextLine().charAt(0);
@@ -92,7 +92,7 @@ public class Entrada {
      * 
      */
     public static boolean leerLogico(){
-        Boolean logico = null;
+        Boolean logico;
         do{
             try{
                 logico = scan.nextBoolean();
@@ -110,7 +110,7 @@ public class Entrada {
      * 
      */
     public static double leerReal(){
-        Double real = null;
+        Double real;
         do{
             try{
                 real = scan.nextDouble();
@@ -128,7 +128,7 @@ public class Entrada {
      * 
      */
     public static float leerPuntoFlotante(){
-        Float puntoFlotante = null;
+        Float puntoFlotante;
         do{
             try{
                 puntoFlotante = scan.nextFloat();
@@ -146,7 +146,7 @@ public class Entrada {
      * 
      */
     public static byte leerByte(){
-        Byte unByte = null;
+        Byte unByte;
         do{
             try{
                 unByte = scan.nextByte();
@@ -164,7 +164,7 @@ public class Entrada {
      * 
      */
     public static short leerCorto(){
-        Short corto = null;
+        Short corto;
         do{
             try{
                 corto = scan.nextShort();
@@ -182,7 +182,7 @@ public class Entrada {
      * 
      */
     public static long leerLargo(){
-        Long largo = null;
+        Long largo;
         do{
             try{
                 largo = scan.nextLong();
@@ -203,16 +203,6 @@ public class Entrada {
         String vocales = "aeiouAEIOU";
         return (vocales.indexOf(caracterIngresado) > -1);
     }
-    /*Módulo que verifica si un caractér es letra*/
-    public static boolean caracterEsLetra(char caracter){
-        boolean esLetra = false;
-        /*Hacemos una verificación de ASCII. De la A hasta la Z,
-        los valores númericos van del 65 al 122 (incluidos)*/
-        if (caracter >= 65 && caracter <= 122){
-            esLetra = true;                
-        }
-        return esLetra;
-    }
     /*Módulo que verifica que un String tiene solo letras*/
     public static boolean lineaSoloLetras (String linea){
         boolean tieneSoloLetras = true;
@@ -225,5 +215,17 @@ public class Entrada {
             }
         }
         return tieneSoloLetras;
+    }
+    /*Módulo que verifica si un caractér es letra*/
+    public static boolean caracterEsLetra(char caracter){
+        boolean esLetra = false;  
+        /* 
+         * Hacemos una verificación de ASCII. De la A hasta la Z, y de la a hasta la z,
+         * los valores númericos van del 65 al 90 y del 97 al 122 (incluidos), respectivamente
+         */
+        if ((caracter >= 65 && caracter <= 90) || (caracter >= 97 && caracter <= 122)){
+            esLetra = true;                
+        }
+        return esLetra;
     }
 }

@@ -1,40 +1,69 @@
 package libreriaJuanIPadSch;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 /**
  *
  * @author JuanPadSch
  */
 public class Entrada {
+    /* Scanner que utilizaremos en toda la clase */
     private static final Scanner scan = new Scanner(System.in);
     /*
      * @parameters
      * @return String
      */
     public static String leerLinea(){
-        String lineaLeida = null;
+        String lineaLeida;
         do{
             try{
                 lineaLeida = scan.nextLine();
             }catch(Exception e){
                 System.err.println("Error inesperado");
+                lineaLeida = null;
             }
         }while(lineaLeida == null);
         scan.close();
         return lineaLeida;
+    }
+    /* 
+     * 
+     * 
+     */
+    public static String leerPalabra(){
+        String palabraLeida = leerLinea();
+        return separarPalabra(palabraLeida);
+    }
+    /* Modulo para separar la primer palabra */
+    private static String separarPalabra(String palabraLeida){
+        String palabra = null;
+        int i = 0;
+        boolean corte = false;
+        while(!corte && i < palabraLeida.length()){
+            if(palabraLeida.charAt(i) != ' '){
+                palabra = ""+palabraLeida.charAt(i);
+                i++;
+            }else{
+                corte = true;
+            }
+        }
+        return palabra;
     }
     /*
      * @parameters 
      * @return int
      */
     public static int leerEntero(){
-        Integer enteroLeido = null;
+        Integer enteroLeido;
         do{
             try{
-            enteroLeido = scan.nextInt();
+                enteroLeido = scan.nextInt();
             }catch(InputMismatchException ime){
-                System.err.println("Eso no es un número o se fue del rango posible en Java");
+                System.err.println("Eso no es un número Entero");
                 System.err.println("Ingrese nuevamente el valor deseado");
+                enteroLeido = null;
+            }catch(Exception e){
+                System.err.println("El número se fue del rango de Java");
+                System.err.println("Ingrese nuevamente el número");
+                enteroLeido = null;
             }
         }while(enteroLeido == null);
         scan.close();
@@ -45,34 +74,126 @@ public class Entrada {
      * @return
      */
     public static char leerCaracter(){
-        Character caracter = null; //Caracter nulo
+        Character caracterLeido;
         do{
             try{
-                caracter = scan.nextLine().charAt(0);
+                caracterLeido = scan.nextLine().charAt(0);
             }catch(InputMismatchException ime){
-                System.err.println("Eso no es un caracter");
+                System.err.println("Eso no es un Caracter");
                 System.err.println("Ingrese nuevamente el caracter deseado");
+                caracterLeido = null;
             }
-        } while(caracter == null);
+        } while(caracterLeido == null);
         scan.close();
-        return caracter;
+        return caracterLeido;
     }
     /* 
      * 
      * 
      */
     public static boolean leerLogico(){
-        Boolean logico = null;
+        Boolean logico;
         do{
             try{
-
-            }catch(IndexOutOfBoundsException ime){
-                System.err.println("Eso no es una variable lógica");
+                logico = scan.nextBoolean();
+            }catch(InputMismatchException ime){
+                System.err.println("Eso no es una variable Lógica");
                 System.err.println("Ingrese nuevamente la variable logica deseada");
+                logico = null;
             }
         }while(logico == null);
         scan.close();
         return logico;
+    }
+    /* 
+     * 
+     * 
+     */
+    public static double leerReal(){
+        Double real;
+        do{
+            try{
+                real = scan.nextDouble();
+            }catch(InputMismatchException ime){
+                System.err.println("Eso no es un numero Real");
+                System.err.println("Ingrese nuevamente el numero");
+                real = null;
+            }
+        }while(real == null);
+        scan.close();
+        return real;
+    }
+    /* 
+     * 
+     * 
+     */
+    public static float leerPuntoFlotante(){
+        Float puntoFlotante;
+        do{
+            try{
+                puntoFlotante = scan.nextFloat();
+            }catch(InputMismatchException ime){
+                System.err.println("Eso no un numero en Punto Flotante");
+                System.err.println("Ingrese nuevamente el numero");
+                puntoFlotante = null;
+            }
+        }while(puntoFlotante == null);
+        scan.close();
+        return puntoFlotante;
+    }
+    /* 
+     * 
+     * 
+     */
+    public static byte leerByte(){
+        Byte unByte;
+        do{
+            try{
+                unByte = scan.nextByte();
+            }catch(InputMismatchException ime){
+                System.err.println("Eso no es un byte");
+                System.err.println("Ingrese nuevamente el numero");
+                unByte = null;
+            }
+        }while(unByte == null);
+        scan.close();
+        return unByte;
+    }
+    /* 
+     * 
+     * 
+     */
+    public static short leerCorto(){
+        Short corto;
+        do{
+            try{
+                corto = scan.nextShort();
+            }catch(InputMismatchException ime){
+                System.err.println("Eso no es un numero Corto");
+                System.err.println("Ingrese nuevamente el numero");
+                corto = null;
+            }
+        }while(corto == null);
+        scan.close();
+        return corto;
+    }
+    /* 
+     * 
+     * 
+     */
+    public static long leerLargo(){
+        Long largo;
+        do{
+            try{
+                largo = scan.nextLong();
+            }catch(InputMismatchException ime){
+                System.err.println("Eso no es un numero Largo");
+                System.err.println("Ingrese nuevamente el numero");
+                largo = null;
+            }
+        }while(largo == null);
+        scan.close();
+        return largo;
     }
     /*
      * @parameters char caracterIngresado
@@ -82,27 +203,65 @@ public class Entrada {
         String vocales = "aeiouAEIOU";
         return (vocales.indexOf(caracterIngresado) > -1);
     }
-    /*Módulo que verifica si un caractér es letra*/
-    public static boolean caracterEsLetra(char caracter){
-        boolean esLetra=false;
-        /*Hacemos una verificación de ASCII. De la A hasta la Z,
-        los valores númericos van del 65 al 122 (incluidos)*/
-        if (caracter>=65 && caracter<=122){
-            esLetra=true;                
-        }
-        return esLetra;
+    /* 
+     * 
+     * 
+     */
+    public static boolean esVocal(){
+        String vocales = "aeiouAEIOU";
+        char caracter = leerCaracter();
+        return (vocales.indexOf(caracter) > -1);
     }
     /*Módulo que verifica que un String tiene solo letras*/
-    public static boolean lineaSoloLetras (String str){
-        boolean tieneSoloLetras=true;
-        int i=0;
-        while (tieneSoloLetras && i<str.length()){
-            if (Entrada.caracterEsLetra(str.charAt(i))){
+    public static boolean lineaSoloLetras (String linea){
+        boolean tieneSoloLetras = true;
+        int i = 0;
+        while (tieneSoloLetras && i < linea.length()){
+            if (Entrada.caracterEsLetra(linea.charAt(i))){
                 i++;
             } else{
-                tieneSoloLetras=false;
+                tieneSoloLetras = false;
             }
         }
         return tieneSoloLetras;
+    }
+    /*Módulo que verifica si un caractér es letra*/
+    public static boolean caracterEsLetra(char caracter){
+        boolean esLetra = false;  
+        /* 
+         * Hacemos una verificación de ASCII. De la A hasta la Z, y de la a hasta la z,
+         * los valores númericos van del 65 al 90 y del 97 al 122 (incluidos), respectivamente
+         */
+        if ((caracter >= 65 && caracter <= 90) || (caracter >= 97 && caracter <= 122)){
+            esLetra = true;                
+        }
+        return esLetra;
+    }
+    /* Modulo que pide una linea y luego verifica si tiene solo letras */
+    public static boolean lineaSoloLetras(){
+        boolean tieneSoloLetras = false;
+        int i = 0;
+        String linea = leerLinea();
+        while (tieneSoloLetras && i < linea.length()){
+            if (Entrada.caracterEsLetra(linea.charAt(i))){
+                i++;
+            } else{
+                tieneSoloLetras = false;
+            }
+        }
+        return tieneSoloLetras;
+    }
+    /* Modulo que pide un caracter y verifica si es una letra */
+    public static boolean caracterEsLetra(){
+        boolean esLetra = false;
+        char letra = leerCaracter();
+        /* 
+         * Hacemos una verificación de ASCII. De la A hasta la Z, y de la a hasta la z,
+         * los valores númericos van del 65 al 90 y del 97 al 122 (incluidos), respectivamente
+         */
+        if ((letra >= 65 && letra <= 90) || (letra >= 97 && letra <= 122)){
+            esLetra = true;                
+        }
+        return esLetra;
     }
 }

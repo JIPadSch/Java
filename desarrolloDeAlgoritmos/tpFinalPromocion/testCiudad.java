@@ -13,7 +13,7 @@ public class testCiudad {
      */
     public static void main(String[] args) {
         Ciudad[] arrCiudad = new Ciudad[100];
-        String debuggerScan = "", archivoInfoCiudades = "R:/Programación/gitHub/Java/desarrolloDeAlgoritmos/tpFinalPromocion/src/ciudades.txt";
+        String debuggerScan = "", archivoInfoCiudades = "/export/home/jignacio.padron/VS Code/Java/desarrolloDeAlgoritmos/tpFinalPromocion/src/ciudades.txt";
         Scanner scan = new Scanner(System.in);
         int opcion = 0;
         //Llenamos el arreglo de Ciudades con la información del .txt
@@ -194,7 +194,7 @@ public class testCiudad {
         int i = 0, j, longitudPalabra = palabraModificada.length();
         char letraEvaluada;
 
-        while (i <= longitudPalabra - 1 && !palabraRepetida) {
+        while (i < longitudPalabra && !palabraRepetida) {
             letraEvaluada = palabraModificada.charAt(i);
             j = i + 1;
             while (j < longitudPalabra && !palabraRepetida) {

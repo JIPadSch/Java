@@ -120,7 +120,7 @@ public class metodosDeOrdenamientoCiudad {
     }
     /* Modulo de particion de QuickSort para el Metodo Descendente */
     private static int particionAscendente(Ciudad[] arrCiudad, int ini, int fin){
-        Ciudad pivote = arrCiudad[fin];
+        Ciudad pivote = arrCiudad[((fin+ini)/2)];
         int i = (ini-1);
 
         for (int j = ini; j < fin; j++) {

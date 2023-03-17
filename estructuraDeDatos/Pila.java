@@ -78,8 +78,11 @@ public class Pila {
 
     public String toString(){
         String mensaje = "";
-        if(this.tope > -1){
 
+        if(this.tope > -1){
+            for (int i = 0; i < this.tope; i++) {
+                mensaje += "Posición "+i+": "+this.pila[i].toString()+"\n";
+            }
         }else{
             mensaje = "La Pila está vacia";
         }

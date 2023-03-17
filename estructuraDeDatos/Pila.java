@@ -2,13 +2,13 @@ package estructuraDeDatos;
 
 public class Pila {
     
-    private Object[] pila;
+    private Object[] arreglo;
     private int tope;
     private static final int tamanio = 20; //ejemplo
 
     /* CONSTRUCTOR */
     public Pila(){
-        this.pila = new Object[tamanio];
+        this.arreglo = new Object[tamanio];
         this.tope = -1;
     }
 
@@ -18,7 +18,7 @@ public class Pila {
         if(this.tope+1 >= this.tamanio){
             sePudoApilar = false;
         }else{
-            this.pila[this.tope+1] = unObjeto;
+            this.arreglo[this.tope+1] = unObjeto;
         }
 
         return sePudoApilar;
@@ -28,7 +28,7 @@ public class Pila {
         boolean sePuedeDesapilar = true;
 
         if(this.tope > -1){
-            this.pila[this.tope] = null;  
+            this.arreglo[this.tope] = null;  
             this.tope--;          
         }else{
             sePuedeDesapilar = false;
@@ -41,7 +41,7 @@ public class Pila {
         Object elementoTope = new Object();
 
         if(this.tope != -1){
-            elementoTope = this.pila[this.tope];
+            elementoTope = this.arreglo[this.tope];
         }else{
             elementoTope = null;
         }
@@ -62,18 +62,19 @@ public class Pila {
     public void vaciar(){
 
         for (int i = this.tope; i > -1; i--) {
-            this.pila[i] = null;
+            this.arreglo[i] = null;
         }
         tope = -1;
 
     }
 
     public Pila clone(){
-        Pila pilaClonada = new Pila();
+        Pila copiaArreglo = new Pila();
 
-        pilaClonada = this.pila.clone();
+        copiaArreglo.arreglo = this.arreglo.clone();
+        copiaArreglo.tope = this.tope;
 
-        return pilaClonada;
+        return copiaArreglo;
     }
 
     public String toString(){
@@ -81,7 +82,7 @@ public class Pila {
 
         if(this.tope > -1){
             for (int i = 0; i < this.tope; i++) {
-                mensaje += "Posición "+i+": "+this.pila[i].toString()+"\n";
+                mensaje += "Posición "+i+": "+this.arreglo[i].toString()+"\n";
             }
         }else{
             mensaje = "La Pila está vacia";

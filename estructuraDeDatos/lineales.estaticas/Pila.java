@@ -19,6 +19,7 @@ public class Pila {
             sePudoApilar = false;
         }else{
             this.arreglo[this.tope+1] = unObjeto;
+            this.tope++;
         }
 
         return sePudoApilar;
@@ -37,7 +38,7 @@ public class Pila {
         return sePuedeDesapilar;
     }
 
-    public Object obtenerElementoTope(){
+    public Object obtenerTope(){
         Object elementoTope = new Object();
 
         if(this.tope != -1){
@@ -49,7 +50,7 @@ public class Pila {
         return elementoTope;
     }
 
-    public boolean esVacio(){
+    public boolean esVacia(){
         boolean estaVacio = false;
 
         if(this.tope == -1){
@@ -77,6 +78,19 @@ public class Pila {
         return copiaArreglo;
     }
 
+    @Override
+    public boolean equals(Object[] arreglo){
+        boolean sonIguales = true;
+        int i = 0;
+        while(sonIguales){
+            if(this.arreglo[i].obtenerTope().equals(arreglo[i].obtenerTope())){
+                sonIguales = false;
+            }
+        }
+        return sonIguales;
+    }
+
+    @Override
     public String toString(){
         String mensaje = "";
 

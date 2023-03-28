@@ -19,19 +19,25 @@ public class Pila {
     }
 
     public boolean desapilar(){
-        boolean sePuedeDesapilar = true;
+        boolean seDesapilo = true;
 
-        if(this.tope == null){
-            sePuedeDesapilar = false;
-        }else{
+        if (this.tope.getEnlace() != null){ //Si no es el último nodo
             this.tope = this.tope.getEnlace();
+        }else if (this.tope.getEnlace() == null){ //Si es el último nodo
+            this.tope = null;
+        }else{ //Si no tiene nodo (o sea, pila vacia, o sea, this.tope ya es null)
+            seDesapilo = false;
         }
 
-        return sePuedeDesapilar;
+        return seDesapilo;
     }
 
     public Object obtenerTope(){
-        return this.tope.getElemento();
+        Object elTope = null;
+        if(this.tope != null){
+            elTope = this.tope.getElemento();
+        }
+        return elTope;
     }
 
     public boolean esVacia(){
@@ -47,13 +53,25 @@ public class Pila {
     public void vaciar(){
 
         if(this.tope != null){
-            //this.tope = this.tope.getEnlace().vaciar();
+            this.tope = null;
         }
 
     }
 
     public Pila clone(){
+        Pila clon = new Pila();
+        clon.tope = recNodos(this.tope);
+        return clon;
+    }
 
+    private Nodo recNodos(Nodo nodoOr){
+        Nodo nodoClon = null;
+        if (nodoOr.getEnlace() == null){
+            nodoClon = null;
+        }else{
+            nodoClon = recNodos(nodoOr.getEnlace());
+        }
+        return nodoClon;
     }
     
     @Override

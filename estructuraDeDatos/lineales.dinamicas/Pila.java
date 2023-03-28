@@ -58,6 +58,7 @@ public class Pila {
 
     }
 
+    @Override
     public Pila clone(){
         Pila clon = new Pila();
         clon.tope = recNodos(this.tope);
@@ -65,11 +66,12 @@ public class Pila {
     }
 
     private Nodo recNodos(Nodo nodoOr){
-        Nodo nodoClon = null;
+        Nodo nodoClon = new Nodo(null, null);
         if (nodoOr.getEnlace() == null){
-            nodoClon = null;
+            nodoClon.setElemento(nodoOr.getElemento());;
         }else{
-            nodoClon = recNodos(nodoOr.getEnlace());
+            nodoClon.setElemento(nodoOr.getElemento()); 
+            nodoClon.setEnlace(recNodos(nodoOr.getEnlace()));
         }
         return nodoClon;
     }

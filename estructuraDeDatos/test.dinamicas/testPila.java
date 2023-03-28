@@ -1,4 +1,5 @@
-import estructuraDeDatos.linealesEstaticas.Pila;
+import estructuraDeDatos.linealesDinamicas.Pila;
+import estructuraDeDatos.linealesDinamicas.Nodo;
 
 public class testPila {
 
@@ -19,7 +20,6 @@ public class testPila {
         pila1.vaciar();
         System.out.println("Vaciar Pila 1: " + pila1.toString());
         System.out.println("Pila 2 clonada anteriormente con todos los elementos: " + "\n" + pila2.toString());
-        
-     }
-
+    }
+    
 }

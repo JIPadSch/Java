@@ -1,4 +1,4 @@
-public class Nodo {
+class Nodo {
 
     private Object elem;
     private Nodo enlace;

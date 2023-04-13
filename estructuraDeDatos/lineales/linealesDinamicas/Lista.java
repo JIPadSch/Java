@@ -113,5 +113,6 @@ public class Lista {
         return contador;
     }
 
+    //FALTA CLONE Y TOSTRING
     
 }

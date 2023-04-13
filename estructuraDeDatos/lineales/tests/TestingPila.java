@@ -1,5 +1,5 @@
-import estructuraDeDatos.lineales.linealesEstaticas.Pila;
-//import estructuraDeDatos.lineales.linealesDinamicas.Pila;
+import estructuraDeDatos.linealesEstaticas.Pila;
+//import estructuraDeDatos.linealesDinamicas.Pila;
 
 /**
  *

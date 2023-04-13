@@ -38,7 +38,7 @@ public class Compra {
 		this.fecha = fecha;
 	}
 
-	public static String calcularTotalCompra() {
+	public String calcularTotalCompra() {
 		for(int i=0;i<10;i++) {
 			Item it = this.getItems()[i];
 			if(it!=null) {

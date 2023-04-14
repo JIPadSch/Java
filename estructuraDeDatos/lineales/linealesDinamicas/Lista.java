@@ -1,15 +1,11 @@
 public class Lista {
 
-    private Nodo enlace;
-    private Object elemento;
     private Nodo cabecera;
 
     /* CONSTRUCTOR */
 
     public Lista(){
-        cabecera = new Nodo(null, null);
-        enlace = null;
-        elemento = null;
+        cabecera = null;
     }
 
     /* BASICAS */
@@ -94,12 +90,12 @@ public class Lista {
     }
 
     public void vaciar(){
-        this.cabecera.setEnlace(null);
+        this.cabecera = null;
     }
 
     public boolean esVacia(){
         boolean vacia = true;
-        if(this.cabecera.getEnlace() != null){
+        if(this.cabecera != null){
             vacia = false;
         }
         return vacia;
@@ -107,12 +103,65 @@ public class Lista {
 
     public int longitud(){
         int contador = 0;
-        while(this.enlace.getEnlace() != null){
-            contador++;
-        } //Posible ERROR de longitud que de uno menos al no contar el ultimo ... CAPAZ
+
+        if(this.cabecera != null){
+            contador++; // +1 por la cabecera y +1 por cada nodo recorrido por while.
+            while(this.cabecera.getEnlace() != null){
+                contador++;
+            }
+        }
+
         return contador;
     }
 
-    //FALTA CLONE Y TOSTRING
+    @Override
+    public Lista clone() {
+
+        Lista listaClon = new Lista();
+
+        if (this.cabecera != null) {
+            int i = 1;
+            // Creamos el primer nodo de la Lista clonada
+            Nodo nodoClonado = new Nodo(this.cabecera.getElemento(), null);
+            listaClon.cabecera = nodoClonado;
+            // Iteramos sobre los nodos restantes de la Lista original
+            Nodo nodoActual = this.cabecera.getEnlace();
+            while (i < this.longitud()+1) {
+                // Creamos un nuevo nodo en la Lista clonada
+                Nodo nuevoNodo = new Nodo(nodoActual.getElemento(), null);
+                // Enlazamos el nuevo nodo con el último nodo de la Lista clonada
+                nodoClonado.setEnlace(nuevoNodo);
+                // Actualizamos el último nodo de la Lista clonada
+                nodoClonado = nuevoNodo;
+                nodoActual = nodoActual.getEnlace();
+            }
+        }
+
+        return listaClon;
+    }
+
+    @Override
+    public String toString(){
+        String texto = "[";
+
+        if(this.cabecera != null){ //Si la Lista NO esta vacia
+            Nodo aux = this.cabecera;
+            int i = 1;
+
+            while(i < this.longitud()+1){
+                texto += aux.getElemento().toString();
+                aux = aux.getEnlace();
+                if(aux != null){
+                    texto += ",";
+                }
+            }
+            texto += "]";
+
+        }else{ //Si la Lista esta VACIA
+            texto = "La Lista esta VACIA";
+        }
+
+        return texto;
+    }
     
 }

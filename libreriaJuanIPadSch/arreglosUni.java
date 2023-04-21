@@ -106,7 +106,7 @@ public class arreglosUni {
         boolean tieneSoloLetras = true;
         int i = 0;
         while (tieneSoloLetras && i < arrString[i].length()) {
-            tieneSoloLetras = veriNativos.stringSoloLetras(arrString[i]);
+            tieneSoloLetras = Entrada.lineaSoloLetras(arrString[i]);
             i++;
         }
         return tieneSoloLetras;

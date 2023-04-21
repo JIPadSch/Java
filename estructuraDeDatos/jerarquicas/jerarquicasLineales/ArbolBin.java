@@ -14,5 +14,17 @@ public class ArbolBin {
         }
         this.raiz = -1;
     }
+
+    public boolean insertar(Object elemNuevo, Object elemPadre, int pos){
+        
+    }
+
+    public boolean esVacio(){
+        return (this.raiz == -1);
+    }
+
+    public Object padre(Object elem){
+
+    }
     
 }

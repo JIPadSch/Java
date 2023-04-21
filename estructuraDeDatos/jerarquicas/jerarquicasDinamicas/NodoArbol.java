@@ -1,14 +1,15 @@
 
-class CeldaBin {
+public class NodoArbol {
+
+    /* ATRIBUTOS */
 
     private Object elem;
-    private int izquierdo;
-    private int derecho;
-    private boolean enUso;
+    private NodoArbol izquierdo;
+    private NodoArbol derecho;
 
     /* CONSTRUCTOR */
 
-    public CeldaBin(Object elem, int izquierdo, int derecho){
+    public NodoArbol(Object elem, NodoArbol izquierdo, NodoArbol derecho){
         this.elem = elem;
         this.izquierdo = izquierdo;
         this.derecho = derecho;
@@ -20,16 +21,12 @@ class CeldaBin {
         return this.elem;
     }
 
-    public int getIzquierdo(){
+    public NodoArbol getIzquierdo(){
         return this.izquierdo;
     }
 
-    public int getDerecho(){
+    public NodoArbol getDerecho(){
         return this.derecho;
-    }
-
-    public boolean getEnUso(){
-        return this.enUso;
     }
 
     /* MODIFICADORES */
@@ -38,12 +35,11 @@ class CeldaBin {
         this.elem = elem;
     }
 
-    public void setIzquierdo(int izquierdo){
+    public void setIzquierdo(NodoArbol izquierdo){
         this.izquierdo = izquierdo;
     }
 
-    public void setDerecho(int derecho){
+    public void setDerecho(NodoArbol derecho){
         this.derecho = derecho;
     }
-    
 }

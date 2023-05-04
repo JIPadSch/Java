@@ -265,4 +265,103 @@ public class ArbolBin {
         }
     }
 
+    /* PRACTICA 1ER PARCIAL: */
+
+    /* Ejercicio 3: 
+     * e) Implementar la operación boolean verificarPatron(Lista patron), que recibe por parámetro una lista patron
+     *    y determine si coincide exactamente con al menos un camino del árbol que comience en la raíz y termine en
+     *    una hoja. El método debe ser eficiente, es decir, recorrer el árbol lo estrictamente necesario.
+    */
+
+    public boolean verificarPatron(Lista patron){
+        boolean existe = false;
+        existe = verificarPatronRecursivo(this.raiz,patron,0,patron.longitud());
+        return existe;
+    }
+
+    private boolean verificarPatronRecursivo(NodoArbol nodo,Lista patron,int profundidad,int longitud){
+        boolean existe = false;
+
+        if(nodo!=null && profundidad < longitud){ //Verificamos que el nodo no sea nulo ni que nos pasemos 
+                                                  //de la longitud de la lista
+            if(nodo.getElem().equals(patron.recuperar(profundidad+1)) && (profundidad+1)==longitud){ 
+                //Caso Base, llegamos al final de la lista y coincide
+                existe = true;
+            }else if(nodo.getElem().equals(patron.recuperar(profundidad+1))){ 
+                //Caso general, coincide elemento pero no es final de la lista    
+                existe = verificarPatronRecursivo(nodo.getIzquierdo(), patron, (profundidad+1), longitud);
+                if(!existe){ //Si dsp de verificar el izquierdo falla, ent verifica si en el derecho esta el patron
+                    existe = verificarPatronRecursivo(nodo.getDerecho(), patron, (profundidad+1), longitud);
+                }
+            }
+            //Si no coincidio el elemento del nodo actual, tira falso           
+        }
+
+        return existe;
+    }
+
+    /* Ejercicio 3: 
+    *  f) Implementar la operación frontera() que devuelve una lista con la secuencia formada por los elementos
+    *     almacenados en las hojas del árbol binario, tomadas de izquierda a derecha.
+    */
+
+    public Lista frontera(){
+        Lista frontera = new Lista();
+        fronteraRecursivo(this.raiz,frontera);
+        return frontera;
+    }
+
+    private void fronteraRecursivo(NodoArbol nodo,Lista frontera){
+
+        if(nodo != null){ //Si el nodo actual distinto de nulo
+
+            if(!nodo.getDerecho().equals(null) && !nodo.getIzquierdo().equals(null)){
+                //Si el nodo actual no tiene hijos significa que es hoja, por lo tanto lo agrego a la Lista "frontera"
+                frontera.insertar(nodo.getElem(), 0);
+            }else{ //Si no es hoja
+                fronteraRecursivo(nodo.getIzquierdo(), frontera); //Busco hojas en el hijo izquierdo
+                fronteraRecursivo(nodo.getDerecho(), frontera); //Dsp de buscar hojas en el HI, busco en el HD
+            }
+
+        }
+        
+    }
+
+    /* Ejercicio 3: 
+    *  g) Implementar la operación clonarInvertido() que devuelve un nuevo árbol, que es una copia del árbol original
+    *     (this) pero donde los hijos están cambiados de lugar. Atención: el método devuelve un nuevo árbol, sin
+    *     modificar el árbol original.
+    *       Consideraciones:
+    *            El árbol debe estar implementado con nodos enlazados.
+    *            Escribir la definición de tipos de la clase ArbolBin y NodoArbol
+    */
+
+    public ArbolBin clonarInvertido(){
+        ArbolBin clonInvertido = new ArbolBin(); //Creo un arbol vacio
+        clonInvertido.insertar(this.raiz.getElem(), null, 'D'); //Inserto la raiz ya que no cambia
+        clonarInvertidoRecursivo(this.raiz,clonInvertido,clonInvertido.raiz);
+        return clonInvertido;
+    }
+
+    private void clonarInvertidoRecursivo(NodoArbol nodo,ArbolBin clonInvertido,NodoArbol nodoClon){
+
+        if(nodo != null){ //Si el nodo actual no es nulo
+
+            if(nodo.getDerecho() != null){ //Si el nodo actual tiene hijo derecho
+                nodoClon.setIzquierdo(nodo.getDerecho()); //Pongo el en el HI del arbolInvertido, el HD del arbol orig
+            }
+
+            if(nodo.getIzquierdo() != null){ //Si el nodo actual tiene hijo izquierdo
+                nodoClon.setDerecho(nodo.getIzquierdo()); //Pongo el en el HD del arbolInvertido, el HI del arbol orig
+            }
+
+            //Recorro el arbol original por el lado izquierdo, y el clon por el lado derecho
+            clonarInvertidoRecursivo(nodo.getIzquierdo(), clonInvertido, nodoClon.getDerecho());
+            //Recorro el arbol original por el lado derecho, y el clon por el lado izquierdo
+            clonarInvertidoRecursivo(nodo.getDerecho(), clonInvertido, nodoClon.getIzquierdo());
+
+        }
+
+    }
+
 }

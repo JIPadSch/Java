@@ -1,4 +1,4 @@
-package estructuraDeDatos.jerarquicas.jerarquicasDinamicas;
+package jerarquicas.jerarquicasDinamicas;
 
 public class ArbolGen {
 
@@ -118,11 +118,32 @@ public class ArbolGen {
         return (raiz == null);
     }
 
-    public int altura(){
-        /*
-         * Devuelve la altura del árbol, es decir la longitud del camino más largo desde la raíz hasta una hoja
-         * (Nota: un árbol vacío tiene altura -1 y una hoja tiene altura 0).
-        */
+    public int altura() {
+        return alturaAux(this.raiz);
+    }
+    
+    private int alturaAux(NodoGen nodo) {
+        if (nodo == null) {
+            // Si el nodo es nulo, el árbol está vacío, por lo tanto la altura es -1
+            return -1;
+        }
+        
+        if (nodo.getHijoIzquierdo() == null) {
+            // Si el nodo no tiene hijos, es una hoja, por lo tanto la altura es 0
+            return 0;
+        }
+        
+        int maxAltura = 0;
+        NodoGen hijo = nodo.getHijoIzquierdo();
+        
+        while (hijo != null) {
+            int alturaHijo = alturaAux(hijo);
+            maxAltura = Math.max(maxAltura, alturaHijo);
+            hijo = hijo.getHermanoDerecho();
+        }
+        
+        // La altura del nodo es la altura del hijo más alto más 1
+        return maxAltura + 1;
     }
 
     public int nivel(Object elem) {
@@ -355,6 +376,76 @@ public class ArbolGen {
         }
         return s;
     }
+
+    public int gradoSubarbol(Object buscado) {
+        int grado=-1;
+        NodoGen nodo=obtenerNodo(this.raiz,buscado);
+         if (nodo!=null) {
+             grado=gradoAux(nodo);
+         }
+         return grado;
+     }
+
+     private NodoGen obtenerNodo(NodoGen nodo,Object elem){
+     NodoGen res=null;
+         if (nodo!=null) {
+             
+             if (nodo.getElem().equals(elem)) {
+             //si el nodo no es null y es el que buscamos 
+                 res=nodo;
+             }else{
+             NodoGen hijo = nodo.getHijoIzquierdo();
+             while(hijo!=null && res==null){
+             //si todavia no encontro el nodo buscado sigue iterando 
+             res=obtenerNodo(hijo,elem);
+             hijo=hijo.getHermanoDerecho();
+             }
+             
+             }
+                 
+         }
+         return res;
+     
+     }
+ 
+    public int grado() {
+         int grado = -1;
+ 
+         if (!this.esVacio()) {
+             grado = gradoAux(this.raiz);
+         }
+ 
+         return grado;
+     }
+ 
+     private int gradoAux(NodoGen nodo) {
+         int max = 0;
+         if (nodo != null) {
+             //si el nodo no es null
+             if (nodo.getHijoIzquierdo() != null) {
+                 //si tiene hijo izquierdo
+                 NodoGen hijo = nodo.getHijoIzquierdo();
+                 while (hijo != null) {
+                     //mido el grado contando los hijos 
+                     max++;
+                     hijo = hijo.getHermanoDerecho();
+                 }
+ 
+                 hijo = nodo.getHijoIzquierdo();
+ 
+                 while (hijo != null) {
+                     //mido el grado de los hijos recursivamente y me quedo con el mas grande comparandolo con el de esye nivel 
+                     int gradoHijo = gradoAux(hijo);
+                     if (gradoHijo > max) {
+                         max = gradoHijo;
+                     }
+                     hijo = hijo.getHermanoDerecho();
+                 }
+             }
+         }
+ 
+         return max;
+     }
 
     //INCISOS TP 2 OBLIGATORIO
 

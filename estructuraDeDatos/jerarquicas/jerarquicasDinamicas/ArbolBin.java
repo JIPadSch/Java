@@ -1,4 +1,4 @@
-package estructuraDeDatos.jerarquicas.jerarquicasDinamicas;
+package jerarquicas.jerarquicasDinamicas;
 
 public class ArbolBin {
 
@@ -260,23 +260,6 @@ public class ArbolBin {
         return resp;
     }
 
-    public Lista frontera() {
-        Lista hojas = new Lista();
-        fronteraAux(this.raiz, hojas);
-
-        return hojas;
-    }
-
-    private void fronteraAux(NodoArbol nodo, Lista hojas) {
-        if (nodo != null) {
-            if (nodo.getIzquierdo() == null && nodo.getDerecho() == null) {
-                hojas.insertar(nodo.getElem(), hojas.longitud() + 1);
-            }
-            fronteraAux(nodo.getIzquierdo(), hojas);
-            fronteraAux(nodo.getDerecho(), hojas);
-        }
-    }
-    
     public Lista obtenerAncestros(Object elem){
     Lista ancestros= new Lista();
     ancestrosAux(this.raiz,ancestros,elem);
@@ -285,7 +268,7 @@ public class ArbolBin {
     }
 
     private boolean ancestrosAux(NodoArbol nodo, Lista ancestros, Object elem) {
-    boolean encontrado=false;
+        boolean encontrado=false;
     
         if (nodo!=null) {
             if (nodo.getElem().equals(elem)) {
@@ -300,9 +283,14 @@ public class ArbolBin {
                 }
                 if (encontrado) {
                 ancestros.insertar(nodo.getElem(),ancestros.longitud()+1 );
+                }
             }
+        }
+
+        return encontrado;
+    }
                 
-                /* PRACTICA 1ER PARCIAL: */
+    /* PRACTICA 1ER PARCIAL: */
 
     /* Ejercicio 3: 
      * e) Implementar la operación boolean verificarPatron(Lista patron), que recibe por parámetro una lista patron
@@ -361,9 +349,6 @@ public class ArbolBin {
             }
 
         }                    
-
-        } 
-        return encontrado;
     }
 
     public Lista obtenerDesendientes(Object elem){
@@ -385,10 +370,11 @@ public class ArbolBin {
                 
             }
         }
+        return encontrado;
     }
 
-}
-    }
+
+    /* PRACTICA 1ER PARCIAL: */
 
     /* Ejercicio 3: 
     *  g) Implementar la operación clonarInvertido() que devuelve un nuevo árbol, que es una copia del árbol original

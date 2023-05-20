@@ -1,3 +1,5 @@
+package jerarquicas.jerarquicasDinamicas;
+
 public class Lista {
 
     Nodo cabecera;
@@ -74,22 +76,22 @@ public class Lista {
         return elem;
     }
 
-    public Object localizar(Object elem) {
-        boolean esIgual = false;
-        int pos = 1;
-        Nodo aux = this.cabecera;
-        while (!esIgual && pos <= longitud) {
-            //mientras no sea igual y la posicion sea menor a longitud
-            esIgual = aux.getElem().equals(elem);
-            if (!esIgual) {
-                aux = aux.getEnlace();
-                pos++;
+    public int localizar(Object elemBuscado) {
+        int pos = -1; // Posición inicialmente establecida en -1 (no encontrado)
+        int i = 1; // Índice del elemento actual
+        boolean elemEncontrado = false; // Variable para indicar si el elemento fue encontrado
+        Nodo nodoAux = this.cabecera; // Nodo auxiliar para recorrer la lista
+
+        while (i < this.longitud() + 1 && !elemEncontrado) { // Recorrer la lista mientras no se llegue al final y no se haya encontrado el elemento
+            if (elemBuscado == nodoAux.getElem()) { // Si el elemento buscado es igual al elemento del nodo actual
+                pos = i; // Se actualiza la posición con el índice actual
+                elemEncontrado = true; // Se marca el elemento como encontrado
             }
+            nodoAux = nodoAux.getEnlace(); // Avanzar al siguiente nodo
+            i++; // Incrementar el índice
         }
-        if (!esIgual) {
-            pos = -1;
-        }
-        return pos;
+
+        return pos; // Devolver la posición del elemento (puede ser -1 si no se encontró)
     }
 
     public int longitud() {

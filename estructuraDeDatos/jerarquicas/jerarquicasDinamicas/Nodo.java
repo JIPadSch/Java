@@ -1,3 +1,5 @@
+package jerarquicas.jerarquicasDinamicas;
+
 class Nodo {
 
     private Object elem;

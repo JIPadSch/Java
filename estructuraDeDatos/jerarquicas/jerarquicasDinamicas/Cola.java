@@ -1,3 +1,5 @@
+package jerarquicas.jerarquicasDinamicas;
+
 public class Cola {
     
     private Nodo frente;
@@ -45,7 +47,7 @@ public class Cola {
 
 
     public Object obtenerFrente(){
-        return this.frente.getElemento();
+        return this.frente.getElem();
     }
 
     public boolean esVacia(){
@@ -72,14 +74,14 @@ public class Cola {
 
         if (this.frente != null) {
             // Creamos el primer nodo de la cola clonada
-            Nodo nodoClonado = new Nodo(this.frente.getElemento(), null);
+            Nodo nodoClonado = new Nodo(this.frente.getElem(), null);
             colaClon.frente = nodoClonado;
 
             // Iteramos sobre los nodos restantes de la cola original
             Nodo nodoActual = this.frente.getEnlace();
             while (nodoActual != null) {
                 // Creamos un nuevo nodo en la cola clonada
-                Nodo nuevoNodo = new Nodo(nodoActual.getElemento(), null);
+                Nodo nuevoNodo = new Nodo(nodoActual.getElem(), null);
                 // Enlazamos el nuevo nodo con el último nodo de la cola clonada
                 nodoClonado.setEnlace(nuevoNodo);
                 // Actualizamos el último nodo de la cola clonada
@@ -100,7 +102,7 @@ public class Cola {
             Nodo aux = this.frente;
 
             while(aux != null){
-                texto += aux.getElemento().toString();
+                texto += aux.getElem().toString();
                 aux = aux.getEnlace();
                 if(aux != null){
                     texto += ",";

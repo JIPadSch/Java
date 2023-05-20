@@ -1,5 +1,3 @@
-package jerarquicas.jerarquicasDinamicas;
-
 public class NodoArbol {
 
     /* ATRIBUTOS */

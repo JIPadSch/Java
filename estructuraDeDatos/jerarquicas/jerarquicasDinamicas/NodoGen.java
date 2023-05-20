@@ -2,16 +2,19 @@ package jerarquicas.jerarquicasDinamicas;
 
 public class NodoGen {
 
+    /* ATRIBUTOS */
     private Object elem;
     private NodoGen hijoIzquierdo;
     private NodoGen hermanoDerecho;
 
+    /* CONSTRUCTOR */
     public NodoGen(Object elem, NodoGen hijoIzquierdo, NodoGen hermanoDerecho){
         this.elem = elem;
         this.hijoIzquierdo = hijoIzquierdo;
         this.hermanoDerecho = hermanoDerecho;
     }
 
+    /* OBSERVADORES */
     public Object getElem(){
         return this.elem;
     }
@@ -24,6 +27,7 @@ public class NodoGen {
         return this.hermanoDerecho;
     }
 
+    /* MODIFICADORES */
     public void setElem(Object elem){
         this.elem = elem;
     }
@@ -36,6 +40,7 @@ public class NodoGen {
         this.hermanoDerecho = hermanoDerecho;
     }
 
+    /* PROPIOS DEL TIPO */
     public boolean equals(NodoGen otroNodo){
         return (this.elem.equals(otroNodo.elem));
     }

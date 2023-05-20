@@ -1,5 +1,3 @@
-package jerarquicas.jerarquicasDinamicas;
-
 public class ArbolBin {
 
     private NodoArbol raiz;
@@ -168,7 +166,7 @@ public class ArbolBin {
         if (this.raiz != null) {
             Cola q = new Cola();
             q.poner(this.raiz);
-            while (!q.esVacia()) {
+            while (!q.esVacio()) {
                 actual = (NodoArbol) q.obtenerFrente();
                 q.sacar();
                 lis.insertar(actual.getElem(), lis.longitud() + 1);

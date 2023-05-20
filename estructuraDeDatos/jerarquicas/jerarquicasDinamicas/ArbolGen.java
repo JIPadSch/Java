@@ -447,10 +447,9 @@ public class ArbolGen {
          return max;
      }
 
-    //INCISOS TP 2 OBLIGATORIO
-
-        // ADVERTENCIA: el árbol genérico puede tener elementos repetidos. Tomar como precondición del
-        // método sonFrontera que la lista no tenga elementos repetidos.
+    // INCISOS TP 2 OBLIGATORIO
+    // ADVERTENCIA: el árbol genérico puede tener elementos repetidos. Tomar como precondición del método sonFrontera que la lista no tenga elementos repetidos.
+    
         public boolean sonFrontera(Lista unaLista) {
             boolean sonFrontera = false;
             if (!this.esVacio() && !unaLista.esVacia()) {
@@ -478,9 +477,6 @@ public class ArbolGen {
             }
             return sonIguales;
         }
-    
-
-    //Crear public boolean sonFrontera(Lista unaLista) que recibe una lista de elementos almacenada en una estructura del tipo Listay debe verificar si la lista contiene los elementos de la frontera del árbol, sin importar el orden en que aparezcan los elementos en la lista
 
     public boolean equals(ArbolGen unArbol){
         /*

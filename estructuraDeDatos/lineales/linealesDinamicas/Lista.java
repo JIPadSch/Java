@@ -103,12 +103,11 @@ public class Lista {
 
     public int longitud(){
         int contador = 0;
+        Nodo nodoAux = this.cabecera;
 
-        if(this.cabecera != null){
-            contador++; // +1 por la cabecera y +1 por cada nodo recorrido por while.
-            while(this.cabecera.getEnlace() != null){
-                contador++;
-            }
+        while(nodoAux != null){
+            contador++;
+            nodoAux = nodoAux.getEnlace();
         }
 
         return contador;

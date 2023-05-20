@@ -19,7 +19,7 @@ class Nodo {
     }
 
     /* OBSERVADORES */
-    public Object getElemento(){
+    public Object getElem(){
         return elem;
     }
     public Nodo getEnlace(){

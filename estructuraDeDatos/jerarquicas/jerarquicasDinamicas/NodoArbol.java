@@ -1,45 +1,49 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package jerarquicas;
 
+/**
+ *
+ * @author angelo.sasso
+ */
 public class NodoArbol {
-
-    /* ATRIBUTOS */
 
     private Object elem;
     private NodoArbol izquierdo;
     private NodoArbol derecho;
 
-    /* CONSTRUCTOR */
+    public NodoArbol(Object elemento, NodoArbol izq, NodoArbol der) {
+        this.elem = elemento;
+        this.izquierdo = izq;
+        this.derecho = der;
 
-    public NodoArbol(Object elem, NodoArbol izquierdo, NodoArbol derecho){
-        this.elem = elem;
-        this.izquierdo = izquierdo;
-        this.derecho = derecho;
     }
 
-    /* OBSERVADORES */
-
-    public Object getElem(){
-        return this.elem;
+    public Object getElem() {
+        return elem;
     }
 
-    public NodoArbol getIzquierdo(){
-        return this.izquierdo;
-    }
-
-    public NodoArbol getDerecho(){
-        return this.derecho;
-    }
-
-    /* MODIFICADORES */
-
-    public void setElem(Object elem){
+    public void setElem(Object elem) {
         this.elem = elem;
     }
 
-    public void setIzquierdo(NodoArbol izquierdo){
+    public NodoArbol getIzquierdo() {
+        return izquierdo;
+    }
+
+    public void setIzquierdo(NodoArbol izquierdo) {
         this.izquierdo = izquierdo;
     }
 
-    public void setDerecho(NodoArbol derecho){
+    public NodoArbol getDerecho() {
+        return derecho;
+    }
+
+    public void setDerecho(NodoArbol derecho) {
         this.derecho = derecho;
     }
+
 }

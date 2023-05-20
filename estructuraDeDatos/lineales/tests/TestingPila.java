@@ -1,5 +1,7 @@
-import estructuraDeDatos.linealesEstaticas.Pila;
-//import estructuraDeDatos.linealesDinamicas.Pila;
+package tests.lineales;
+
+import lineales.dinamicas.Pila;
+//import lineales.estaticas.Pila;
 
 /**
  *

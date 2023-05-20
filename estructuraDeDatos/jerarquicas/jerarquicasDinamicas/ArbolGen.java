@@ -480,47 +480,39 @@ public class ArbolGen {
         return sonIguales;
     }
 
-    public boolean equals(ArbolGen unArbol) {
-        /*
-         * equals recibe un árbol genérico y debe comparar si éste es igual al árbol
-         * this. La
-         * signatura del método debe ser public boolean equals(ArbolGen unArbol). El
-         * método debe
-         * ser eficiente y no recorrer de más.
-         */
-        boolean iguales = false;
-        if (this.raiz.equals(unArbol.raiz)) {
-            iguales = equalsAux(this.raiz.getHijoIzquierdo(), unArbol.raiz.getHijoIzquierdo());
-        }
-        return iguales;
+    
+    public boolean equals(ArbolGen arbol) {
+        boolean exito = equalsAux(this.raiz, arbol.raiz);
+        return exito;
     }
 
-    private boolean equalsAux(NodoGen nodoArbolOrig, NodoGen nodoArbolOtro) {
-        boolean iguales = true;
+    private boolean equalsAux(NodoGen nodo, NodoGen nodoAux) {
+        boolean exito = true;
 
-        if (nodoArbolOrig != null && nodoArbolOtro != null) {
-
-            if (nodoArbolOrig.equals(nodoArbolOtro)) {
-                // Recorro los hijos izquierdos
-                iguales = equalsAux(nodoArbolOrig.getHijoIzquierdo(), nodoArbolOtro.getHijoIzquierdo());
-                if (iguales) { // Si siguen siendo iguales, recorro los hermanos derechos derechos
-                    boolean hermanoIguales = true;
-                    while (hermanoIguales || (nodoArbolOrig == null && nodoArbolOtro == null)) {
-                        nodoArbolOrig = nodoArbolOrig.getHermanoDerecho();
-                        nodoArbolOtro = nodoArbolOtro.getHermanoDerecho();
-                        hermanoIguales = nodoArbolOrig.equals(nodoArbolOtro);
-                    }
-                    iguales = hermanoIguales;
-                }
+        if (nodo != null && nodoAux != null) {
+            //si los nodos no son null
+            if (!nodo.getElem().equals(nodoAux.getElem())) {
+                exito = false;
+                //si el elemto de los dos nodos son distintos 
             } else {
-                iguales = false;
+                //si son iguales recorro 
+                NodoGen hijo = nodo.getHijoIzquierdo();
+                NodoGen hijoAux = nodoAux.getHijoIzquierdo();
+                while ((hijo != null || hijoAux != null) && exito) {
+                    //si sigue siendo true el exito y al menos uno de los nodos no es null
+                    exito = equalsAux(hijo, hijoAux);
+                    if (exito) {
+                        hijo = hijo.getHermanoDerecho();
+                        hijoAux = hijoAux.getHermanoDerecho();
+                    }
+                }
             }
-
-        } else if (!nodoArbolOrig.equals(nodoArbolOtro)) { // Si alguno es nulo, entonces pregunto si donde estoy son iguales (o sea, ambos nulos)
-            // Si no lo son, entonces son distintos y dejan de ser iguales
-            iguales = false;
+        } else {
+            //si alguno de los nodos o los dos son null 
+            exito = nodo == nodoAux;
         }
 
-        return iguales;
+        return exito;
     }
+    
 }

@@ -1,6 +1,6 @@
 package jerarquicas.jerarquicasDinamicas;
 
-public class NodoGen {
+class NodoGen {
 
     /* ATRIBUTOS */
     private Object elem;

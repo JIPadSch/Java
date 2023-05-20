@@ -1,6 +1,6 @@
 package jerarquicas.jerarquicasDinamicas;
 
-public class NodoArbol {
+class NodoArbol {
 
     /* ATRIBUTOS */
     private Object elem;

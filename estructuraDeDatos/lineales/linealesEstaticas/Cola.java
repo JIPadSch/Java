@@ -3,10 +3,10 @@ public class Cola {
     private Object[] arreglo;
     private int frente;
     private int fin;
-    private static final int tamanio = 20; //Ejemplo
+    private static final int TAMANIO = 20; //Ejemplo
 
     public Cola(){
-        this.arreglo = new Object[tamanio];
+        this.arreglo = new Object[TAMANIO];
         this.frente = 0;
         this.fin = 0;
     }
@@ -53,8 +53,8 @@ public class Cola {
     }
 
     @Override
-    public ColaEstatica clone(){
-        ColaEstatica colaClon = new ColaEstatica();
+    public Cola clone(){
+        Cola colaClon = new Cola();
         colaClon.arreglo = this.arreglo.clone();
         colaClon.frente = this.frente;
         colaClon.fin = this.fin;

@@ -1,5 +1,3 @@
-import estructuraDeDatos.linealesEstaticas.Pila;
-
 public class testPila {
 
     public static void main(String[] args) {

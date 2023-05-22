@@ -1,5 +1,3 @@
-package estructuraDeDatos;
-
 public class Pila {
     
     private Object[] arreglo;
@@ -15,7 +13,7 @@ public class Pila {
     public boolean apilar(Object unObjeto){
         boolean sePudoApilar = true;
 
-        if(this.tope+1 >= this.tamanio){
+        if(this.tope+1 >= tamanio){
             sePudoApilar = false;
         }else{
             this.arreglo[this.tope+1] = unObjeto;
@@ -78,12 +76,11 @@ public class Pila {
         return copiaArreglo;
     }
 
-    @Override
     public boolean equals(Object[] arreglo){
         boolean sonIguales = true;
         int i = 0;
         while(sonIguales){
-            if(this.arreglo[i].obtenerTope().equals(arreglo[i].obtenerTope())){
+            if(((Pila) this.arreglo[i]).obtenerTope().equals(((Pila) arreglo[i]).obtenerTope())){
                 sonIguales = false;
             }
         }

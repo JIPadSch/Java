@@ -20,10 +20,10 @@ public class TestingCola {
 	public static void testCola() {
 		System.out.println("COMIENZO TEST COLA");
 		Cola q1 = new Cola();
-		System.out.println("Cola vacía: \t\t\t\t\t\t\t--> " + q1.toString());
+		System.out.println("Cola vacï¿½a: \t\t\t\t\t\t\t--> " + q1.toString());
 		boolean exito = true;
 
-		System.out.println("Si es cola estatica tamaño <= 10 se debe llenar");
+		System.out.println("Si es cola estatica tamaï¿½o <= 10 se debe llenar");
 		int num = 1;
 		while (num < 12) {
 			if (num < 10) {
@@ -58,7 +58,7 @@ public class TestingCola {
 		System.out.print("Pone 8 espera false en estatica, true en dinamica: \t" + q1.poner(8));
 		System.out.println("\t--> " + q1.toString());
 
-		while (!q1.esVacia()) {
+		while (!q1.esVacio()) {
 			System.out.print("Saca " + q1.obtenerFrente() + " de cola espera true: \t\t\t\t"
 					+ ((q1.sacar() == true) ? sOk : sErr));
 			System.out.println("\t--> " + q1.toString());

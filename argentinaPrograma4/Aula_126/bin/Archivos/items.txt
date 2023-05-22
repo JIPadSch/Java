@@ -1,2 +1,0 @@
-Pasta Dental;2;100;
-Cepillo;3;10;

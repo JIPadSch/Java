@@ -1,49 +1,37 @@
 package conjuntistas.conjuntistasDinamicas;
 
-class NodoABB {
-    
-    /* ATRIBUTOS */
-    private Comparable elemento;
+public class NodoABB {
+    private Object elem;
     private NodoABB izquierdo;
     private NodoABB derecho;
-
-    /* CONSTRUCTORES */
-    public NodoABB(Comparable elemento){
-        this.elemento = elemento;
-        this.izquierdo = null;
-        this.derecho = null;
-    }
-
-    public NodoABB(Comparable elemento, NodoABB izquierdo, NodoABB derecho){
-        this.elemento = elemento;
-        this.izquierdo = izquierdo;
-        this.derecho = derecho;
-    }
-
-    /* OBSERVADORES */
-    public Object getElem(){
-        return this.elemento;
-    }
-
-    public NodoABB getIzquierdo(){
-        return this.izquierdo;
-    }
-
-    public NodoABB getDerecho(){
-        return this.derecho;
-    }
-
-    /* MODIFICADORES */
-    public void setElem(Comparable elemento){
-        this.elemento = elemento;
-    }
-
-    public void setIzquierdo(NodoABB izquierdo){
-        this.izquierdo = izquierdo;
-    }
-
-    public void setDerecho(NodoABB derecho){
-        this.derecho = derecho;
-    }
     
+    public NodoABB(Object elem, NodoABB izquierdo, NodoABB derecho){
+        this.elem = elem;
+        this.izquierdo = izquierdo;
+        this.derecho = derecho;
+    }
+
+    public Object getElem() {
+        return elem;
+    }
+
+    public NodoABB getIzquierdo() {
+        return izquierdo;
+    }
+
+    public NodoABB getDerecho() {
+        return derecho;
+    }
+
+    public void setElem(Object elem) {
+        this.elem = elem;
+    }
+
+    public void setIzquierdo(NodoABB izquierdo) {
+        this.izquierdo = izquierdo;
+    }
+
+    public void setDerecho(NodoABB derecho) {
+        this.derecho = derecho;
+    }
 }

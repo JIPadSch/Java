@@ -1,4 +1,5 @@
 package conjuntistas.conjuntistasDinamicas;
+
 public class Lista {
 
     Nodo cabecera;

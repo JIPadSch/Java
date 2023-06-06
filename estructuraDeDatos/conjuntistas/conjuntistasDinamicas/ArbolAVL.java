@@ -1,24 +1,25 @@
 package conjuntistas.conjuntistasDinamicas;
-public class ArbolBB {
 
-    private NodoABB raiz;
+public class ArbolAVL {
 
-    public ArbolBB() {
+    private NodoAVL raiz;
+
+    public ArbolAVL() {
         this.raiz = null;
     }
 
     public boolean insertar(Comparable elemento) {
         boolean exito = true;
         if (this.raiz == null) {
-            this.raiz = new NodoABB(elemento, null, null);
+            this.raiz = new NodoAVL(elemento, null, null);
         } else {
-            exito = insertarAux(this.raiz, elemento);
+            exito = insertarAux(this.raiz, null, elemento);
         }
 
         return exito;
     }
 
-    private boolean insertarAux(NodoABB n, Comparable elemento) {
+    private boolean insertarAux(NodoAVL n, NodoAVL padre, Comparable elemento) {
         //precondicion n no es nulo
         boolean exito = true;
 
@@ -28,50 +29,141 @@ public class ArbolBB {
         } else if (elemento.compareTo(n.getElem()) < 0) {
             //si tiene HI baja a la izquierda, sino agrega elemento
             if (n.getIzquierdo() != null) {
-                exito = insertarAux(n.getIzquierdo(), elemento);
+                exito = insertarAux(n.getIzquierdo(), padre, elemento);
             } else {
-                n.setIzquierdo(new NodoABB(elemento, null, null));
+                n.setIzquierdo(new NodoAVL(elemento, null, null));
             }
         } else {
             //si tiene HD baja a la derecha, sino agrega el elemento
             if (n.getDerecho() != null) {
-                exito = insertarAux(n.getDerecho(), elemento);
+                exito = insertarAux(n.getDerecho(), padre, elemento);
             } else {
-                n.setDerecho(new NodoABB(elemento, null, null));
+                n.setDerecho(new NodoAVL(elemento, null, null));
             }
         }
+
+        if (exito) {
+            if (padre == null) {
+                this.raiz = balancear(n);
+            } else {
+                if (padre.getElem().compareTo(n.getElem()) < 0) {
+                    padre.setIzquierdo(balancear(n));
+                } else {
+                    padre.setDerecho(balancear(n));
+                }
+            }
+        }
+
         return exito;
+    }
+
+    private NodoAVL balancear(NodoAVL nodo) {
+        actualizarAltura(nodo); // Actualizar la altura del nodo
+
+        if (obtenerBalance(nodo) == 2) {
+            System.out.println("Cambio Izquierda");
+            if (obtenerBalance(nodo.getIzquierdo()) <= 0) {
+                nodo.setIzquierdo(simpleIzquierda(nodo.getIzquierdo()));
+            }
+            nodo = simpleDerecha(nodo);
+        } else if (obtenerBalance(nodo) == -2) {
+            System.out.println("Cambio Derecha");
+            if (obtenerBalance(nodo.getDerecho()) >= 0) {
+                nodo.setDerecho(simpleDerecha(nodo.getDerecho()));
+            }
+            nodo = simpleIzquierda(nodo);
+        } else if (obtenerBalance(nodo) == -2 && obtenerBalance(nodo.getDerecho()) == 1) {
+            System.out.println("Cambio Derecha-Izquierda");
+            nodo.setDerecho(simpleDerecha(nodo.getDerecho()));
+            nodo = simpleIzquierda(nodo);
+        } else if (obtenerBalance(nodo) == 2 && obtenerBalance(nodo.getIzquierdo()) == -1) {
+            System.out.println("Cambio Izquierda-Derecha");
+            nodo.setIzquierdo(simpleIzquierda(nodo.getIzquierdo()));
+            nodo = simpleDerecha(nodo);
+        }
+
+        return nodo;
+    }
+
+    private void actualizarAltura(NodoAVL nodo) {
+        int alturaIzq = altura(nodo.getIzquierdo());
+        int alturaDer = altura(nodo.getDerecho());
+        nodo.setAltura(Math.max(alturaIzq, alturaDer) + 1);
+    }
+
+    private int altura(NodoAVL nodo) {
+        int rta = -1;
+        if (nodo != null) {
+            rta = nodo.getAltura();
+        }
+        return rta;
+    }
+
+    private int obtenerBalance(NodoAVL nodo) {
+        int rta = 0;
+        if (nodo != null) {
+            rta = altura(nodo.getIzquierdo()) - altura(nodo.getDerecho());
+        }
+        return rta;
+    }
+
+    private NodoAVL simpleDerecha(NodoAVL nodo) {
+        NodoAVL nuevoPadre = nodo.getIzquierdo();
+        nodo.setIzquierdo(nuevoPadre.getDerecho());
+        nuevoPadre.setDerecho(nodo);
+        actualizarAltura(nodo);
+        actualizarAltura(nuevoPadre);
+        return nuevoPadre;
+    }
+
+    private NodoAVL simpleIzquierda(NodoAVL nodo) {
+        NodoAVL nuevoPadre = nodo.getDerecho();
+        nodo.setDerecho(nuevoPadre.getIzquierdo());
+        nuevoPadre.setIzquierdo(nodo);
+        actualizarAltura(nodo);
+        actualizarAltura(nuevoPadre);
+        return nuevoPadre;
     }
 
     public boolean esVacio() {
         return this.raiz == null;
     }
-    
-    public void vaciar(){
+
+    public void vaciar() {
         this.raiz = null;
     }
 
     public boolean eliminar(Comparable elem) {
-        boolean exito;
-        if (esVacio()) {
-            exito = false; // El árbol está vacío, no se puede eliminar el elemento
-        } else {
-            exito = eliminarAux(elem, null, this.raiz);
+        boolean exito = false;
+        if (!esVacio()) {
+            if (elem.compareTo(this.raiz.getElem()) == 0) {
+                // Caso especial: el elemento a eliminar es la raíz
+                NodoAVL aux = new NodoAVL(null, null, null);
+                aux.setIzquierdo(this.raiz);
+                exito = eliminarAux(elem, aux, this.raiz);
+                this.raiz = aux.getIzquierdo();
+            } else {
+                exito = eliminarAux(elem, null, this.raiz);
+            }
         }
-
         return exito;
     }
 
-    private boolean eliminarAux(Comparable elem, NodoABB padre, NodoABB actual) {
-        boolean exito;
+    private boolean eliminarAux(Comparable elem, NodoAVL padre, NodoAVL actual) {
+        boolean exito = false;
 
         if (actual == null) {
-            exito = false; 
-            // El elemento no se encuentra en el árbol, no se puede eliminar
+            exito = false; // El elemento no se encuentra en el árbol, no se puede eliminar
         } else if (elem.compareTo(actual.getElem()) < 0) {
             exito = eliminarAux(elem, actual, actual.getIzquierdo());
+            if (exito) {
+                actual.setIzquierdo(balancear(actual.getIzquierdo()));
+            }
         } else if (elem.compareTo(actual.getElem()) > 0) {
             exito = eliminarAux(elem, actual, actual.getDerecho());
+            if (exito) {
+                actual.setDerecho(balancear(actual.getDerecho()));
+            }
         } else {
             // Se encontró el elemento a eliminar
             if (actual.getIzquierdo() == null && actual.getDerecho() == null) {
@@ -85,12 +177,15 @@ public class ArbolBB {
                 }
             } else if (actual.getIzquierdo() != null && actual.getDerecho() != null) {
                 // Caso 2: El nodo a eliminar tiene dos hijos
-                Comparable sucesor = buscarMin(actual.getDerecho());
+                Comparable sucesor = buscarMax(actual.getDerecho());
                 actual.setElem(sucesor);
-                eliminarAux(sucesor, actual, actual.getDerecho());
+                exito = eliminarAux(sucesor, actual, actual.getDerecho());
+                if (exito) {
+                    actual.setDerecho(balancear(actual.getDerecho()));
+                }
             } else {
                 // Caso 3: El nodo a eliminar tiene un hijo
-                NodoABB hijo = (actual.getIzquierdo() != null) ? actual.getIzquierdo() : actual.getDerecho();
+                NodoAVL hijo = (actual.getIzquierdo() != null) ? actual.getIzquierdo() : actual.getDerecho();
                 if (padre == null) {
                     raiz = hijo; // El nodo a eliminar es la raíz del árbol
                 } else if (actual == padre.getIzquierdo()) {
@@ -105,18 +200,18 @@ public class ArbolBB {
         return exito;
     }
 
-    private Comparable buscarMin(NodoABB actual) {
+    private Comparable buscarMax(NodoAVL actual) {
         while (actual.getIzquierdo() != null) {
             actual = actual.getIzquierdo();
         }
-        return (Comparable) actual.getElem();
+        return actual.getElem();
     }
 
     public boolean pertenece(Comparable elem) {
         return perteneceAux(this.raiz, elem);
     }
 
-    private boolean perteneceAux(NodoABB actual, Comparable elem) {
+    private boolean perteneceAux(NodoAVL actual, Comparable elem) {
         boolean pertenece = false;
 
         if (actual != null) {
@@ -139,7 +234,7 @@ public class ArbolBB {
         return lista;
     }
 
-    private void listaRec(NodoABB actual, Lista lista) {
+    private void listaRec(NodoAVL actual, Lista lista) {
         if (actual != null) {
             listaRec(actual.getIzquierdo(), lista);
             lista.insertar(actual.getElem(), lista.longitud() + 1);
@@ -153,7 +248,7 @@ public class ArbolBB {
         return lista;
     }
 
-    private void listarRangoRec(NodoABB actual, Comparable elemMinimo, Comparable elemMaximo, Lista lista) {
+    private void listarRangoRec(NodoAVL actual, Comparable elemMinimo, Comparable elemMaximo, Lista lista) {
         if (actual != null) {
             Comparable elementoActual = (Comparable) actual.getElem();
 
@@ -172,7 +267,7 @@ public class ArbolBB {
     }
 
     public Object minimoElem() {
-        NodoABB actual = this.raiz;
+        NodoAVL actual = this.raiz;
 
         if (this.raiz == null) {
             actual = null; // Si el árbol está vacío, devuelve null
@@ -186,29 +281,29 @@ public class ArbolBB {
     }
 
     public Object maximoElem() {
-        NodoABB actual = this.raiz;
+        NodoAVL actual = this.raiz;
 
         if (this.raiz == null) {
             actual = null; // Si el árbol está vacío, devuelve null
         } else {
             while (actual.getDerecho() != null) {
-            actual = actual.getDerecho(); // Recorre la rama derecha
-        }
+                actual = actual.getDerecho(); // Recorre la rama derecha
+            }
         }
 
         return actual.getElem(); // Devuelve el elemento más grande
     }
-    
-    public ArbolBB clone() {
-        ArbolBB clon = new ArbolBB();
+
+    public ArbolAVL clone() {
+        ArbolAVL clon = new ArbolAVL();
         if (!this.esVacio()) {
             clon.raiz = cloneRec(this.raiz);
         }
         return clon;
     }
 
-    private NodoABB cloneRec(NodoABB nodo) {
-        NodoABB nuevo = new NodoABB(nodo.getElem(), null, null);
+    private NodoAVL cloneRec(NodoAVL nodo) {
+        NodoAVL nuevo = new NodoAVL(nodo.getElem(), null, null);
         if (nodo.getIzquierdo() != null) {
             nuevo.setIzquierdo(cloneRec(nodo.getIzquierdo()));
         }
@@ -224,10 +319,10 @@ public class ArbolBB {
         return cadena;
     }
 
-    private String toStringRec(NodoABB nodo) {
+    private String toStringRec(NodoAVL nodo) {
         String resp = "";
         if (nodo != null) {
-            resp = nodo.getElem().toString();
+            resp = nodo.getElem().toString() + " Alt: " + altura(nodo);
             if (nodo.getIzquierdo() != null) {
                 resp += " HI: " + nodo.getIzquierdo().getElem().toString();
             } else {

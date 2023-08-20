@@ -1,5 +1,3 @@
-import estructuraDeDatos.jerarquicas.*;
-import estructuraDeDatos.lineales.*;
 
 public class segundoEjercicio {
     /* EJERCICIO TIPO 1ER PARCIAL:
@@ -20,8 +18,8 @@ public class segundoEjercicio {
         Cola nuevaCola = new Cola();
         String elemento = null;
 
-        while (!colaAux.esVacia()){
-            elemento = colaAux.obtenerFrente();
+        while (!colaAux.esVacio()){
+            elemento = (String)colaAux.obtenerFrente();
             elemento = elemento+elementoDadoVuelta(elemento)+elemento;
             colaAux.sacar();
         }
@@ -62,12 +60,12 @@ public class segundoEjercicio {
 
             int con1 = 0, con2 = 0, con3 = 0, con4 = 0, con5 = 0, con6 = 0;
             Cola colaAux = q.clone();
-            char charEnPos = null;
+            char charEnPos = ' ';
             String index = "{}()[]";
 
-            while(!colaAux.esVacia() && balanceado){
+            while(!colaAux.esVacio() && balanceado){
 
-                charEnPos = colaAux.obtenerFrente();
+                charEnPos = (char)colaAux.obtenerFrente();
                 
                 if(index.indexOf(charEnPos) > -1){
                     switch (charEnPos) {

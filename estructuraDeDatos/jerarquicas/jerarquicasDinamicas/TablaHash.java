@@ -1,4 +1,4 @@
-package jerarquicas;
+package jerarquicas.jerarquicasDinamicas;
 
 public class TablaHash {
     private int TAMANIO;
@@ -10,7 +10,7 @@ public class TablaHash {
         this.cant = 0;
     }
     
-    public boolean insetar(Object nuevoElem){
+    public boolean insertar(Object nuevoElem){
         // primero verifica si el elemento ya esta cargado
         // si no lo encuentra, lo pone adelante del resto
         

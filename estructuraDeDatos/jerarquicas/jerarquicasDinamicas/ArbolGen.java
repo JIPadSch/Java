@@ -514,5 +514,83 @@ public class ArbolGen {
 
         return exito;
     }
+
+    //EJERCICIOS DE 2DO PARCIAL
+
+    /*
+     * Implemente el método verificarCamino que dada una lista, verifica si la
+     * misma corresponde a un camino desde la raíz hasta algún elemento del
+     * árbol. Ejemplo: En el árbol de la derecha (en el PDF), si se ingresa la lista
+     * <20,54,27> debe devolver TRUE. Si se ingresa <20,13,12,45> debe
+     * devolver FALSE. Si se ingresa <20,17> debe devolver FALSE.
+     */
+
+     public boolean verificarCamino(Lista lista){
+        boolean encontrado = false;
+
+        if(!lista.esVacia()){
+            encontrado = verificadorCaminoAux(lista,0,this.raiz);
+        }
+
+        return encontrado;
+     }
+
+     private boolean verificadorCaminoAux(Lista lista,int pos, NodoGen nodo){
+        boolean encontrado = false;
+
+        if((nodo != null) && (pos < lista.longitud())){
+
+            if(nodo.getElem().equals(lista.recuperar(pos))){
+                if(pos+1 == lista.longitud()){
+                    encontrado = true;
+                }else{
+                    encontrado = verificadorCaminoAux(lista, (pos+1), nodo.getHijoIzquierdo());
+                }
+                
+            }else{
+                encontrado = verificadorCaminoAux(lista, pos, nodo.getHermanoDerecho());
+            }
+
+        }
+
+        return encontrado;
+     }
+
+
+
+     /*
+      * Implementar el método listarEntreNiveles(int niv1, int niv2) que recibe como parámetro dos elementos niv1 y
+      * niv2 y devuelve una lista con los elementos del árbol que están entre los niveles niv1 y niv2 inclusive. El método
+      * debe recorrer el árbol en inorden y no debe visitar nodos de más.
+      * Ejemplo: Si para el árbol de la derecha se ingresa niv1=1 y niv2=2 debe devolver 15,13,12,11,54,27,4.
+      */
+
+      public Lista listarEntreNiveles(int niv1, int niv2){
+        Lista listaNiveles = new Lista();
+
+        if(this.raiz != null){
+            if(niv1 < niv2){
+                listarEntreNivelesAux(niv1, niv2, this.raiz, listaNiveles);
+            }else if(niv2 < niv1){
+                listarEntreNivelesAux(niv2, niv1, this.raiz, listaNiveles);
+            }else{
+                listarEntreNivelesIgualesAux(niv1, raiz, listaNiveles);
+            }
+        }
+
+        return listaNiveles;
+      }
+
+      private void listarEntreNivelesAux(int niv1, int niv2, NodoGen nodo, Lista lista){
+    
+        if(nodo != null){
+
+        }
+    
+      }
+
+      private void listarEntreNivelesIgualesAux(int niv1, NodoGen nodo, Lista lista){
+        
+      }
     
 }

@@ -19,7 +19,7 @@ public class test {
             System.out.println("3: Punto 6 MODIFICADO");
             System.out.println("-------------------------------");
             opcion = ent.nextInt();
-            menu(opcion);    
+            menu(opcion);
             
         }while(opcion != 0);
         

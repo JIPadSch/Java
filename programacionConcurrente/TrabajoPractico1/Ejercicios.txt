@@ -1,0 +1,13 @@
+1) El nombre de la Clase que define las excepciones y la cual debe heredar
+    cualquier clase que querramos usar para representar una excepcion es Throwable.
+
+2) Las excepciones que se producen al invocar un metodo de un objeto cuyo valor
+    es "null" es RunTimeException, subclase de Exception, la cual es a su vez subclase
+    de la clase Throwable.
+
+3) Las excepciones del tipo RunTimeException son errores que se producen debido a una
+    mala programacion.
+
+4) Produciria un error del tipo NullPointerException, ya que array_string [3] esta vacio.
+
+5) 

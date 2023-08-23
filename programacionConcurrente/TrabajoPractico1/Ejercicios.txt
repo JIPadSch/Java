@@ -10,4 +10,10 @@
 
 4) Produciria un error del tipo NullPointerException, ya que array_string [3] esta vacio.
 
-5) 
+5) Produce un error del tipo NumberFormatException que extiende IllegalArgumentException.
+
+6) Exception in thread "main" java.lang.RuntimeException: El indice 16 no existe en el vector
+    El codigo no captura realmente la excepcion, solamente la tira, ya que cuando el indice no
+    existe en el vector, ira al "else" y tirara el error, pero no permita que el codigo continue,
+    se puede mover el mensaje al catch y cumpliria la funcion de mensaje y un correcto 
+    encapsulamiento del error.

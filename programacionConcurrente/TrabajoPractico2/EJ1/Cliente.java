@@ -1,9 +1,9 @@
-package programacionConcurrente.TrabajoPractico2;
+package programacionConcurrente.TrabajoPractico2.EJ1;
 
 public class Cliente extends Thread {
 
     public void run(){
-        System.out.println("soy"+Thread.currentThread().getName());
+        System.out.println("Soy "+Thread.currentThread().getName());
         Recurso.uso();
         try {
             Thread.sleep(2000);

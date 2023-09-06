@@ -15,13 +15,19 @@ public class Energia {
     public synchronized void modificarEnergia(Thread hilo){
         
         if(hilo.getName().equals("Criatura Oscura")){
-            cantEnergia -= 3;
-            System.out.println("La Criatura Oscura accedio a la Energia, le quito 3 de vida y ahora tiene "+cantEnergia);
+            this.daniar();            
         }else if(hilo.getName().equals("Sanador")){
-            cantEnergia += 3;
-            System.out.println("El Sanador accedio a la Energia, le sumo 3 de vida y ahora tiene "+cantEnergia);
+            this.sanar();            
         }
         
-        
+    }
+
+    public synchronized void sanar(){
+        cantEnergia += 3;
+        System.out.println("El Sanador accedio a la Energia, le sumo 3 de vida y ahora tiene "+cantEnergia);
+    }
+
+    public synchronized void daniar(){
+        cantEnergia -= 3;
     }
 }

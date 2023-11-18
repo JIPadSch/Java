@@ -1,19 +1,25 @@
 package programacionConcurrente.TrabajoPractico3.EJ3;
 
 public class Jaula {
+    private Comedero comer;
+    private Descansar dormir;
+    private Rodar rodar;
 
-    public synchronized void comer(Hamster unHamster) throws Exception{
-        System.out.println("El hamster "+unHamster.getNro()+" esta comiendo");
-        Thread.sleep(1000);
+    public Jaula(Comedero c, Descansar d, Rodar r){
+        comer = c;
+        dormir = d;
+        rodar = r;
+    }
+
+    public void comer()throws Exception{
+        comer.comer();
     }
     
-    public synchronized void rodar(Hamster unHamster) throws Exception{
-        System.out.println("El hamster "+unHamster.getNro()+" esta rodando");
-        Thread.sleep(1000);
+    public void rodar() throws Exception{
+        dormir.dormir();
     }
 
-    public synchronized void descansar(Hamster unHamster) throws Exception{
-        System.out.println("El hamster "+unHamster.getNro()+" esta descansando");
-        Thread.sleep(1000);
+    public void descansar() throws Exception{
+        rodar.rodar();
     }
 }

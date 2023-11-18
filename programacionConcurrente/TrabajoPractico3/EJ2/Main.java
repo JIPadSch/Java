@@ -4,20 +4,15 @@ public class Main {
 
     public static void main(String[] args) {
 
-        CriaturaOscura h1 = new CriaturaOscura();
-        Sanador h2 = new Sanador();
-        Energia energia = new Energia();
+        Energia e = new Energia();
+        CriaturaOscura c = new CriaturaOscura(e);
+        Sanador s = new Sanador(e);
 
-        h1.start();
-        h2.start();
-        
-        for (int i = 0; i < 10; i++) {
-            
-            
-        }
+        Thread hilo1 = new Thread(c, "Criatura");
+        Thread hilo2 = new Thread(s, "Sanador");
 
-        System.out.println("La Energia termino en: "+energia.getCantEnergia());
-
+        hilo1.start();
+        hilo2.start();
     }
     
 }

@@ -1,4 +1,4 @@
-package PracticaParcial.Ejercicio1;
+package PracticaParcial.Ejercicio1.Semaforos;
 
 public class Embotellador extends Thread{
 

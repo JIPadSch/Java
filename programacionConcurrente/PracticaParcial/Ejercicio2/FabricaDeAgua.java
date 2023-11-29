@@ -57,69 +57,87 @@ public class FabricaDeAgua {
 
     }
 
-    //Metodo que pone en estado de LISTO a un Oxigeno, devuelve true/false segun si lo logro o no
+    // Metodo que pone en estado de LISTO a un Oxigeno, devuelve true/false segun si
+    // lo logro o no
     public boolean Olisto() {
 
         boolean listo = false;
 
         if (lock.tryLock()) { // Intenta tomar el lock
 
-            if (lock.getWaitQueueLength(condicionOlisto) < 1) { // Si no hay Oxigenos esperando entra
+            System.out.println(Thread.currentThread().getName()+" LOGRO TOMAR EL LOCK");
 
-                listo = true; // Al finalizar devolvera true
+            try {
+                if (lock.getWaitQueueLength(condicionOlisto) < 1) { // Si no hay Oxigenos esperando entra
 
-                if (lock.getWaitQueueLength(condicionHlisto) == 2) { // Si hay 2 Hidrogenos esperando
-                    condicionHlisto.notifyAll(); // Los despierta para que terminen su proceso
-                    HacerAgua(); // Y llama a HacerAgua
-                } else { // Si no hay 2 Hidrogenos esperando
-                    try {
-                        condicionOlisto.await(); // Espera a que lo despierten
-                        HacerAgua(); // Y luego llama a HacerAgua
-                    } catch (Exception e) {
-                        // Excepcion
+                    listo = true; // Al finalizar devolvera true
+
+                    if (this.lock.getWaitQueueLength(condicionHlisto) == 2) { // Si hay 2 Hidrogenos esperando
+                        this.condicionHlisto.notifyAll(); // Los despierta para que terminen su proceso
+                        HacerAgua(); // Y llama a HacerAgua
+                    } else { // Si no hay 2 Hidrogenos esperando
+                        try {
+                            this.condicionOlisto.await(); // Espera a que lo despierten
+                            HacerAgua(); // Y luego llama a HacerAgua
+                        } catch (Exception e) {
+                            // Excepcion
+                        }
                     }
-                }
 
+                }
+            } finally {
+                lock.unlock();
             }
 
-        } // Si falla devuelve false
-
+        } else {// Si falla, devuelve false
+            System.out.println("El hilo: " + Thread.currentThread().getName() + " no logró tomar el lock");
+        }
         return listo;
 
     }
 
-    //Metodo que pone en estado de LISTO a un Hidrogeno, devuelve true/false segun si lo logro o no
+    // Metodo que pone en estado de LISTO a un Hidrogeno, devuelve true/false segun
+    // si lo logro o no
     public boolean Hlisto() {
 
         boolean listo = false;
 
         if (lock.tryLock()) { // Intenta tomar el lock
 
-            if (lock.getWaitQueueLength(condicionHlisto) < 2) { // Verifica que no haya 2 Hidrogenos ya esperando
+            System.out.println(Thread.currentThread().getName()+" LOGRO TOMAR EL LOCK");
 
-                listo = true;
+            try {
+                if (lock.getWaitQueueLength(condicionHlisto) < 2) { // Verifica que no haya 2 Hidrogenos ya esperando
 
-                if (lock.getWaitQueueLength(condicionHlisto) == 1) {// Si ya hay 1 Hidrogeno
-                    if(lock.getWaitQueueLength(condicionOlisto) == 1){ //Si ya hay Oxigeno esperando
-                        condicionOlisto.notify(); //Despertamos el Oxigeno
-                    }else{
+                    listo = true;
+
+                    if (lock.getWaitQueueLength(condicionHlisto) == 1) {// Si ya hay 1 Hidrogeno
+                        if (this.lock.getWaitQueueLength(condicionOlisto) == 1) { // Si ya hay Oxigeno esperando
+                            condicionOlisto.notify(); // Despertamos el Oxigeno
+                        } else {
+                            try {
+                                this.condicionHlisto.await();
+                            } catch (Exception e) {
+                                // TODO: handle exception
+                            }
+                        }
+                    } else { // Si no hay un Hidrogeno
                         try {
-                            condicionHlisto.await();
+                            this.condicionHlisto.await(); // Espera a que lo despierten
+                            this.lock.unlock();
                         } catch (Exception e) {
-                            // TODO: handle exception
+                            // Excepcion
                         }
                     }
-                } else { //Si no hay un Hidrogeno
-                    try {
-                        condicionHlisto.await(); //Espera a que lo despierten
-                    } catch (Exception e) {
-                        // Excepcion
-                    }
-                }
 
+                }
+            } finally {
+                lock.unlock();
             }
 
-        } // Si falla, devuelve false
+        } else {// Si falla, devuelve false
+            System.out.println("El hilo: " + Thread.currentThread().getName() + " no logró tomar el lock");
+        }
 
         return listo;
 
